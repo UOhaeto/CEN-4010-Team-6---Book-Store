@@ -1,0 +1,80 @@
+Tables 
+Profile Management Database Planning
+
+Users Table
+userId (PK) (FK)
+password
+fName
+lName
+email
+homeStreet
+homeCity
+homeState
+homeZip
+nickname
+
+Phone Numbers
+userId (PK)
+areaCode
+restOfNumber
+
+User to CC Mapper
+userId 
+CC ID (FK)
+
+Credit Cards
+CCID (PK)
+Name
+CC #
+Exp Date
+Security #
+
+Shipping Address Mapper
+UserID
+Shipping Address ID (FK)
+
+Shipping Addresses
+Shipping Address ID (PK)
+Shipping street
+Shipping city
+Shipping state
+Shipping Zip
+
+
+
+Books Database Planning
+
+Books
+Title
+Author
+Author Bio
+Release Date
+Genre
+ISBN  (PK)
+Price
+Year
+Publisher
+Description
+Quantity
+Rating
+
+Book Ratings
+ISBN
+User ID
+Comment (500)
+Rating
+
+Shopping Cart Database Planning
+
+Cart
+UserID
+ISBN
+Quantity
+
+Users - Orders Map
+UserID
+Order# (PK)
+ISBN
+Quantity
+
+ 
