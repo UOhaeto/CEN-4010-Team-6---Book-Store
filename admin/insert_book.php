@@ -47,7 +47,7 @@
 				
 				<tr>
 					<td>Author bio </td>
-					<td><textarea rows="4" cols="20" name="author_bio"  /></textarea></td>
+					<td><textarea rows="4" cols="20" name="author_bio"  maxlength="250"/></textarea></td>
 					
 				</tr>
 				
@@ -132,7 +132,7 @@
 				
 				<tr>
 					<td>Description</td>
-					<td><textarea rows="4" cols="20" name="description"  /></textarea></td>
+					<td><textarea rows="4" cols="20" name="description"  maxlength="250"/></textarea></td>
 					
 				</tr>
 				
@@ -166,13 +166,13 @@
 		//$isbn = $_POST['isbn'];
 		$book_title = $_POST['book_title'];
 		$author = $_POST['author'];
-		$author_bio = $_POST['author_bio'];
+		$author_bio = addcslashes($_POST['author_bio']);
 		$genre = $_POST['genre'];
 		$release_date = $_POST['release_date'];
 		$price = $_POST['price'];
 		$year = $_POST['year'];
 		$publisher = $_POST['publisher'];
-		$description = $_POST['description'];
+		$description = addcslashes($_POST['description']);
 		$quantity = $_POST['quantity'];
 		$rating = $_POST['rating'];
 		

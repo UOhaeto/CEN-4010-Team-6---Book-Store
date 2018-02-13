@@ -119,7 +119,7 @@ body{
 		width: 800px;
 		height: 800px;
 		float: right;
-		bakcground: red;
+		background: white;
 	}
 
 	#sidebar{
@@ -182,7 +182,17 @@ body{
 		
 		#single_book img{
 			border: 2px solid black;
+			
 		}
+		
+	#shopping_cart{
+			float: right;
+			background: black;
+			width: 800px;
+			color: white;
+			height: 50px;"
+		
+	}
 	
 
 
