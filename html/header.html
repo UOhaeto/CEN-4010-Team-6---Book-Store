@@ -10,21 +10,23 @@
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
 </head>
   <body>
-
     <div class="topnav">
-      <a href="index.php">Home</a>
-      <a href="#news">Books</a>
-      <a href="#top_sellers">Top Sellers</a>
-      <a href="genres.php">Genres</a>
-      <a>Contact Us</a>
-      <form  method="get" class="example" action="result.php" style="margin:auto;max-width:700px;display:inline-block;padding-top:6px">
-        <input type="text" placeholder="Search..." name="user_query"></input>
-        <input type="submit" name="search" value="Search" style="float: right;"/>
-        <div style="clear:both;"></div>
-      </form>
-      <a href="myAccount.php">My Account</a> <!--TODO hide/show according to whether a user is logged in or not-->
-      <a class="menu_link" href="login.php"> Login </a> <!--TODO switch between "Login" and "Logout"-->    
+      <div class="mini_topnav">
+        <a>Contact Us</a>
+        <a href="myAccount.php">My Account</a> <!--TODO hide/show according to whether a user is logged in or not-->
+        <a class="menu_link" href="login.php"> Login </a> <!--TODO switch between "Login" and "Logout"-->   
+      </div>
+      <div class=topnav_mid>
+        <a href="index.php"><img src="images/adidas.png" alt="home_logo" width="120" height="80"></a>
+        <input type="text" class="search" placeholder="Search..." name="user_query" style="position: relative"width="120px"></input>
+        <!--<input type="submit" name="search" value="Search" style="float: right;"/>-->
+      </div>
+      <div class="topnav_menu">
+        <a href="index.php">Home</a>
+        <a href="#news">Books</a>
+        <a href="#top_sellers">Top Sellers</a>
+        <a href="genres.php">Genres</a> 
+      </div>
     </div>
-
   </body>
 </html>

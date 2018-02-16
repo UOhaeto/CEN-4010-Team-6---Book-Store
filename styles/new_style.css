@@ -4,41 +4,65 @@ body {
 }
 
 .topnav {
-	overflow: hidden;
-	align: center;
+  position: relative;
+}
+
+.mini_topnav {
+  overflow: hidden;
+  align: center;
   background-color: #15325C;
 }
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
+.mini_topnav a {
+  float: right;
+  color: gray;
   text-align: center;
-  padding: 14px 16px;
+  padding: 5px 5px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 8px;
   font-family: "Helvetica";
-  font-weight: bold;
 }
 
-.topnav a:hover {
-  background-color: #0391A1;
+.topnav_menu {
+  overflow: hidden;
+  align: center;
+  background:lightgray;
+  border: dimgray;
+}
+
+.topnav_mid {
+	overflow: hidden;
+	align: center;
+  background-color:white;
+}
+
+.topnav_menu a {
+  float: left;
+  color: gray;
+  text-align: center;
+  padding: 10px 12px;
+  text-decoration: none;
+  font-size: 10px;
+  font-family: "Helvetica";
+}
+
+.topnav_menu a:hover {
+  background-color: #15325C;
   color: white;
 }
 
 .topnav a.active {
-  background-color: #2196F3;
+  background-color: #15325C;
   color: white;
 }
 
-form.search input[type=text] {
-    padding: 5px;
+.search {
+    float: right;
+    width: 500px;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
     font-size: 17px;
-    display: inline-block;
-    width: 70%;
-    border: 1px solid grey;
-    float: center;
-    width: 80%;
-    background: #f1f1f1;
 }
 
 form.example button {
