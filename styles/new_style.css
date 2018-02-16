@@ -1,12 +1,12 @@
 body {
 	margin:0;
-	background: #EDEDE8
+	background: white;
 }
 
 .topnav {
 	overflow: hidden;
 	align: center;
-  background-color: #1A3A48;
+  background-color: #15325C;
 }
 
 .topnav a {
@@ -16,6 +16,8 @@ body {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  font-family: "Helvetica";
+  font-weight: bold;
 }
 
 .topnav a:hover {
@@ -28,12 +30,14 @@ body {
   color: white;
 }
 
-form.example input[type=text] {
-    padding: 10px;
+form.search input[type=text] {
+    padding: 5px;
     font-size: 17px;
+    display: inline-block;
+    width: 70%;
     border: 1px solid grey;
-    float: right;
-    width: 60%;
+    float: center;
+    width: 80%;
     background: #f1f1f1;
 }
 
@@ -60,7 +64,6 @@ form.example::after {
 }
 
 .content{
-	
 	margin: auto;
 	background: pink;
 	width: 70%;
@@ -99,8 +102,10 @@ form.example::after {
 }
 
 .login_button {
-  width: 25%;
+  font-family: "Helvetica";
   margin: auto;
+  border-radius: 2px;
+  border: 0;
   color:white;
   background-color: green;
 }
@@ -108,17 +113,12 @@ form.example::after {
   background-color: lightgreen;
 }
 
-.signup_button {
-  width: 25%;
-  margin: auto;
-  color:white;
-  background-color: yellow;
-}
 .signup_button:hover{
   background-color: lightyellow;
 }
 
 input[type=text], input[type=password] {
+  font-family: "Helvetica";
   width: 100%;
   padding: 2px 10px;
   margin: 8px 0;
@@ -126,4 +126,3 @@ input[type=text], input[type=password] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-
