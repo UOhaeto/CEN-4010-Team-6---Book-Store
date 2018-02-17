@@ -18,7 +18,7 @@ body {
   text-align: center;
   padding: 5px 5px;
   text-decoration: none;
-  font-size: 8px;
+  font-size: 12px;
   font-family: "Helvetica";
 }
 
@@ -33,6 +33,30 @@ body {
 	overflow: hidden;
 	align: center;
   background-color:white;
+  padding: 0;
+  list-style: none;
+}
+
+.topnav_mid .search-container {
+  float: right;
+}
+
+.topnav_mid input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav_mid .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
 }
 
 .topnav_menu a {
@@ -41,7 +65,7 @@ body {
   text-align: center;
   padding: 10px 12px;
   text-decoration: none;
-  font-size: 10px;
+  font-size: 14px;
   font-family: "Helvetica";
 }
 
@@ -56,29 +80,13 @@ body {
 }
 
 .search {
-    float: right;
     width: 500px;
     padding: 6px;
     border: none;
     margin-top: 8px;
     margin-right: 16px;
-    font-size: 17px;
-}
-
-form.example button {
-    float: right;
-    width: 30%;
-    padding: 10px;
-    background: #2196F3;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
-    cursor: pointer;
-}
-
-form.example button:hover {
-    background: #0b7dda;
+    margin-bottom: 20px;
+    font-size: 21px;
 }
 
 form.example::after {
@@ -141,7 +149,7 @@ form.example::after {
   background-color: lightyellow;
 }
 
-input[type=text], input[type=password] {
+.user input[type=text], input[type=password] {
   font-family: "Helvetica";
   width: 100%;
   padding: 2px 10px;
@@ -150,3 +158,4 @@ input[type=text], input[type=password] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+

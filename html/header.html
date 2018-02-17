@@ -7,7 +7,8 @@
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
+	<link rel="stylesheet" href="styles/new_style.css" media="all">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
   <body>
     <div class="topnav">
@@ -18,8 +19,12 @@
       </div>
       <div class=topnav_mid>
         <a href="index.php"><img src="images/adidas.png" alt="home_logo" width="120" height="80"></a>
-        <input type="text" class="search" placeholder="Search..." name="user_query" style="position: relative"width="120px"></input>
-        <!--<input type="submit" name="search" value="Search" style="float: right;"/>-->
+        <div class="search-container">
+          <form action="result.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
       </div>
       <div class="topnav_menu">
         <a href="index.php">Home</a>
