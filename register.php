@@ -59,8 +59,8 @@
 	$u_password = addslashes($_POST['password']);
 	$u_re_password_ = addslashes($_POST['re_password']);
 
-	$user_id = 3;
-	$user_username = "user3";
+	$user_id = 4;
+	$user_username = "user5";
 	$user_address = "123 street";
 	$user_city = "Miami";
 	$user_state = "Florida";
