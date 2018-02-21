@@ -45,10 +45,24 @@
 		array_push($errors, "The two emails do not match");
 	}
 
+
+	// Password validation.
+if(preg_match("/^.*(?=.{8,})(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/", $u_password) === 0){
+	array_push($errors, "Password must be at least 8 characters and must contain at least one lower case letter, one uppercase, and one number.");
+	//$errPass = '<p class="errText">Password must be at least 8 characters and must contain at least one lower case letter, one upper case letter and one digit</p>';
+}
+
+if(preg_match("#[0-9]{5}#", $user_zip) === 0){
+array_push($errors, "Zip must be 5 numbers.");
+echo $user_zip;
+//$errZip = '<p class="errText">Zip must be 4 digits</p>';
+}
 /*
 	$insert_u = "insert into users (fName, lName, email, password)
 	values ('$u_first_name','$u_last_name','$u_con_email','$u_re_password_') ";
 */
+
+
 
 // a user does not already exist with the same username and/or email
 $user_check_query = "SELECT * FROM users WHERE username='$user_username' OR email='$u_email' LIMIT 1";

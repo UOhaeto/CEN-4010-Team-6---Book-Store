@@ -19,7 +19,7 @@
       <label for="login_pass"><b>Password</b></label>
       <input type="password" name="login_pass" required placeholder="password"/>
       <button class="login_button"> Log In </button>
-      <p> New user? <a href="/register.php"> Sign Up </a> </p>
+      <p> New user? <a href="register.php"> Sign Up </a> </p>
     </form>
   </div>
 </body>
