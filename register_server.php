@@ -8,7 +8,7 @@
 	if(isset($_POST['register_user'])){
 		//maybe use later.
 		//$ip = getIp();
-
+		//add randomizer for id
 	$user_id = "4";
 	$user_username = addslashes($_POST['username']);
 	$user_address = addslashes($_POST['address']);
