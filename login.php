@@ -13,7 +13,7 @@
 
 <body>
   <div id="login" class="login_div">
-    <form action="customer_register.php" method="post" enctype="multipart/form-data">
+    <form class="user" action="customer_register.php" method="post" enctype="multipart/form-data">
       <label for="login_email"><b><font face="helvetica">Username</font></b></label>
       <input class="user" type="text" name="login_email" required placeholder="Enter email"/>
       <label for="login_pass"><b><font face="helvetica">Password</font></b></label>
