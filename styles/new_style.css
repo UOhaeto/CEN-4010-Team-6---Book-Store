@@ -38,7 +38,7 @@ body {
 }
 
 .topnav_mid .search-container {
-  float: none;
+  float: right;
 }
 
 .topnav_mid input[type=text] {
