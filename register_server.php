@@ -28,27 +28,19 @@
 	$u_password = addslashes($_POST['password']);
 	$u_re_password = addslashes($_POST['re_password']);
 
-	if (empty($user_username)){
-		array_push($errors, "Username is required");
-	}
-	if (empty($u_email)) {
-		array_push($errors, "Email is required");
-	}
-	if (empty($u_password)) {
-		array_push($errors, "Password is required");
-	}
-	if (empty($u_re_password)) {
-		array_push($errors, " Re-enter Password is required");
-	}
-	//Need validation for new fields: username, address, city, state, zip, nickname
-
-
-
 	//Validation between passwords.
 	if ($u_password != $u_re_password) {
 		array_push($errors, "The two passwords do not match");
 	}
 
+
+
+	if (!filter_var($u_email, FILTER_VALIDATE_EMAIL)) {
+	    array_push($errors, "Enter a valid email");
+	}
+
+
+	//making sure both emails are the same.
 	if ($u_email != $u_con_email) {
 		array_push($errors, "The two emails do not match");
 	}
