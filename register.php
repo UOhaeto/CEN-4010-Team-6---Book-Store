@@ -31,10 +31,10 @@
       <input type="text" name="con_email" required placeholder="someemail@emails.com"/>
 
       <label for="password"><b>Password</b></label>
-      <input type="text" name="password" required/>
+      <input type="password" name="password" required/>
 
       <label for="re_password"><b>Re-enter Password</b></label>
-      <input type="text" name="re_password" required/>
+      <input type="password" name="re_password" required/>
 
 
 			<label for="username"><b>Username</b></label>

@@ -80,15 +80,15 @@ if ($user) { // if user exists
 }
 
   if (count($errors) == 0) {
-			$insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity, homeZip, nickname)
-			values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_zip', '$user_nickname') ";
+			$insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity,homeState, homeZip, nickname)
+			values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_state' '$user_zip', '$user_nickname') ";
 
 			$run_c = mysqli_query($con, $insert_u);
 
 
 			//echo $insert_book = "insert into books (book_title, author, author_bio, genre, release_date, price, year, publisher, description, quantity, rating, book_image) values ('$book_title','$author','$author_bio','$genre','$release_date','$price','$year','$publisher', '$description','$quantity', '$rating', '$book_image')";
 
-			echo $insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity, homeZip, nickname) values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_zip', '$user_nickname')";
+			echo $insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity, homeState, homeZip, nickname) values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_state', '$user_zip', '$user_nickname')";
 
 			if($run_c){
 				echo "<script>alert('user registered successfully!')</script>";
