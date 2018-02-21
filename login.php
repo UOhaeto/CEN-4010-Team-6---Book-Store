@@ -8,7 +8,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
-  <h1 align="center"> <a href="index.php">Monsta Codes</a> </h1> <!-- TODO Possibly replace with site logo -->
+  <h1 align="center"> <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a> </h1> <!-- TODO Possibly replace with site logo -->
 </head>
 
 <body>
