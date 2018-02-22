@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
-
 <?php
+	session_start();
+	
 	include("functions/functions.php");
 	echo file_get_contents("html/header.html");
-	$query = mysqli_query($con, "SELECT * FROM users INNER JOIN phonenumbers INNER JOIN shippingaddresses WHERE userID=1");
+	
+	$id=$_SESSION['SESS_USERID'];
+	$query = mysqli_query($con, "SELECT * FROM users INNER JOIN phonenumbers INNER JOIN shippingaddresses WHERE userID=$id");
 	while($result = mysqli_fetch_array($query))
 	{
 	$fname = $result['fName'];
@@ -36,7 +39,7 @@
 			<table width="398" border="0" align="center" cellpadding="0">
 			<tr>
 				<td height="26" colspan="2"><b>Your Profile Information</b></td>
-				<td><div align="right"><a href="index.php">logout</a></div></td>
+				<td><div align="right"><a href="logout.php">logout</a></div></td>
 			</tr>
 			<tr>
 				<td width="82" valign="top"><div align="left">First Name:</div></td>

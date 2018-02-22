@@ -2,7 +2,15 @@
 <html>
 
 <?php
-	include("functions/functions.php");
+	include('functions/functions.php');
+
+	//Start session
+	session_start();	
+	//Unset the variables stored in session
+	unset($_SESSION['SESS_USERID']);
+	unset($_SESSION['SESS_USERNAME']);
+	unset($_SESSION['SESS_PASSWORD']);
+	
 ?>
 
 <head>
@@ -12,12 +20,27 @@
 </head>
 
 <body>
+
+<td colspan="2">
+		<!--Displays the message of input validation-->
+		 <?php
+			if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ) {
+			echo '<ul class="err">';
+			foreach($_SESSION['ERRMSG_ARR'] as $msg) {
+				echo '<li>',$msg,'</li>'; 
+				}
+			echo '</ul>';
+			unset($_SESSION['ERRMSG_ARR']);
+			}
+		?>
+	</td>
+	
   <div id="login" class="login_div">
-    <form action="customer_register.php" method="post" enctype="multipart/form-data">
-      <label for="login_email"><b>Username</b></label>
-      <input type="text" name="login_email" required placeholder="Enter email"/>
-      <label for="login_pass"><b>Password</b></label>
-      <input type="password" name="login_pass" required placeholder="password"/>
+    <form action="login2.php" method="post" enctype="multipart/form-data">
+      <label for="username"><b>Username</b></label>
+      <input type="text" name="username" required placeholder="Enter username"/>
+      <label for="password"><b>Password</b></label>
+      <input type="password" name="password" required placeholder="Pssword"/>
       <button class="login_button"> Log In </button>
       <p> New user? <a href="register.php"> Sign Up </a> </p>
     </form>
