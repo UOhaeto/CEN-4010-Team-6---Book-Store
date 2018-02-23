@@ -8,8 +8,8 @@
 	if(isset($_POST['register_user'])){
 		//maybe use later.
 		//$ip = getIp();
-
-	$user_id = "4";
+		//add randomizer for id
+	$user_id = rand(1,10000);
 	$user_username = addslashes($_POST['username']);
 	$user_address = addslashes($_POST['address']);
 	$user_city = addslashes($_POST['city']);
@@ -45,6 +45,18 @@
 		array_push($errors, "The two emails do not match");
 	}
 
+
+	// Password validation.
+if(preg_match("/^.*(?=.{8,})(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/", $u_password) === 0){
+	array_push($errors, "Password must be at least 8 characters and must contain at least one lower case letter, one uppercase, and one number.");
+	//$errPass = '<p class="errText">Password must be at least 8 characters and must contain at least one lower case letter, one upper case letter and one digit</p>';
+}
+
+if(preg_match("#[0-9]{5}#", $user_zip) === 0){
+array_push($errors, "Zip must be 5 numbers.");
+
+//$errZip = '<p class="errText">Zip must be 4 digits</p>';
+}
 /*
 	$insert_u = "insert into users (fName, lName, email, password)
 	values ('$u_first_name','$u_last_name','$u_con_email','$u_re_password_') ";
@@ -66,15 +78,15 @@ if ($user) { // if user exists
 }
 
   if (count($errors) == 0) {
-			$insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity, homeZip, nickname)
-			values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_zip', '$user_nickname') ";
+
+		/*
+			$insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity,homeState, homeZip, nickname)
+			values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_state' '$user_zip', '$user_nickname') ";
+*/
+			echo $insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity, homeState, homeZip, nickname) values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_state', '$user_zip', '$user_nickname')";
 
 			$run_c = mysqli_query($con, $insert_u);
 
-
-			//echo $insert_book = "insert into books (book_title, author, author_bio, genre, release_date, price, year, publisher, description, quantity, rating, book_image) values ('$book_title','$author','$author_bio','$genre','$release_date','$price','$year','$publisher', '$description','$quantity', '$rating', '$book_image')";
-
-			echo $insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity, homeZip, nickname) values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_zip', '$user_nickname')";
 
 			if($run_c){
 				echo "<script>alert('user registered successfully!')</script>";
@@ -85,7 +97,5 @@ if ($user) { // if user exists
 
 		}
 }
-
-
 
 ?>

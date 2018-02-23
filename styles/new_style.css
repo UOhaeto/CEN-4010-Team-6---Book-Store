@@ -104,7 +104,7 @@ form.example::after {
 	background: white;
 	width: 70%;
 	height: auto;
-	
+
 }
 
 	#books_container{
@@ -113,7 +113,7 @@ form.example::after {
 		margin-left: 30px;
 		margin-bottom: 10px;
 	}
-	
+
 		#single_book{
 			width: 25%;
 			text-align: center;
@@ -122,7 +122,7 @@ form.example::after {
 			padding: 10px;
 			border: 2px solid black;
 		}
-		
+
 		#single_book img{
 			border: 2px solid black;
 			display: block;
@@ -192,4 +192,12 @@ form.example::after {
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+
+select{
+  width: 100%;
+  padding: 2px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
