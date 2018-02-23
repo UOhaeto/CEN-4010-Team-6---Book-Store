@@ -10,30 +10,31 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
-  <h1 align="center"> Monsta Codes </h1>
+  <h1 align="center"> <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a> </h1> <!-- TODO Possibly replace with site logo -->
 </head>
 
 <body>
   <div id="register" class="login_div">
-    <form action="register.php" method="post" enctype="multipart/form-data">
+    <form class="user" action="register.php" method="post" enctype="multipart/form-data">
 
 			<?php include('errors.php'); ?>
       <label for="first_name"><b>First Name</b></label>
+			
       <input type="text" name="first_name" required placeholder="First Name"/>
 
-      <label for="last_name"><b>Last name</b></label>
-      <input type="text" name="last_name" required placeholder="Last Name"/>
+      <label for="last_name"><b><font face="helvetica">Last Name</font></b></label>
+      <input class="user" type="text" name="last_name" required placeholder="Last Name"/>
 
-      <label for="email"><b>Email</b></label>
-      <input type="text" name="email" required placeholder="someemail@emails.com"/>
+      <label for="email"><b><font face="helvetica">Email Address</font></b></label>
+      <input class="user" type="text" name="email" required placeholder="someemail@emails.com"/>
 
-      <label for="con_email"><b>Re-enter Email</b></label>
-      <input type="text" name="con_email" required placeholder="someemail@emails.com"/>
+      <label for="con_email"><b><font face="helvetica">Re-enter Email Address</font></b></label>
+      <input class="user" type="text" name="con_email" required placeholder="someemail@emails.com"/>
 
-      <label for="password"><b>Password</b></label>
+      <label for="con_email"><b><font face="helvetica">Password</font></b></label>
       <input type="password" name="password" required/>
 
-      <label for="re_password"><b>Re-enter Password</b></label>
+      <<label for="con_email"><b><font face="helvetica">Re-enter Password</font></b></label>
       <input type="password" name="re_password" required/>
 
 

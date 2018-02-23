@@ -7,20 +7,20 @@
 	$query = mysqli_query($con, "SELECT * FROM users INNER JOIN phonenumbers INNER JOIN shippingaddresses WHERE userID=1");
 	while($result = mysqli_fetch_array($query))
 	{
-	$fname = $result['fName'];
-	$lname = $result['lName'];
-	$nickname = $result['nickname'];
-	$email = $result['email'];
-	$areaCode = $result['areaCode'];
-	$restOfNumber = $result['restOfNumber'];
-	$homeStreet = $result['homeStreet'];
-	$homeCity = $result['homeCity'];
-	$homeState = $result['homeState'];
-	$homeZip = $result['homeZip'];
-	$shippingStreet = $result['shippingStreet'];
-	$shippingCity = $result['shippingCity'];
-	$shippingState = $result['shippingState'];
-	$shippingZip = $result['shippingZip'];
+    $fname = $result['fName'];
+    $lname = $result['lName'];
+    $nickname = $result['nickname'];
+    $email = $result['email'];
+    $areaCode = $result['areaCode'];
+    $restOfNumber = $result['restOfNumber'];
+    $homeStreet = $result['homeStreet'];
+    $homeCity = $result['homeCity'];
+    $homeState = $result['homeState'];
+    $homeZip = $result['homeZip'];
+    $shippingStreet = $result['shippingStreet'];
+    $shippingCity = $result['shippingCity'];
+    $shippingState = $result['shippingState'];
+    $shippingZip = $result['shippingZip'];
 	}
 ?>
 
@@ -32,10 +32,10 @@
 
 	<div class="content" >
 
-		<div id="user_container">
+		<div id="user_container" class="user_profile">
 			<table width="398" border="0" align="center" cellpadding="0">
 			<tr>
-				<td height="26" colspan="2"><b>Your Profile Information</b></td>
+				<td height="26" colspan="2" style="float: left"><b>Your Profile Information</b></td>
 				<td><div align="right"><a href="index.php">logout</a></div></td>
 			</tr>
 			<tr>
