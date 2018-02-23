@@ -19,7 +19,6 @@
       <label for="login_pass"><b><font face="helvetica">Password</font></b></label>
       <input class="user" type="password" name="login_pass" required placeholder="password"/>
       <button class="login_button"> Log In </button>
-      <p> New user? <a href="register.php"> Sign Up </a> </p>
     </form>
     <p><font face="helvetica">New User? </font><a href="/register.php"><b><font face="helvetica">Sign Up</font></b> </a> </p>
   </div>
