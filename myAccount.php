@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
-
 <?php
+	session_start();
+	
 	include("functions/functions.php");
 	echo file_get_contents("html/header.html");
-	$query = mysqli_query($con, "SELECT * FROM users INNER JOIN phonenumbers INNER JOIN shippingaddresses WHERE userID=1");
+	
+	$id=$_SESSION['SESS_USERID'];
+	$query = mysqli_query($con, "SELECT * FROM users INNER JOIN shippingaddresses WHERE userID=$id");
 	while($result = mysqli_fetch_array($query))
 	{
     $fname = $result['fName'];
     $lname = $result['lName'];
     $nickname = $result['nickname'];
     $email = $result['email'];
-    $areaCode = $result['areaCode'];
-    $restOfNumber = $result['restOfNumber'];
+    $entireNumber = $result['entireNumber'];
     $homeStreet = $result['homeStreet'];
     $homeCity = $result['homeCity'];
     $homeState = $result['homeState'];
@@ -31,12 +33,11 @@
 <body>
 
 	<div class="content" >
-
-		<div id="user_container" class="user_profile">
+		<div id="user_container">
 			<table width="398" border="0" align="center" cellpadding="0">
 			<tr>
-				<td height="26" colspan="2" style="float: left"><b>Your Profile Information</b></td>
-				<td><div align="right"><a href="index.php">logout</a></div></td>
+				<td height="26" colspan="2"><b>Your Profile Information</b></td>
+				<td><div align="right"><a href="logout.php">logout</a></div></td>
 			</tr>
 			<tr>
 				<td width="82" valign="top"><div align="left">First Name:</div></td>
@@ -64,12 +65,28 @@
 			</tr>
 			<tr>
 				<td valign="top"><div align="left">Phone Number:</div></td>
-				<td valign="top"><?php echo $areaCode, ' ', $restOfNumber ?></td>
+				<td valign="top"><?php echo $entireNumber ?></td>
 			</tr>
 			</table>
 			<p align="center"><a href="index.php"></a>
 			</p>
 		</div>
+		
+			<b>Change Your Profile Information</b>
+			<p>
+		
+			<form action="./editProfile.php" method="post"> 
+				First Name: <input type="text" name="fname"><br />
+				Last Name: <input type="text" name="lname"><br />
+				Nickname: <input type="text" name="nickname"><br />
+				Home Street Address: <input type="text" name="homestreet"><br />
+				Home City: <input type="text" name="homecity"><br />
+				Home State: <input type="text" name="homestate"><br />
+				Home Zip: <input type="text" name="homezip"><br />
+				Email: <input type="text" name="email"><br />
+				Phone Number: <input type="text" name="entireNumber"><br />
+				<input type="submit" value="Submit">
+			</form>
 
 	</div>
 

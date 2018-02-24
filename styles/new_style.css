@@ -71,6 +71,26 @@ body {
 
 .topnav_menu a:hover {
   background-color: #15325C;
+	background: #EDEDE8
+}
+
+.topnav {
+	overflow: hidden;
+	align: center;
+  background-color: #1A3A48;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #0391A1;
   color: white;
 }
 
@@ -90,7 +110,33 @@ body {
 }
 
 .search_form {
-  
+  background-color: #2196F3;
+  color: white;
+}
+
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: right;
+    width: 60%;
+    background: #f1f1f1;
+}
+
+form.example button {
+    float: right;
+    width: 30%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.example button:hover {
+    background: #0b7dda;
 }
 
 form.example::after {
@@ -104,7 +150,6 @@ form.example::after {
 	background: white;
 	width: 70%;
 	height: auto;
-
 }
 
 	#books_container{
@@ -142,11 +187,19 @@ form.example::after {
   margin: auto;
   border-radius: 2px;
   border: 0;
+  width: 25%;
   color:white;
   background-color: green;
 }
 .login_button:hover{
   background-color: lightgreen;
+}
+
+.signup_button {
+  width: 25%;
+  margin: auto;
+  color:white;
+  background-color: yellow;
 }
 
 .signup_button:hover{
@@ -192,6 +245,7 @@ form.example::after {
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+}
 
 select{
   width: 100%;

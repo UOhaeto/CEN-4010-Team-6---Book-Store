@@ -10,7 +10,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
-  <h1 align="center"> <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a> </h1> <!-- TODO Possibly replace with site logo -->
+  <h1 align="center"> <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a> </h1> 
 </head>
 
 <body>
@@ -18,7 +18,7 @@
     <form class="user" action="register.php" method="post" enctype="multipart/form-data">
 
 			<?php include('errors.php'); ?>
-      <label for="first_name"><b>First Name</b></label>
+      <label for="first_name"><b><font face="helvetica">First Name</font></b></label>
 			
       <input type="text" name="first_name" required placeholder="First Name"/>
 
@@ -31,23 +31,19 @@
       <label for="con_email"><b><font face="helvetica">Re-enter Email Address</font></b></label>
       <input class="user" type="text" name="con_email" required placeholder="someemail@emails.com"/>
 
-      <label for="con_email"><b><font face="helvetica">Password</font></b></label>
+      <label for="password"><b><font face="helvetica">Password</font></b></label>
       <input type="password" name="password" required/>
 
-      <<label for="con_email"><b><font face="helvetica">Re-enter Password</font></b></label>
+      <label for="re_password"><b><font face="helvetica">Re-enter Password</font></b></label>
       <input type="password" name="re_password" required/>
 
-
-			<label for="username"><b>Username</b></label>
-			<input type="text" name="username" required placeholder="Username"/>
-
-			<label for="address"><b>Address</b></label>
+			<label for="address"><b><font face="helvetica">Address</font></b></label>
 			<input type="text" name="address" required placeholder="Address"/>
 
-			<label for="city"><b>City</b></label>
+			<label for="city"><b><font face="helvetica">City</font></b></label>
 			<input type="text" name="city" required placeholder="City"/>
 
-			<label for="state"><b>State</b></label>
+			<label for="state"><b><font face="helvetica">State</font></b></label>
 			<br>
 			<select name="state" required>
 				<option value=""> Select State</option>
@@ -108,10 +104,10 @@
 			<input type="text" name="state" required placeholder="State"/>
 		-->
 
-			<label for="zip"><b>Zip</b></label>
+			<label for="zip"><b><font face="helvetica">Zip</font></b></label>
 			<input type="text" name="zip" required placeholder="Zip"/>
 
-			<label for="nickname"><b>Nickname</b></label>
+			<label for="nickname"><b><font face="helvetica">Nickname</font></b></label>
 			<input type="text" name="nickname" required placeholder="Nickname"/>
 
       <!--

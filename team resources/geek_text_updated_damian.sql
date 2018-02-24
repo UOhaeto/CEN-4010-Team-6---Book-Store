@@ -56,11 +56,16 @@ CREATE TABLE `users` (
   `homeState` varchar(45) NOT NULL,
   `homeZip` varchar(45) DEFAULT NULL,
   `nickname` varchar(45) NOT NULL,
+<<<<<<< HEAD
+=======
+  `entireNumber` varchar(45) NOT NULL,
+>>>>>>> 2/24-Update---Damian
   PRIMARY KEY (`userID`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `userID_UNIQUE` (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< HEAD
 CREATE TABLE `phonenumbers` (
   `users_userID` int(10) unsigned NOT NULL,
   `areaCode` varchar(45) NOT NULL,
@@ -69,6 +74,8 @@ CREATE TABLE `phonenumbers` (
   CONSTRAINT `fk_phonenumbers_users` FOREIGN KEY (`users_userID`) REFERENCES `users` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+=======
+>>>>>>> 2/24-Update---Damian
 CREATE TABLE `shippingaddresses` (
   `shippingaddressID` int(11) NOT NULL,
   `shippingStreet` varchar(45) NOT NULL,
@@ -101,6 +108,7 @@ INSERT INTO `books` (`book_title`, `isbn`, `author`, `author_bio`, `genre`, `rel
 ('Fifty Shades of Grey', 10, 'E. L. James', '', '4', '2011-05-01', 16, 2011, 'Random House', '', 200, 4234, 'Fifty shades of grey.jpg'),
 ('Harry Potter: Cursed Child', 11, 'J.K. Rowling', '', '1', '2018-02-21', 10, 2019, 'Crown/Archetype', '', 50, 5, 'Philosopher Stone.jpg');
 
+<<<<<<< HEAD
 INSERT INTO `users` (`userID`, `username`, `password`, `fName`, `lName`, `email`, `homeStreet`, `homeCity`, `homeState`, `homeZip`, `nickname`) VALUES
 (0, 'user1', 'password1', 'Harry', 'Potter', 'harry@hogwarts.edu', '123 Abc St.', 'Magic City', 'Florida', '33133', 'hp'),
 (1, 'user2', 'password2', 'Hermione', 'Granger', 'hermione@hogwarts.edu', '456 Abc St.', 'Magic City', 'Florida', '33133', 'hg');
@@ -108,6 +116,11 @@ INSERT INTO `users` (`userID`, `username`, `password`, `fName`, `lName`, `email`
 INSERT INTO `phoneNumbers` (`users_userID`, `areaCode`, `restOfNumber`) VALUES
 (0, '305', '444-1212'),
 (1, '305', '555-2323');
+=======
+INSERT INTO `users` (`userID`, `username`, `password`, `fName`, `lName`, `email`, `homeStreet`, `homeCity`, `homeState`, `homeZip`, `nickname`, `entireNumber`) VALUES
+(0, 'user1', 'password1', 'Harry', 'Potter', 'harry@hogwarts.edu', '123 Abc St.', 'Magic City', 'Florida', '33133', 'hp', '305-444-1212'),
+(1, 'user2', 'password2', 'Hermione', 'Granger', 'hermione@hogwarts.edu', '456 Abc St.', 'Magic City', 'Florida', '33133', 'hg', '305-555-2323');
+>>>>>>> 2/24-Update---Damian
 
 INSERT INTO `shippingaddresses` (`shippingaddressID`, `shippingStreet`, shippingCity, shippingState, shippingZip) VALUES
 (0, '123 Abc St.', 'Magic City', 'Florida', '33133'),
