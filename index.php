@@ -3,16 +3,11 @@
 
 <?php
 	include("functions/functions.php");
-<<<<<<< HEAD
-  echo file_get_contents("html/header.html");
-=======
 	require_once('authorize.php');
 	echo("Logged in as: ");
 	echo($_SESSION['SESS_USERNAME']);
 	echo file_get_contents("html/header.html");
 	
-
->>>>>>> 2/24-Update---Damian
 ?>
 
 <head>
