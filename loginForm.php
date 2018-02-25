@@ -10,7 +10,7 @@
 	unset($_SESSION['SESS_USERID']);
 	unset($_SESSION['SESS_USERNAME']);
 	unset($_SESSION['SESS_PASSWORD']);
-	
+
 ?>
 
 <head>
@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
   <h1 align="center"> <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a> </h1>  
 </head>
-
+	
 <body>
 
 <td colspan="2">
@@ -41,8 +41,8 @@
       <input type="text" name="username" required placeholder="Enter username"/>
       <label for="password"><b>Password</b></label>
       <input type="password" name="password" required placeholder="Pssword"/>
-      <button class="login_button"> Log In </button>
-      <p> New user? <a href="register.php"> Sign Up </a> </p>
+      <button class="login_button"> Log In </button> 
+      <p> New user? <a href="register.php"> Sign Up </a> or <a href="guest.php"> Browse as Guest </a> </p>
     </form>
   </div>
 </body>

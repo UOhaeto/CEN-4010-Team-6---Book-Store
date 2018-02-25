@@ -96,16 +96,17 @@ INSERT INTO `books` (`book_title`, `isbn`, `author`, `author_bio`, `genre`, `rel
 ('Harry Potter: Cursed Child', 11, 'J.K. Rowling', '', '1', '2018-02-21', 10, 2019, 'Crown/Archetype', '', 50, 5, 'Philosopher Stone.jpg');
 
 INSERT INTO `users` (`userID`, `username`, `password`, `fName`, `lName`, `email`, `homeStreet`, `homeCity`, `homeState`, `homeZip`, `nickname`, `entireNumber`) VALUES
-(0, 'user1', 'password1', 'Harry', 'Potter', 'harry@hogwarts.edu', '123 Abc St.', 'Magic City', 'Florida', '33133', 'hp', '305-444-1212'),
-(1, 'user2', 'password2', 'Hermione', 'Granger', 'hermione@hogwarts.edu', '456 Abc St.', 'Magic City', 'Florida', '33133', 'hg', '305-555-2323');
+(1, 'user1', 'password1', 'Harry', 'Potter', 'harry@hogwarts.edu', '123 Abc St.', 'Magic City', 'Florida', '33133', 'hp', '305-444-1212'),
+(2, 'user2', 'password2', 'Hermione', 'Granger', 'hermione@hogwarts.edu', '456 Abc St.', 'Magic City', 'Florida', '33133', 'hg', '305-555-2323'),
+(0, 'guest', 'guest', 'Guest', '', '', '', '', '', '', '', '');
 
 INSERT INTO `shippingaddresses` (`shippingaddressID`, `shippingStreet`, shippingCity, shippingState, shippingZip) VALUES
-(0, '123 Abc St.', 'Magic City', 'Florida', '33133'),
-(1, '456 Abc St.', 'Magic City', 'Florida', '33133');
+(1, '123 Abc St.', 'Magic City', 'Florida', '33133'),
+(2, '456 Abc St.', 'Magic City', 'Florida', '33133');
 
 INSERT INTO `shippingaddressmapper` (`users_userID`, `shippingaddresses_shippingaddressID`) VALUES
-(0, 0),
-(1, 1);
+(1, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
