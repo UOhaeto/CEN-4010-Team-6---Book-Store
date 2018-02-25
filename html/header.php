@@ -1,8 +1,8 @@
-<!DOCTYPE html>
 <html>
 
 <?php
 	include("functions/functions.php");
+	session_start();
 ?>
 
 <head>
@@ -14,8 +14,15 @@
     <div class="topnav">
       <div class="mini_topnav">
         <a>Contact Us</a>
-        <a href="myAccount.php">My Account</a> <!--TODO hide/show according to whether a user is logged in or not-->
-        <a class="menu_link" href="login.php"> Login </a> <!--TODO switch between "Login" and "Logout"-->   
+		<?php
+			if(($_SESSION['SESS_USERID'] == 0)) {
+				echo '<a class="menu_link" href="login.php"> Login </a>'; 
+			}
+			else {
+				echo '<a href="myAccount.php">My Account</a>';
+			}
+		?>
+		</b> 
       </div>
       <div class=topnav_mid>
         <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a>
