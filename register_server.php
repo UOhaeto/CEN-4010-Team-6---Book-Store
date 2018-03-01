@@ -10,9 +10,9 @@
 		//$ip = getIp();
 		//add randomizer for id
 
-	//$user_id = rand(1,10000);
-	$user_id = getGUID();
-	echo $user_id;
+	$user_id = rand(1,100000);
+	//$user_id = getGUID();
+
 
 	$user_username = addslashes($_POST['username']);
 	$user_address = addslashes($_POST['address']);

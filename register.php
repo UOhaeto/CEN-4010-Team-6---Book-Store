@@ -18,14 +18,17 @@
     <form action="register.php" method="post" enctype="multipart/form-data">
 
 			<?php include('errors.php'); ?>
+
+
+
       <label for="first_name"><b>First Name</b></label>
-      <input type="text" name="first_name" required placeholder="First Name"/>
+      <input type="text" name="first_name" required placeholder="First Name" value="<?php if(isset($_POST['first_name'])){echo $_POST['first_name']; } ?>"/>
 
       <label for="last_name"><b>Last name</b></label>
-      <input type="text" name="last_name" required placeholder="Last Name"/>
+      <input type="text" name="last_name" required placeholder="Last Name" value="<?php if(isset($_POST['last_name'])){echo $_POST['last_name']; } ?>"/>
 
       <label for="email"><b>Email</b></label>
-      <input type="text" name="email" required placeholder="someemail@emails.com"/>
+      <input type="text" name="email" required placeholder="someemail@emails.com" value="<?php if(isset($_POST['email'])){echo $_POST['email']; } ?>"/>
 
       <label for="con_email"><b>Re-enter Email</b></label>
       <input type="text" name="con_email" required placeholder="someemail@emails.com"/>
@@ -38,13 +41,13 @@
 
 
 			<label for="username"><b>Username</b></label>
-			<input type="text" name="username" required placeholder="Username"/>
+			<input type="text" name="username" required placeholder="Username" value="<?php if(isset($_POST['username'])){echo $_POST['username']; } ?>"/>
 
 			<label for="address"><b>Address</b></label>
-			<input type="text" name="address" required placeholder="Address"/>
+			<input type="text" name="address" required placeholder="Address" value="<?php if(isset($_POST['address'])){echo $_POST['address']; } ?>"/>
 
 			<label for="city"><b>City</b></label>
-			<input type="text" name="city" required placeholder="City"/>
+			<input type="text" name="city" required placeholder="City" value="<?php if(isset($_POST['city'])){echo $_POST['city']; } ?>"/>
 
 			<label for="state"><b>State</b></label>
 			<br>
@@ -108,10 +111,10 @@
 		-->
 
 			<label for="zip"><b>Zip</b></label>
-			<input type="text" name="zip" required placeholder="Zip"/>
+			<input type="text" name="zip" required placeholder="Zip" value="<?php if(isset($_POST['zip'])){echo $_POST['zip']; } ?>" />
 
 			<label for="nickname"><b>Nickname</b></label>
-			<input type="text" name="nickname" required placeholder="Nickname"/>
+			<input type="text" name="nickname" required placeholder="Nickname" value="<?php if(isset($_POST['nickname'])){echo $_POST['nickname']; } ?>"/>
 
       <!--
 			<button class="signup_button"> Submit </button>
