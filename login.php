@@ -2,7 +2,7 @@
 <html>
 
 <?php
-	include("functions/functions.php");
+	include_once("functions/functions.php");
 ?>
 
 <head>
@@ -21,7 +21,6 @@
       <button class="login_button"> Log In </button>
       <p> New user? <a href="register.php"> Sign Up </a> </p>
     </form>
-    <p><font face="helvetica">New User? </font><a href="/register.php"><b><font face="helvetica">Sign Up</font></b> </a> </p>
   </div>
 </body>
 </html>
