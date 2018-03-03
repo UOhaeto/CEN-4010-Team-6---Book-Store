@@ -56,17 +56,11 @@ CREATE TABLE `users` (
   `homeState` varchar(45) NOT NULL,
   `homeZip` varchar(45) DEFAULT NULL,
   `nickname` varchar(45) NOT NULL,
+  `entireNumber` varchar(45) NOT NULL,
+  
   PRIMARY KEY (`userID`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `userID_UNIQUE` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `phonenumbers` (
-  `users_userID` int(10) unsigned NOT NULL,
-  `areaCode` varchar(45) NOT NULL,
-  `restOfNumber` varchar(45) NOT NULL,
-  KEY `fk_phonenumbers_users_idx` (`users_userID`),
-  CONSTRAINT `fk_phonenumbers_users` FOREIGN KEY (`users_userID`) REFERENCES `users` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `shippingaddresses` (
@@ -101,21 +95,18 @@ INSERT INTO `books` (`book_title`, `isbn`, `author`, `author_bio`, `genre`, `rel
 ('Fifty Shades of Grey', 10, 'E. L. James', '', '4', '2011-05-01', 16, 2011, 'Random House', '', 200, 4234, 'Fifty shades of grey.jpg'),
 ('Harry Potter: Cursed Child', 11, 'J.K. Rowling', '', '1', '2018-02-21', 10, 2019, 'Crown/Archetype', '', 50, 5, 'Philosopher Stone.jpg');
 
-INSERT INTO `users` (`userID`, `username`, `password`, `fName`, `lName`, `email`, `homeStreet`, `homeCity`, `homeState`, `homeZip`, `nickname`) VALUES
-(0, 'user1', 'password1', 'Harry', 'Potter', 'harry@hogwarts.edu', '123 Abc St.', 'Magic City', 'Florida', '33133', 'hp'),
-(1, 'user2', 'password2', 'Hermione', 'Granger', 'hermione@hogwarts.edu', '456 Abc St.', 'Magic City', 'Florida', '33133', 'hg');
-
-INSERT INTO `phoneNumbers` (`users_userID`, `areaCode`, `restOfNumber`) VALUES
-(0, '305', '444-1212'),
-(1, '305', '555-2323');
+INSERT INTO `users` (`userID`, `username`, `password`, `fName`, `lName`, `email`, `homeStreet`, `homeCity`, `homeState`, `homeZip`, `nickname`, `entireNumber`) VALUES
+(1, 'user1', 'password1', 'Harry', 'Potter', 'harry@hogwarts.edu', '123 Abc St.', 'Magic City', 'Florida', '33133', 'hp', '305-444-1212'),
+(2, 'user2', 'password2', 'Hermione', 'Granger', 'hermione@hogwarts.edu', '456 Abc St.', 'Magic City', 'Florida', '33133', 'hg', '305-555-2323'),
+(0, 'guest', 'guest', 'Guest', '', '', '', '', '', '', '', '');
 
 INSERT INTO `shippingaddresses` (`shippingaddressID`, `shippingStreet`, shippingCity, shippingState, shippingZip) VALUES
-(0, '123 Abc St.', 'Magic City', 'Florida', '33133'),
-(1, '456 Abc St.', 'Magic City', 'Florida', '33133');
+(1, '123 Abc St.', 'Magic City', 'Florida', '33133'),
+(2, '456 Abc St.', 'Magic City', 'Florida', '33133');
 
 INSERT INTO `shippingaddressmapper` (`users_userID`, `shippingaddresses_shippingaddressID`) VALUES
-(0, 0),
-(1, 1);
+(1, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
