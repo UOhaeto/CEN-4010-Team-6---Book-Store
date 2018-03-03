@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <?php
@@ -14,6 +15,8 @@
     <div class="topnav">
       <div class="mini_topnav">
         <a>Contact Us</a>
+        <a href="myAccount.php">My Account</a> <!--TODO hide/show according to whether a user is logged in or not-->
+        <a class="menu_link" href="login.php"> Login </a> <!--TODO switch between "Login" and "Logout"-->
 		<?php
 			if(($_SESSION['SESS_USERID'] == 0)) {
 				echo '<a class="menu_link" href="login.php"> Login </a>'; 
@@ -36,8 +39,8 @@
       <div class="topnav_menu">
         <a href="index.php">Home</a>
         <a href="#news">Books</a>
-        <a href="#top_sellers">Top Sellers</a> 
-        <a href="shoppingCart.php" style="float: right"> Shopping Cart</a>
+        <a href="#top_sellers">Top Sellers</a>
+        <a href="shoppingCart.php" style="float: right"> Shopping Cart</a> 
       </div>
     </div>
   </body>
