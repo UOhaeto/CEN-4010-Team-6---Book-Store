@@ -10,16 +10,14 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
-  <h1 align="center"> Monsta Codes </h1>
+  <h1 align="center"> <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a> </h1> 
 </head>
 
 <body>
   <div id="register" class="login_div">
-    <form action="register.php" method="post" enctype="multipart/form-data">
+    <form class="user" action="register.php" method="post" enctype="multipart/form-data">
 
 			<?php include('errors.php'); ?>
-
-
 
       <label for="first_name"><b>First Name</b></label>
       <input type="text" name="first_name" required placeholder="First Name" value="<?php if(isset($_POST['first_name'])){echo $_POST['first_name']; } ?>"/>
@@ -30,15 +28,14 @@
       <label for="email"><b>Email</b></label>
       <input type="text" name="email" required placeholder="someemail@emails.com" value="<?php if(isset($_POST['email'])){echo $_POST['email']; } ?>"/>
 
-      <label for="con_email"><b>Re-enter Email</b></label>
-      <input type="text" name="con_email" required placeholder="someemail@emails.com"/>
+      <label for="con_email"><b><font face="helvetica">Re-enter Email Address</font></b></label>
+      <input class="user" type="text" name="con_email" required placeholder="someemail@emails.com"/>
 
-      <label for="password"><b>Password</b></label>
+      <label for="password"><b><font face="helvetica">Password</font></b></label>
       <input type="password" name="password" required/>
 
-      <label for="re_password"><b>Re-enter Password</b></label>
+      <label for="re_password"><b><font face="helvetica">Re-enter Password</font></b></label>
       <input type="password" name="re_password" required/>
-
 
 			<label for="username"><b>Username</b></label>
 			<input type="text" name="username" required placeholder="Username" value="<?php if(isset($_POST['username'])){echo $_POST['username']; } ?>"/>
@@ -49,7 +46,7 @@
 			<label for="city"><b>City</b></label>
 			<input type="text" name="city" required placeholder="City" value="<?php if(isset($_POST['city'])){echo $_POST['city']; } ?>"/>
 
-			<label for="state"><b>State</b></label>
+			<label for="state"><b><font face="helvetica">State</font></b></label>
 			<br>
 			<select name="state" required>
 				<option value=""> Select State</option>

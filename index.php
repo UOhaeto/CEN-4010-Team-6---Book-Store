@@ -2,8 +2,9 @@
 <html>
 
 <?php
-	include("functions/functions.php");
-  echo file_get_contents("html/header.html");
+	include("html/header.php");
+	require_once('authorize.php');
+	
 ?>
 
 <head>
@@ -11,7 +12,10 @@
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
 </head>
 <body>
-
+	  		<center><b><font color="white"> Welcome back
+		<?php
+			echo($_SESSION['SESS_USERNAME']);
+		?>! </b></center>
 	<div class="content" >
 
 		<div id="book_container">
