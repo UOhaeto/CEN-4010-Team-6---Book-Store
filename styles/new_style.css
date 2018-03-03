@@ -74,31 +74,6 @@ body {
 	background: #EDEDE8
 }
 
-.topnav {
-	overflow: hidden;
-	align: center;
-  background-color: #1A3A48;
-}
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #0391A1;
-  color: white;
-}
-
-.topnav a.active {
-  background-color: #15325C;
-  color: white;
-}
-
 .search {
     width: 500px;
     padding: 6px;
@@ -110,7 +85,7 @@ body {
 }
 
 .search_form {
-  background-color: #2196F3;
+  background-color: white;
   color: white;
 }
 

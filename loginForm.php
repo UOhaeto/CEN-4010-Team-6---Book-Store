@@ -36,11 +36,11 @@
 	</td>
 	
   <div id="login" class="login_div">
-    <form action="login.php" method="post" enctype="multipart/form-data">
-      <label for="username"><b>Username</b></label>
+    <form class="user" action="login.php" method="post" enctype="multipart/form-data">
+      <label for="username"><b><font face="helvetica">Username</font></b></label>
       <input type="text" name="username" required placeholder="Enter username"/>
-      <label for="password"><b>Password</b></label>
-      <input type="password" name="password" required placeholder="Pssword"/>
+      <label for="password"><b><font face="helvetica">Password</font></b></label>
+      <input type="password" name="password" required placeholder="Password"/>
       <button class="login_button"> Log In </button> 
       <p> New user? <a href="register.php"> Sign Up </a> or <a href="guest.php"> Browse as Guest </a> </p>
     </form>
