@@ -18,15 +18,15 @@
     <form class="user" action="register.php" method="post" enctype="multipart/form-data">
 
 			<?php include('errors.php'); ?>
-      <label for="first_name"><b><font face="helvetica">First Name</font></b></label>
-			
-      <input type="text" name="first_name" required placeholder="First Name"/>
 
-      <label for="last_name"><b><font face="helvetica">Last Name</font></b></label>
-      <input class="user" type="text" name="last_name" required placeholder="Last Name"/>
+      <label for="first_name"><b>First Name</b></label>
+      <input type="text" name="first_name" required placeholder="First Name" value="<?php if(isset($_POST['first_name'])){echo $_POST['first_name']; } ?>"/>
 
-      <label for="email"><b><font face="helvetica">Email Address</font></b></label>
-      <input class="user" type="text" name="email" required placeholder="someemail@emails.com"/>
+      <label for="last_name"><b>Last name</b></label>
+      <input type="text" name="last_name" required placeholder="Last Name" value="<?php if(isset($_POST['last_name'])){echo $_POST['last_name']; } ?>"/>
+
+      <label for="email"><b>Email</b></label>
+      <input type="text" name="email" required placeholder="someemail@emails.com" value="<?php if(isset($_POST['email'])){echo $_POST['email']; } ?>"/>
 
       <label for="con_email"><b><font face="helvetica">Re-enter Email Address</font></b></label>
       <input class="user" type="text" name="con_email" required placeholder="someemail@emails.com"/>
@@ -37,11 +37,14 @@
       <label for="re_password"><b><font face="helvetica">Re-enter Password</font></b></label>
       <input type="password" name="re_password" required/>
 
-			<label for="address"><b><font face="helvetica">Address</font></b></label>
-			<input type="text" name="address" required placeholder="Address"/>
+			<label for="username"><b>Username</b></label>
+			<input type="text" name="username" required placeholder="Username" value="<?php if(isset($_POST['username'])){echo $_POST['username']; } ?>"/>
 
-			<label for="city"><b><font face="helvetica">City</font></b></label>
-			<input type="text" name="city" required placeholder="City"/>
+			<label for="address"><b>Address</b></label>
+			<input type="text" name="address" required placeholder="Address" value="<?php if(isset($_POST['address'])){echo $_POST['address']; } ?>"/>
+
+			<label for="city"><b>City</b></label>
+			<input type="text" name="city" required placeholder="City" value="<?php if(isset($_POST['city'])){echo $_POST['city']; } ?>"/>
 
 			<label for="state"><b><font face="helvetica">State</font></b></label>
 			<br>
@@ -104,11 +107,11 @@
 			<input type="text" name="state" required placeholder="State"/>
 		-->
 
-			<label for="zip"><b><font face="helvetica">Zip</font></b></label>
-			<input type="text" name="zip" required placeholder="Zip"/>
+			<label for="zip"><b>Zip</b></label>
+			<input type="text" name="zip" required placeholder="Zip" value="<?php if(isset($_POST['zip'])){echo $_POST['zip']; } ?>" />
 
-			<label for="nickname"><b><font face="helvetica">Nickname</font></b></label>
-			<input type="text" name="nickname" required placeholder="Nickname"/>
+			<label for="nickname"><b>Nickname</b></label>
+			<input type="text" name="nickname" required placeholder="Nickname" value="<?php if(isset($_POST['nickname'])){echo $_POST['nickname']; } ?>"/>
 
       <!--
 			<button class="signup_button"> Submit </button>
