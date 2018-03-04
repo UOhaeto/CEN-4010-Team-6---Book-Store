@@ -14,6 +14,9 @@
 <body>
 
 	<div class="content" >
+
+		<?php  cart(); ?>
+
 	<form action = "" method = "post" enctype="multipart/form-data">
 
 			<table align = "center" width = "700" bgcolor = "skyblue">
@@ -26,9 +29,8 @@
 					</tr>
 
 					<?php
-					$total = 0;
-
 					global $con;
+					$total = 0;
 
 					$ip = getIp();
 
@@ -66,7 +68,7 @@
 							<td><?php echo $book_tit; ?><br>
 							<img src='admin/book_images/<?php echo $book_img;?>' width ='100' height='120'/>
 							</td>
-							<td><input type = "text" size = "4" name = "quantity" value = "<?php echo $_SESSION['quantity'];?>"/></td>
+							<td><input type = "text" size = "4" name = "quantity" value = "<?php $_SESSION['quantity'];?>"/></td>
 							<?php
 
 							if(isset($_POST['update_cart'])){
@@ -79,7 +81,7 @@
 
 											$_SESSION['quantity'] = $qty;
 
-											$total = $total*$qty;
+											$total = $total * $qty;
 
 							}
 
@@ -91,7 +93,7 @@
 					</tr>
 
 
-				<?php } } ?>
+				<?php } } ?><!--end of the while loops-->
 
 				<tr align = "right">
 						<td colspan="4"><b>Total:</b></td>
@@ -102,6 +104,12 @@
 							<td colspan="1"><input type= "submit" name = "update_cart" value = "Update Cart"/></td>
 							<td><input type= "submit" name = "continue" value = "Continue Shopping"/></td>
 							<td><button><a href = "checkout.php" style="text-decoration: none; color:black;">Checkout</a></button></a></td>
+
+							<?php //if user clicks continue shopping, this will take him back to the main page
+								if(isset($_POST['continue'])){
+									echo "<script>window.open('index.php','_self')</script>";
+								}
+							 ?>
 				</tr>
 
 
@@ -110,6 +118,7 @@
 	</form>
 
 
+<!--code to delete and update the cart for user-->
 	<?php
 	function updatecart(){
 
