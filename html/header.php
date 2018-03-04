@@ -15,8 +15,6 @@
     <div class="topnav">
       <div class="mini_topnav">
         <a>Contact Us</a>
-        <a href="myAccount.php">My Account</a> <!--TODO hide/show according to whether a user is logged in or not-->
-        <a class="menu_link" href="login.php"> Login </a> <!--TODO switch between "Login" and "Logout"-->
 		<?php
 			if(($_SESSION['SESS_USERID'] == 0)) {
 				echo '<a class="menu_link" href="login.php"> Login </a>'; 
