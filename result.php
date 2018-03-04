@@ -3,7 +3,7 @@
 
 <?php
 	include("functions/functions.php");
-  echo file_get_contents("html/header.html");
+  echo file_get_contents("html/header.php");
 ?>
 
 <head>
@@ -19,7 +19,7 @@
 
 				if(isset($_GET['search'])){
 
-					$search_query = $_GET['user_query'];
+					$search_query = $_GET['search'];
 
 					$get_b = "select * from books where book_title like '%$search_query%'";
 
