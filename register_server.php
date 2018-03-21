@@ -63,7 +63,7 @@ array_push($errors, "Zip must be 5 numbers.");
 //$errZip = '<p class="errText">Zip must be 4 digits</p>';
 }
 
-if(!(preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $phone))) {
+if(!(preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $user_phone))) {
  array_push($errors, "Please enter a valid phone number. (123-456-7890)");
 }
 /*
@@ -92,7 +92,7 @@ if ($user) { // if user exists
 			$insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity,homeState, homeZip, nickname)
 			values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_state' '$user_zip', '$user_nickname') ";
 */
-			echo $insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity, homeState, homeZip, nickname) values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_state', '$user_zip', '$user_nickname')";
+			echo $insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity, homeState, homeZip, nickname, entireNumber) values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_state', '$user_zip', '$user_nickname', '$user_phone')";
 
 			$run_c = mysqli_query($con, $insert_u);
 
