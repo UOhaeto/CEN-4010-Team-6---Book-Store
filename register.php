@@ -10,7 +10,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
-  <h1 align="center"> <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a> </h1> 
+  <h1 align="center"> <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a> </h1>
 </head>
 
 <body>
@@ -19,13 +19,13 @@
 
 			<?php include('errors.php'); ?>
 
-      <label for="first_name"><b>First Name</b></label>
+      <label for="first_name"><b><font face="helvetica">First Name</b></label>
       <input type="text" name="first_name" required placeholder="First Name" value="<?php if(isset($_POST['first_name'])){echo $_POST['first_name']; } ?>"/>
 
-      <label for="last_name"><b>Last name</b></label>
+      <label for="last_name"><b><font face="helvetica">Last name</b></label>
       <input type="text" name="last_name" required placeholder="Last Name" value="<?php if(isset($_POST['last_name'])){echo $_POST['last_name']; } ?>"/>
 
-      <label for="email"><b>Email</b></label>
+      <label for="email"><b><font face="helvetica">Email</b></label>
       <input type="text" name="email" required placeholder="someemail@emails.com" value="<?php if(isset($_POST['email'])){echo $_POST['email']; } ?>"/>
 
       <label for="con_email"><b><font face="helvetica">Re-enter Email Address</font></b></label>
@@ -37,13 +37,23 @@
       <label for="re_password"><b><font face="helvetica">Re-enter Password</font></b></label>
       <input type="password" name="re_password" required/>
 
-			<label for="username"><b>Username</b></label>
+			<label for="username"><b><font face="helvetica">Username</b></label>
 			<input type="text" name="username" required placeholder="Username" value="<?php if(isset($_POST['username'])){echo $_POST['username']; } ?>"/>
 
-			<label for="address"><b>Address</b></label>
+			<br>
+			<label for="phone"><b><font face="helvetica">Phone Number</b></label>
+			<br>
+			<input type="text" name="phone" required placeholder="Phone Number" value="<?php if(isset($_POST['phone'])){echo $_POST['phone']; } ?>" />
+
+			<br>
+			<label for="nickname"><b><font face="helvetica">Nickname</b></label>
+			<input type="text" name="nickname" required placeholder="Nickname" value="<?php if(isset($_POST['nickname'])){echo $_POST['nickname']; } ?>"/>
+
+
+			<label for="address"><b><font face="helvetica">Address</b></label>
 			<input type="text" name="address" required placeholder="Address" value="<?php if(isset($_POST['address'])){echo $_POST['address']; } ?>"/>
 
-			<label for="city"><b>City</b></label>
+			<label for="city"><b><font face="helvetica">City</b></label>
 			<input type="text" name="city" required placeholder="City" value="<?php if(isset($_POST['city'])){echo $_POST['city']; } ?>"/>
 
 			<label for="state"><b><font face="helvetica">State</font></b></label>
@@ -110,8 +120,13 @@
 			<label for="zip"><b>Zip</b></label>
 			<input type="text" name="zip" required placeholder="Zip" value="<?php if(isset($_POST['zip'])){echo $_POST['zip']; } ?>" />
 
-			<label for="nickname"><b>Nickname</b></label>
-			<input type="text" name="nickname" required placeholder="Nickname" value="<?php if(isset($_POST['nickname'])){echo $_POST['nickname']; } ?>"/>
+
+			<!--
+
+			<label for="re_password"><b><font face="helvetica">Re-enter Password</font></b></label>
+
+
+			-->
 
       <!--
 			<button class="signup_button"> Submit </button>

@@ -3,7 +3,7 @@
 
 <?php
 	include("functions/functions.php");
-  echo file_get_contents("html/header.html");
+  echo file_get_contents("html/header.php");
 ?>
 
 <head>
@@ -12,12 +12,12 @@
 </head>
 <body>
 	<div class="content" >
-	
+
 		<div id="book_container">
 			<?php getGenres(); ?>
 			<?php getBookGenre(); ?>
 		</div>
-		
+
 	</div>
 
 </body>

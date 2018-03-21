@@ -20,6 +20,7 @@
 	$user_state = addslashes($_POST['state']);
 	$user_zip = addslashes($_POST['zip']);
 	$user_nickname = addslashes($_POST['nickname']);
+	$user_phone = addslashes($_POST['phone']);
 
 
 	//fetching user variables.
@@ -60,6 +61,10 @@ if(preg_match("#[0-9]{5}#", $user_zip) === 0){
 array_push($errors, "Zip must be 5 numbers.");
 
 //$errZip = '<p class="errText">Zip must be 4 digits</p>';
+}
+
+if(!(preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $phone))) {
+ array_push($errors, "Please enter a valid phone number. (123-456-7890)");
 }
 /*
 	$insert_u = "insert into users (fName, lName, email, password)
