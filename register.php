@@ -19,6 +19,7 @@
 
 			<?php include('errors.php'); ?>
 
+
       <label for="first_name"><b><font face="helvetica">First Name</b></label>
       <input type="text" name="first_name" required placeholder="First Name" value="<?php if(isset($_POST['first_name'])){echo $_POST['first_name']; } ?>"/>
 
@@ -26,6 +27,7 @@
       <input type="text" name="last_name" required placeholder="Last Name" value="<?php if(isset($_POST['last_name'])){echo $_POST['last_name']; } ?>"/>
 
       <label for="email"><b><font face="helvetica">Email</b></label>
+
       <input type="text" name="email" required placeholder="someemail@emails.com" value="<?php if(isset($_POST['email'])){echo $_POST['email']; } ?>"/>
 
       <label for="con_email"><b><font face="helvetica">Re-enter Email Address</font></b></label>
@@ -117,9 +119,8 @@
 			<input type="text" name="state" required placeholder="State"/>
 		-->
 
-			<label for="zip"><b>Zip</b></label>
+			<label for="zip"><b><font face="helvetica">Zip</font></b></label>
 			<input type="text" name="zip" required placeholder="Zip" value="<?php if(isset($_POST['zip'])){echo $_POST['zip']; } ?>" />
-
 
 			<!--
 
@@ -127,6 +128,7 @@
 
 
 			-->
+
 
       <!--
 			<button class="signup_button"> Submit </button>
