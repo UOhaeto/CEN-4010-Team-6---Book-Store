@@ -230,22 +230,3 @@ select{
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-
-	.shipping_address {
-		margin-bottom: 1px;
-		margin-top: 1px;
-    margin-left: 5px;
-		font-family: Arial, Helvetica, sans-serif;
-	}
-
-  .address_cell {
-    display: inline-block;
-    margin: 8px;
-    width: 200px;
-    height: 100px;
-    border-style: solid;
-    border: 3px;
-    border-color: black;
-    border-radius: 2px;
-
-  }

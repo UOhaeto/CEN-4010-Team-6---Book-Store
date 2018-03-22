@@ -67,7 +67,7 @@
 							<td><?php echo $book_tit; ?><br>
 							<img src='admin/book_images/<?php echo $book_img;?>' width ='100' height='120'/>
 							</td>
-							<td><input type = "text" size = "4" name = "quantity" value = "<?php $_SESSION['quantity'];?>"/></td>
+							<td><input type = "text" size = "4" name = "quantity" /></td>
 							<?php
 
 							if(isset($_POST['update_cart'])){

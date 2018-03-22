@@ -38,8 +38,6 @@
 			<tr>
 				<td height="26" colspan="2"><b>Your Profile Information</b></td>
 				<td><div align="right"><a href="logout.php">logout</a></div></td>
-				<div align="right"><a href="addressManager.php">Shipping Addresses</a></div>
-				<div align="right"><a href="creditCardManager.php">Credit Cards</a></div>
 			</tr>
 			<tr>
 				<td width="82" valign="top"><div align="left">First Name:</div></td>
@@ -56,6 +54,10 @@
 			<tr>
 				<td valign="top"><div align="left">My Home Address:</div></td>
 				<td valign="top"><?php echo $homeStreet, ' ', $homeCity, ', ', $homeState, ', ', $homeZip ?></td>
+			</tr>
+			<tr>
+				<td valign="top"><div align="left">My Shipping Address:</div></td>
+				<td valign="top"><?php echo $shippingStreet, ' ', $shippingCity, ', ', $shippingState, ', ', $shippingZip ?></td>
 			</tr>
 			<tr>
 				<td valign="top"><div align="left">Email:</div></td>
