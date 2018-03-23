@@ -19,19 +19,22 @@
 
 			<?php include('errors.php'); ?>
 
-
-      <label for="first_name"><b><font face="helvetica">First Name</b></label>
+      <label for="first_name"><b><font face="helvetica">First Name</font></b></label>
       <input type="text" name="first_name" required placeholder="First Name" value="<?php if(isset($_POST['first_name'])){echo $_POST['first_name']; } ?>"/>
 
-      <label for="last_name"><b><font face="helvetica">Last name</b></label>
+      <label for="last_name"><b><font face="helvetica">Last Name</font></b></label>
       <input type="text" name="last_name" required placeholder="Last Name" value="<?php if(isset($_POST['last_name'])){echo $_POST['last_name']; } ?>"/>
 
-      <label for="email"><b><font face="helvetica">Email</b></label>
-
-      <input type="text" name="email" required placeholder="someemail@emails.com" value="<?php if(isset($_POST['email'])){echo $_POST['email']; } ?>"/>
+      <label for="email"><b><font face="helvetica">Email Address</font></b></label>
+      <input type="text" name="email" required placeholder="someemail@emails.com" value="<?php if(isset($_POST['email'])){echo $_POST['email']; } $email = $_POST['email']; ?>"/>
 
       <label for="con_email"><b><font face="helvetica">Re-enter Email Address</font></b></label>
-      <input class="user" type="text" name="con_email" required placeholder="someemail@emails.com"/>
+      <input class="user" type="text" name="con_email" required placeholder="someemail@emails.com" value="<?php if(isset($_POST['con_email'])){ $con_email = $_POST['con_email'];
+				if ($u_email === $u_con_email) {
+					echo $_POST['email'];
+				}
+
+			} ?>"/>
 
       <label for="password"><b><font face="helvetica">Password</font></b></label>
       <input type="password" name="password" required/>
@@ -39,24 +42,18 @@
       <label for="re_password"><b><font face="helvetica">Re-enter Password</font></b></label>
       <input type="password" name="re_password" required/>
 
-			<label for="username"><b><font face="helvetica">Username</b></label>
+			<label for="username"><b><font face="helvetica">Username</font></b></label>
 			<input type="text" name="username" required placeholder="Username" value="<?php if(isset($_POST['username'])){echo $_POST['username']; } ?>"/>
 
-			<br>
-			<label for="phone"><b><font face="helvetica">Phone Number</b></label>
-			<br>
-			<input type="text" name="phone" required placeholder="Phone Number" value="<?php if(isset($_POST['phone'])){echo $_POST['phone']; } ?>" />
-
-			<br>
-			<label for="nickname"><b><font face="helvetica">Nickname</b></label>
-			<input type="text" name="nickname" required placeholder="Nickname" value="<?php if(isset($_POST['nickname'])){echo $_POST['nickname']; } ?>"/>
-
-
-			<label for="address"><b><font face="helvetica">Address</b></label>
+			<label for="address"><b><font face="helvetica">Address</font></b></label>
 			<input type="text" name="address" required placeholder="Address" value="<?php if(isset($_POST['address'])){echo $_POST['address']; } ?>"/>
 
-			<label for="city"><b><font face="helvetica">City</b></label>
+			<label for="phone"><b><font face="helvetica">Phone Number</font></b></label>
+			<input type="text" name="phone" required placeholder="Phone Number" value="<?php if(isset($_POST['phone'])){echo $_POST['phone']; } ?>"/>
+
+			<label for="city"><b><font face="helvetica">City</font></b></label>
 			<input type="text" name="city" required placeholder="City" value="<?php if(isset($_POST['city'])){echo $_POST['city']; } ?>"/>
+
 
 			<label for="state"><b><font face="helvetica">State</font></b></label>
 			<br>
@@ -122,13 +119,8 @@
 			<label for="zip"><b><font face="helvetica">Zip</font></b></label>
 			<input type="text" name="zip" required placeholder="Zip" value="<?php if(isset($_POST['zip'])){echo $_POST['zip']; } ?>" />
 
-			<!--
-
-			<label for="re_password"><b><font face="helvetica">Re-enter Password</font></b></label>
-
-
-			-->
-
+			<label for="nickname"><b><font face="helvetica">Nickname</font></b></label>
+			<input type="text" name="nickname" required placeholder="Nickname" value="<?php if(isset($_POST['nickname'])){echo $_POST['nickname']; } ?>"/>
 
       <!--
 			<button class="signup_button"> Submit </button>
