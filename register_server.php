@@ -20,9 +20,6 @@
 	$user_state = addslashes($_POST['state']);
 	$user_zip = addslashes($_POST['zip']);
 	$user_nickname = addslashes($_POST['nickname']);
-	$user_phone = addslashes($_POST['phone']);
-
-
 	//fetching user variables.
 	$u_first_name = addslashes($_POST['first_name']);
 	$u_last_name = addslashes($_POST['last_name']);
@@ -33,23 +30,27 @@
 	$u_password = addslashes($_POST['password']);
 	$u_re_password = addslashes($_POST['re_password']);
 
+
+	$u_phone = addslashes($_POST['phone']);
+if(!(preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $u_phone))) {
+  // $phone is not valid
+	array_push($errors, "Please enter a phone number with the right format. (123-456-7890)");
+
+}
+
 	//Validation between passwords.
 	if ($u_password != $u_re_password) {
 		array_push($errors, "The two passwords do not match");
 	}
 
-
-
 	if (!filter_var($u_email, FILTER_VALIDATE_EMAIL)) {
 	    array_push($errors, "Enter a valid email");
 	}
-
 
 	//making sure both emails are the same.
 	if ($u_email != $u_con_email) {
 		array_push($errors, "The two emails do not match");
 	}
-
 
 	// Password validation.
 if(preg_match("/^.*(?=.{8,})(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/", $u_password) === 0){
@@ -61,10 +62,6 @@ if(preg_match("#[0-9]{5}#", $user_zip) === 0){
 array_push($errors, "Zip must be 5 numbers.");
 
 //$errZip = '<p class="errText">Zip must be 4 digits</p>';
-}
-
-if(!(preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $user_phone))) {
- array_push($errors, "Please enter a valid phone number. (123-456-7890)");
 }
 /*
 	$insert_u = "insert into users (fName, lName, email, password)
@@ -82,28 +79,23 @@ if ($user) { // if user exists
 	}
 
 	if ($user['email'] === $u_email) {
-		array_push($errors, "email already exists");
+		array_push($errors, "Email already exists");
 	}
 }
 
   if (count($errors) == 0) {
-
-		/*
+/*
 			$insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity,homeState, homeZip, nickname)
 			values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_state' '$user_zip', '$user_nickname') ";
 */
-			$insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity, homeState, homeZip, nickname, entireNumber) values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_state', '$user_zip', '$user_nickname', '$user_phone')";
-
+			$insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity, homeState, homeZip, nickname, entireNumber) values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_state', '$user_zip', '$user_nickname', '$u_phone')";
 			$run_c = mysqli_query($con, $insert_u);
-
-
 			if($run_c){
 				echo "<script>alert('user registered successfully!')</script>";
 			}
 			else{
 				echo "<script>alert('could not register user :\')</script>";
 			}
-
 		}
 }
 
