@@ -10,7 +10,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
-  <h1 align="center"> <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a> </h1> 
+  <h1 align="center"> <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a> </h1>
 </head>
 
 <body>
@@ -26,10 +26,15 @@
       <input type="text" name="last_name" required placeholder="Last Name" value="<?php if(isset($_POST['last_name'])){echo $_POST['last_name']; } ?>"/>
 
       <label for="email"><b><font face="helvetica">Email Address</font></b></label>
-      <input type="text" name="email" required placeholder="someemail@emails.com" value="<?php if(isset($_POST['email'])){echo $_POST['email']; } ?>"/>
+      <input type="text" name="email" required placeholder="someemail@emails.com" value="<?php if(isset($_POST['email'])){echo $_POST['email']; } $email = $_POST['email']; ?>"/>
 
       <label for="con_email"><b><font face="helvetica">Re-enter Email Address</font></b></label>
-      <input class="user" type="text" name="con_email" required placeholder="someemail@emails.com"/>
+      <input class="user" type="text" name="con_email" required placeholder="someemail@emails.com" value="<?php if(isset($_POST['con_email'])){ $con_email = $_POST['con_email'];
+				if ($u_email === $u_con_email) {
+					echo $_POST['email'];
+				}
+
+			} ?>"/>
 
       <label for="password"><b><font face="helvetica">Password</font></b></label>
       <input type="password" name="password" required/>
@@ -43,8 +48,12 @@
 			<label for="address"><b><font face="helvetica">Address</font></b></label>
 			<input type="text" name="address" required placeholder="Address" value="<?php if(isset($_POST['address'])){echo $_POST['address']; } ?>"/>
 
+			<label for="phone"><b><font face="helvetica">Phone Number</font></b></label>
+			<input type="text" name="phone" required placeholder="Phone Number" value="<?php if(isset($_POST['phone'])){echo $_POST['phone']; } ?>"/>
+
 			<label for="city"><b><font face="helvetica">City</font></b></label>
 			<input type="text" name="city" required placeholder="City" value="<?php if(isset($_POST['city'])){echo $_POST['city']; } ?>"/>
+
 
 			<label for="state"><b><font face="helvetica">State</font></b></label>
 			<br>
