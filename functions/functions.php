@@ -170,7 +170,6 @@ function total_price(){
 					$b_genre = $row_b['genre'];
 					$b_release = $row_b['release_date'];
 					$b_price = $row_b['price'];
-					$b_rating = $row_b['rating'];
 					$b_image = $row_b['book_image'];
 
 					//primary key
@@ -228,7 +227,6 @@ function total_price(){
 					$b_genre = $row_books_genre['genre'];
 					$b_release = $row_books_genre['release_date'];
 					$b_price = $row_books_genre['price'];
-					$b_rating = $row_books_genre['rating'];
 					$b_image = $row_books_genre['book_image'];
 						//primary key
 						//used to display individual datails page.
