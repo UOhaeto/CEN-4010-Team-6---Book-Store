@@ -7,6 +7,112 @@
 		echo "Failed to connect to MySQL: " . mysqli_connect_errno();
 	}
 
+//Creating the shopping cart
+	function cart(){
+
+		if(isset($_GET['add_cart'])){
+
+				global $con;
+
+				$ip = getIp();
+				$book_id = $_GET['add_cart'];
+
+				$check_book = "select * from cart where ip_add='$ip' AND book_id='$book_id' ";
+
+				$run_check = mysqli_query($con, $check_book);
+
+				if(mysqli_num_rows($run_check)>0){
+
+					echo "";
+
+
+				}
+				else {
+
+					$insert_book = "insert into cart (book_id, ip_add) values ('$book_id','$ip')";
+
+					$run_pro = mysqli_query($con, $insert_book);
+
+					echo "<script>window.open('index.php','_self')</script>";
+
+				}
+
+
+			}
+}
+
+//getting the total books added
+function total_books() {
+
+	if(isset($_GET['add_cart'])){
+
+		global $con;
+
+		$ip = getIp();
+
+		$get_items = "select * from cart where ip_add = '$ip'";
+
+		$run_items = mysqli_query($con, $get_items);
+
+		$count_items = mysqli_num_rows($run_items);
+	}
+
+		else {
+
+			global $con;
+
+			$ip = getIp();
+
+			$get_items = "select * from cart where ip_add = '$ip'";
+
+			$run_items = mysqli_query($con, $get_items);
+
+			$count_items = mysqli_num_rows($run_items);
+
+		}
+
+
+
+echo $count_items;
+}
+
+//Getting total price of books in the cart
+function total_price(){
+
+	$total = 0;
+
+	global $con;
+
+	$ip = getIp();
+
+	$sel_price = "select * from cart where ip_add= '$ip'";
+
+	$run_price = mysqli_query($con, $sel_price);
+
+	while ($p_price=mysqli_fetch_array($run_price)){
+
+			$pro_id = $p_price['book_id'];
+
+			$pro_price = "select * from books where isbn='$pro_id'";
+
+			$run_book_price = mysqli_query($con, $pro_price);
+
+			while ($b_price = mysqli_fetch_array($run_book_price)){
+
+					$book_price = array($b_price['price']);
+
+					$values = array_sum($book_price);
+
+					$total +=$values;
+			}
+
+
+	}
+
+	echo "$" . $total;
+}
+
+
 //getting customer IP
 	function getIp() {
 	$ip = $_SERVER['REMOTE_ADDR'];
@@ -64,7 +170,6 @@
 					$b_genre = $row_b['genre'];
 					$b_release = $row_b['release_date'];
 					$b_price = $row_b['price'];
-					$b_rating = $row_b['rating'];
 					$b_image = $row_b['book_image'];
 
 					//primary key
@@ -81,7 +186,7 @@
 							<div style='margin: auto;'>
 							<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
 
-							<a href='index.php?b_isbn=$b_isbn'><button style='float:right'>Add to Cart</button></a>
+							<a href='index.php?add_cart=$b_isbn'><button style='float:right'>Add to Cart</button></a>
 
 							</div>
 						</div>
@@ -122,7 +227,6 @@
 					$b_genre = $row_books_genre['genre'];
 					$b_release = $row_books_genre['release_date'];
 					$b_price = $row_books_genre['price'];
-					$b_rating = $row_books_genre['rating'];
 					$b_image = $row_books_genre['book_image'];
 						//primary key
 						//used to display individual datails page.

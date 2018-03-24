@@ -3,7 +3,7 @@
 
 <?php
 	include("functions/functions.php");
-  echo file_get_contents("html/header.html");
+	echo file_get_contents("html/header.php");
 ?>
 
 <head>
@@ -39,7 +39,6 @@
 					$b_genre = $row_b['genre']; 
 					$b_release = $row_b['release_date'];
 					$b_price = $row_b['price']; 
-					$b_rating = $row_b['rating']; 
 					$b_image = $row_b['book_image'];	
 					$b_description = $row_b['description'];
 					$b_a_description = $row_b['author_bio'];

@@ -4,7 +4,6 @@
 <?php
 	include("html/header.php");
 	require_once('authorize.php');
-	
 ?>
 
 <head>
@@ -17,6 +16,9 @@
 			echo($_SESSION['SESS_USERNAME']);
 		?>! </b></center>
 	<div class="content" >
+
+	<?php cart(); ?>
+		Your Cart: <?php total_books();?> Total Price: <?php total_price(); ?>
 
 		<div id="book_container">
 			<?php getBook(); ?>
