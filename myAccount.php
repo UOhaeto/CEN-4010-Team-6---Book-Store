@@ -32,60 +32,34 @@
 </head>
 <body>
 
-	<div class="content" >
-		<div id="user_container">
-			<table width="398" border="0" align="center" cellpadding="0">
-			<tr>
-				<td height="26" colspan="2"><b>Your Profile Information</b></td>
-				<td><div align="right"><a href="logout.php">logout</a></div></td>
-				<div align="right"><a href="addressManager.php">Shipping Addresses</a></div>
-				<div align="right"><a href="creditCardManager.php">Credit Cards</a></div>
-			</tr>
-			<tr>
-				<td width="82" valign="top"><div align="left">First Name:</div></td>
-				<td width="165" valign="top"><?php echo $fname ?></td>
-			</tr>
-			<tr>
-				<td valign="top"><div align="left">Last Name:</div></td>
-				<td valign="top"><?php echo $lname ?></td>
-			</tr>
-			<tr>
-				<td valign="top"><div align="left">Nickname:</div></td>
-				<td valign="top"><?php echo $nickname ?></td>
-			</tr>
-			<tr>
-				<td valign="top"><div align="left">My Home Address:</div></td>
-				<td valign="top"><?php echo $homeStreet, ' ', $homeCity, ', ', $homeState, ', ', $homeZip ?></td>
-			</tr>
-			<tr>
-				<td valign="top"><div align="left">Email:</div></td>
-				<td valign="top"><?php echo $email ?></td>
-			</tr>
-			<tr>
-				<td valign="top"><div align="left">Phone Number:</div></td>
-				<td valign="top"><?php echo $entireNumber ?></td>
-			</tr>
-			</table>
-			<p align="center"><a href="index.php"></a>
-			</p>
+	<div class="myAccountPage">
+		<div class="userProfileName">
+			<h2 style="margin-bottom: 0px; padding-left: 10px;"><b><?php echo $fname ?> <?php echo $lname ?></b></h2>
+			<h4 style="margin-top: 0px; padding-left: 10px;"><b><?php echo $nickname ?></b></h4>
 		</div>
-		
-			<b>Change Your Profile Information</b>
-			<p>
-		
-			<form action="./editProfile.php" method="post"> 
-				First Name: <input type="text" name="fname"><br />
-				Last Name: <input type="text" name="lname"><br />
-				Nickname: <input type="text" name="nickname"><br />
-				Home Street Address: <input type="text" name="homestreet"><br />
-				Home City: <input type="text" name="homecity"><br />
-				Home State: <input type="text" name="homestate"><br />
-				Home Zip: <input type="text" name="homezip"><br />
-				Email: <input type="text" name="email"><br />
-				Phone Number: <input type="text" name="entireNumber"><br />
-				<input type="submit" value="Submit">
-			</form>
+		<div class="myAccountSideBox">
+        <a href="creditCardManager.php">Credit Cards</a>
+        <a href="addressManager.php">Shipping Addresses</a>
+				<a href="edit_profile_information.php">Edit Profile</a>
+  	</div>
 
+	</div>
+
+	<div class="myAccountPage" style="font-family: Helvetica;">
+		<div style="float: left; width: 30%; padding-left: 10px;">
+			<h3 style="margin-bottom: 0;">Home Address</h3>
+			<p style="margin-top: 0; margin-bottom: 0;"><?php echo $homeStreet ?></p>
+			<p style="margin-top: 0; margin-bottom: 0;"><?php echo $homeCity ?></p>
+			<p style="margin-top: 0; margin-bottom: 0;"><?php echo $homeState ?>,<?php echo $homeZip ?></p>
+		</div>
+
+		<div style="float: right; width: 30%; padding-right: 400px; margin-top: 20px;">
+			<h3 style="margin-top: 0; margin-bottom: 0;">Email Address</h3>
+			<p style="margin-top: 0px; margin-bottom: 10px;"><?php echo $email ?></p>
+
+			<h3 style="margin-bottom: 0;">Phone Number</h3>
+			<p style="margin-top: 0; margin-bottom: 0;"><?php echo $entireNumber ?></p>
+		</div>
 	</div>
 
 </body>

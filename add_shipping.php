@@ -11,24 +11,24 @@ session_start();
     $city = filter($_POST['city']);
     $state = filter($_POST['state']);
     $zip = filter($_POST['zip']);
-    $id = filter($_GET['shp_id']);
+    $id = filter($_SESSION['shpID']);
 	
 	if(isset($_SESSION['SESS_USERID'])) {
 		if(!empty ($address))
 		{
-			$query = mysqli_query($con, "UPDATE shippingaddressmapper SET shippingStreet = '$address' WHERE shippingaddressID='$id'");
+			$query = mysqli_query($con, "UPDATE shippingaddresses SET shippingStreet = '$address' WHERE shippingaddressID=2");
 		}
 		if(!empty ($city))
 		{
-			$query = mysqli_query($con, "UPDATE shippingaddressmapper SET shippingState = '$city' WHERE shippingaddressID='$id'");
+			$query = mysqli_query($con, "UPDATE shippingaddresses SET shippingState = '$city' WHERE shippingaddressID=2");
 		}
 		if(!empty ($state))
 		{
-			$query = mysqli_query($con, "UPDATE shippingaddressmapper SET shippingCity = '$state' WHERE shippingaddressID='$id' ");
+			$query = mysqli_query($con, "UPDATE shippingaddresses SET shippingCity = '$state' WHERE shippingaddressID=2");
 		}
 		if(!empty ($zip))
 		{
-			$query = mysqli_query($con, "UPDATE shippingaddressmapper SET shippingZip = '$zip' WHERE shippingaddressID='$id'");
+			$query = mysqli_query($con, "UPDATE shippingaddresses SET shippingZip = '$zip' WHERE shippingaddressID=2");
 		}
 	}
 	header('Location: addressManager.php');

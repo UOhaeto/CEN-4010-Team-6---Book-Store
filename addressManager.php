@@ -21,7 +21,7 @@
       $shippingCity1 = $result['shippingCity'];
       $shippingState1 = $result['shippingState'];
       $shippingZip1 = $result['shippingZip'];
-      $shippingId4 = $result['shippingaddressID'];
+      $shippingId1 = $result['shippingaddressID'];
     }
 
     $query = mysqli_query($con, "SELECT * FROM shippingaddresses, shippingaddressmapper WHERE users_userID=$id  AND address_order=2");
@@ -60,7 +60,7 @@
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
 </head>
 <body>
-	<div class="content" >
+	<div class="shippingAddressManager" >
     <h3><b><font face="helvetica">Shipping Addresses</font></b></h2>
     <a style="float: right;" href="myAccount.php"><b><font face="helvetica">back</font></b></a>
 		<div id="user_container">
@@ -71,40 +71,40 @@
         <p align="left" class="shipping_address"><?php echo $shippingState1, ', ', $shippingZip1 ?></p>
         <form action="add_shipping_form.php">
           <input type="submit" value="Edit Address" ></input>
-          <input type="hidden" name="shpID" id="shpID" value="<?php echo $_POST[$shippingId1];?>" />
+          <input type="hidden" name="shpID" id="shpID" value="<?php echo $_SESSION["shpID"] = $shippingZip1;?>" />
         </form>
 			</div>
 
       <div class="address_cell">
-				<label for="address1" valign="top"><div align="left"><b><font face="helvetica">Address 2</font></b></div></label>
+				<label for="address2" valign="top"><div align="left"><b><font face="helvetica">Address 2</font></b></div></label>
 				<p align="left" class="shipping_address"><?php echo $shippingStreet2?></p>
         <p align="left" class="shipping_address"><?php echo $shippingCity2?></p>
         <p align="left" class="shipping_address"><?php echo $shippingState2, ', ', $shippingZip2 ?></p>
         <form action="add_shipping_form.php">
           <input type="submit" value="Edit Address" ></input>
-           <input type="hidden" name="shpID" id="shpID" value="<?php echo $_POST[$shippingId2];?>" />
+           <input type="hidden" name="shpID" id="shpID" value="<?php echo $_SESSION["shpID"] = $shippingZip2;?>" />
         </form>
 			</div>
 
       <div class="address_cell">
-				<label for="address1" valign="top"><div align="left"><b><font face="helvetica">Address 3</font></b></div></label>
+				<label for="address3" valign="top"><div align="left"><b><font face="helvetica">Address 3</font></b></div></label>
 				<p align="left" class="shipping_address"><?php echo $shippingStreet3?></p>
         <p align="left" class="shipping_address"><?php echo $shippingCity3?></p>
         <p align="left" class="shipping_address"><?php echo $shippingState3, ', ', $shippingZip3 ?></p>
         <form action="add_shipping_form.php">
           <input type="submit" value="Edit Address" ></input>
-           <input type="hidden" name="shpID" id="shpID" value="<?php echo $_POST[$shippingId3];?>" />
+           <input type="hidden" name="shpID" id="shpID" value="<?php echo $_SESSION["shpID"] = $shippingZip3;?>" />
         </form>
 			</div>
 
       <div class="address_cell">
-				<label for="address1" valign="top"><div align="left"><b><font face="helvetica">Address 4</font></b></div></label>
+				<label for="address4" valign="top"><div align="left"><b><font face="helvetica">Address 4</font></b></div></label>
 				<p align="left" class="shipping_address"><?php echo $shippingStreet4?></p>
         <p align="left" class="shipping_address"><?php echo $shippingCity4?></p>
         <p align="left" class="shipping_address"><?php echo $shippingState4, ', ', $shippingZip4 ?></p>
         <form action="add_shipping_form.php">
           <input type="submit" value="Edit Address" ></input>
-           <input type="hidden" name="shpID" id="shpID" value="<?php echo $_POST[$shippingId4];?>" />
+           <input type="hidden" name="shpID" id="shpID" value="<?php echo $_SESSION["shpID"] = $shippingZip4;?>" />
         </form>
 			</div>
 		</div>

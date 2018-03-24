@@ -1,6 +1,6 @@
 body {
 	margin:0;
-	background: #15325C;
+	background: white;
 }
 
 .topnav {
@@ -32,7 +32,7 @@ body {
 .topnav_mid {
 	overflow: hidden;
 	align: center;
-  background-color:white;
+  background-color:#DDDDDD;
   padding: 0;
   list-style: none;
 }
@@ -45,7 +45,11 @@ body {
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
-  border: none;
+  border: solid;
+  height: 16px;
+  width: 90%;
+  border-color:white;
+  border-radius: 3px;
 }
 
 .topnav_mid .search-container button {
@@ -53,7 +57,7 @@ body {
   padding: 6px 10px;
   margin-top: 8px;
   margin-right: 16px;
-  background: #ddd;
+  background: orange;
   font-size: 17px;
   border: none;
   cursor: pointer;
@@ -85,8 +89,11 @@ body {
 }
 
 .search_form {
-  background-color: white;
+  background-color: #DDDDDD;
   color: white;
+  width: 700px;
+  padding-top: 29px;
+  padding-right: 350px
 }
 
 form.example input[type=text] {
@@ -248,4 +255,58 @@ select{
     border-color: black;
     border-radius: 2px;
 
+  }
+
+  .shippingAddressManager {
+    margin: auto;
+    margin-top: 50px;
+    padding: 10px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 7px;
+    background-color: #DDDDDD;
+    border-color: #DDDDDD;
+    width: 70%;
+  }
+
+  .myAccountPage {
+    overflow: hidden;
+	  align: center;
+    background-color:white;
+    padding: 0;
+    list-style: none;
+    width: 70%;
+    margin: auto;
+    border-left: solid;
+    border-color: grey;
+  }
+
+  .myAccountSideBox {
+    margin-top: 20px;
+    overflow: hidden;
+    align: center;
+    background:lightgray;
+    border: dimgray;
+    width: 15%;
+    float: right;
+  }
+
+  .myAccountSideBox a {
+    float: left;
+    color: black;
+    text-align: right;
+    padding: 10px 12px;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: "Helvetica";
+  }
+
+  .myAccountSideBox a:hover {
+    background-color: #15325C;
+    background: #EDEDE8
+  }
+
+  .userProfileName {
+    font-family: Helvetica;
+    float: left;
   }
