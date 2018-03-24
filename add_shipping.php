@@ -1,6 +1,5 @@
 <?php
 session_start();
-  $id=$_SESSION['SESS_USERID'];
     function filter($date)
     {
         return trim(htmlspecialchars($date));
@@ -17,21 +16,21 @@ session_start();
 	if(isset($_SESSION['SESS_USERID'])) {
 		if(!empty ($address))
 		{
-			$query = mysqli_query($con, "UPDATE shippingaddressmapper SET homeStreet = '$address' WHERE shippingaddressID='$id'");
+			$query = mysqli_query($con, "UPDATE shippingaddressmapper SET shippingStreet = '$address' WHERE shippingaddressID='$id'");
 		}
 		if(!empty ($city))
 		{
-			$query = mysqli_query($con, "UPDATE shippingaddressmapper SET homeState = '$city' WHERE shippingaddressID='$id'");
+			$query = mysqli_query($con, "UPDATE shippingaddressmapper SET shippingState = '$city' WHERE shippingaddressID='$id'");
 		}
 		if(!empty ($state))
 		{
-			$query = mysqli_query($con, "UPDATE shippingaddressmapper SET homeCity = '$state' WHERE shippingaddressID='$id' ");
+			$query = mysqli_query($con, "UPDATE shippingaddressmapper SET shippingCity = '$state' WHERE shippingaddressID='$id' ");
 		}
 		if(!empty ($zip))
 		{
-			$query = mysqli_query($con, "UPDATE shippingaddressmapper SET homeZip = '$zip' WHERE shippingaddressID='$id'");
+			$query = mysqli_query($con, "UPDATE shippingaddressmapper SET shippingZip = '$zip' WHERE shippingaddressID='$id'");
 		}
 	}
-	header('Location: add_shipping_form.php');
+	header('Location: addressManager.php');
 	
 ?>
