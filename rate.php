@@ -15,12 +15,15 @@
 				$con->query("INSERT INTO book_ratings (book, rating) VALUES ({$book}, {$rating})");
 			}
 		}
-		header('Location: book.php?id=' . $book_title);
+		header('Location: index.php');
 }
 ?>
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
+
+	Your rating has been submited.
+	<p> <a href='index.php'> Continue shopping... </a> </p>
 </head>
 </html>

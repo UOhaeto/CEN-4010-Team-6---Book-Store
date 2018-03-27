@@ -17,16 +17,28 @@
 		<div id="book_container">
 			
 			<?php
+
+				$book = null;
+				if(isset($_GET['isbn'])){
+		
+					$isbn = (int)$_GET['isbn'];
+					$book = $con->query("
+						SELECT books.isbn, books.book_title, AVG(book_ratings.rating) AS rating
+						FROM books
+						LEFT JOIN book_ratings
+						ON books.isbn = book_ratings.book
+						WHERE books.isbn = {$isbn}
+					")->fetch_object();
+				}
 						
 				//check url for the isbn
 				if(isset($_GET['b_isbn'])){
 								
-				$isbn = $_GET['b_isbn'];
-								
-							
+				$isbn = $_GET['b_isbn'];	
 							
 				// query that gets the isbn
-				$get_b = "select * from books where isbn='$isbn'";
+				$get_b = "select *, AVG(book_ratings.rating) AS rating from books LEFT JOIN book_ratings
+				ON books.isbn = book_ratings.book where isbn='$isbn'";
 							
 				//running query
 				$run_b = mysqli_query($con, $get_b);
@@ -43,19 +55,32 @@
 					$b_description = $row_b['description'];
 					$b_a_description = $row_b['author_bio'];
 					$b_a_description = $row_b['author_bio'];
+					$b_rating = round ($row_b['rating']);
 
 					//primary key
 					//used to display individual datails page.
 					$b_isbn = $row_b['isbn'];
 
 					echo "
-						<div id='single_book' width: 70%; height: auto;>
+						<div id='single_book' width: 70%; height: auto;>";
+
+					?>
+					
+					Rate this book:
+					<?php 
+					foreach(range(1, 5) as $rating): ?>
+  						<a href="rate.php?book=<?php echo $b_isbn; ?>&rating=<?php echo $rating; ?>"><?php echo $rating; ?></a>
+  					<?php endforeach;
+
+					echo"
 										
 						<h3>$b_title</h3>
 						<img src='admin/book_images/$b_image' width='300px' height='400px' />
 										
 						<p> $ $b_price </p>
+						<p> Rating: $b_rating/5</p>
 						<p> Book Description: $b_description
+						<p> Rate this book: </p>
 
 						<div style='margin: auto; '>
 						<a href='index.php' style='float:left;'> Go Back</a>
@@ -72,7 +97,6 @@
 							}
 						
 						?>
-			
 		</div>
 		
 	</div>
