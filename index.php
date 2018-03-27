@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
 </head>
 <body>
-	  		<center><b><font color="white"> Welcome back
+	  		<center><b><font color="black"> Welcome back
 		<?php
 			echo($_SESSION['SESS_USERNAME']);
 		?>! </b></center>

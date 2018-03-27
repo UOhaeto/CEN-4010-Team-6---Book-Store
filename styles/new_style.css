@@ -10,11 +10,12 @@ body {
 .mini_topnav {
   overflow: hidden;
   align: center;
-  background-color: #15325C;
+  background-color: lightgray;
 }
 .mini_topnav a {
   float: right;
-  color: gray;
+  color: black;
+  background-color: lightgray;
   text-align: center;
   padding: 5px 5px;
   text-decoration: none;
@@ -145,6 +146,7 @@ form.example::after {
 			width: 25%;
 			text-align: center;
 			float:left;
+			color: black;
 			margin: 20px;
 			padding: 10px;
 			border: 2px solid black;
