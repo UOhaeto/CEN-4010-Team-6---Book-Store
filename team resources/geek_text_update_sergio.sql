@@ -107,24 +107,6 @@ CREATE TABLE `cart` (
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `phonenumbers`
---
-
-CREATE TABLE `phonenumbers` (
-  `users_userID` int(10) UNSIGNED NOT NULL,
-  `areaCode` varchar(45) NOT NULL,
-  `restOfNumber` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `phonenumbers`
---
-
-INSERT INTO `phonenumbers` (`users_userID`, `areaCode`, `restOfNumber`) VALUES
-(0, '305', '444-1212'),
-(1, '305', '555-2323');
-
 -- --------------------------------------------------------
 
 --
@@ -183,18 +165,18 @@ CREATE TABLE `users` (
   `homeCity` varchar(45) NOT NULL,
   `homeState` varchar(45) NOT NULL,
   `homeZip` varchar(45) DEFAULT NULL,
-  `nickname` varchar(45) NOT NULL
+  `nickname` varchar(45) NOT NULL,
+  `entireNumber` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userID`, `username`, `password`, `fName`, `lName`, `email`, `homeStreet`, `homeCity`, `homeState`, `homeZip`, `nickname`) VALUES
-(0, 'user1', 'password1', 'Harry', 'Potter', 'harry@hogwarts.edu', '123 Abc St.', 'Magic City', 'Florida', '33133', 'hp'),
-(1, 'user2', 'password2', 'Hermione', 'Granger', 'hermione@hogwarts.edu', '456 Abc St.', 'Magic City', 'Florida', '33133', 'hg'),
-(58100, 'sergio', 'Sergilu94', 'Luis', 'Luis', 'here@gmail.com', '4458 sw 164 ave', 'Miami', 'FL', '33185', 'Sergio'),
-(96345, 'Serg', 'Sergilu94', 'Sergio', 'Remedio', 'something@gmail.com', '4458 sw 164 ave', 'Miami', 'FL', '33185', 'Serg');
+INSERT INTO `users` (`userID`, `username`, `password`, `fName`, `lName`, `email`, `homeStreet`, `homeCity`, `homeState`, `homeZip`, `nickname`, `entireNumber`) VALUES
+(1, 'user1', 'password1', 'Harry', 'Potter', 'harry@hogwarts.edu', '123 Abc St.', 'Magic City', 'Florida', '33133', 'hp', '305-444-1212'),
+(2, 'user2', 'password2', 'Hermione', 'Granger', 'hermione@hogwarts.edu', '456 Abc St.', 'Magic City', 'Florida', '33133', 'hg', '305-555-2323'),
+(0, 'guest', 'guest', 'Guest', '', '', '', '', '', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -218,11 +200,6 @@ ALTER TABLE `book_genres`
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`book_id`);
 
---
--- Indexes for table `phonenumbers`
---
-ALTER TABLE `phonenumbers`
-  ADD KEY `fk_phonenumbers_users_idx` (`users_userID`);
 
 --
 -- Indexes for table `shippingaddresses`
@@ -264,12 +241,6 @@ ALTER TABLE `book_genres`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `phonenumbers`
---
-ALTER TABLE `phonenumbers`
-  ADD CONSTRAINT `fk_phonenumbers_users` FOREIGN KEY (`users_userID`) REFERENCES `users` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `shippingaddressmapper`

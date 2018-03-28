@@ -17,7 +17,6 @@
 	while($row = $query->fetch_object()){
 		$books[] = $row;
 	}
-	// echo '<pre>', print_r($articles, true), '</pre>';
 ?>
 
 <head>

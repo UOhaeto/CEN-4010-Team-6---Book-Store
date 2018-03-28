@@ -20,6 +20,7 @@
 				echo '<a class="menu_link" href="login.php"> Login </a>'; 
 			}
 			else {
+        echo '<a href="logout.php">Logout</a>';
 				echo '<a href="myAccount.php">My Account</a>';
 			}
 		?>

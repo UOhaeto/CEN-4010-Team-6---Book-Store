@@ -1,6 +1,6 @@
 body {
 	margin:0;
-	background: #15325C;
+	background: white;
 }
 
 .topnav {
@@ -10,11 +10,12 @@ body {
 .mini_topnav {
   overflow: hidden;
   align: center;
-  background-color: #15325C;
+  background-color: lightgray;
 }
 .mini_topnav a {
   float: right;
-  color: gray;
+  color: black;
+  background-color: lightgray;
   text-align: center;
   padding: 5px 5px;
   text-decoration: none;
@@ -32,7 +33,7 @@ body {
 .topnav_mid {
 	overflow: hidden;
 	align: center;
-  background-color:white;
+  background-color:#DDDDDD;
   padding: 0;
   list-style: none;
 }
@@ -45,7 +46,11 @@ body {
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
-  border: none;
+  border: solid;
+  height: 16px;
+  width: 90%;
+  border-color:white;
+  border-radius: 3px;
 }
 
 .topnav_mid .search-container button {
@@ -53,7 +58,7 @@ body {
   padding: 6px 10px;
   margin-top: 8px;
   margin-right: 16px;
-  background: #ddd;
+  background: orange;
   font-size: 17px;
   border: none;
   cursor: pointer;
@@ -85,8 +90,11 @@ body {
 }
 
 .search_form {
-  background-color: white;
+  background-color: #DDDDDD;
   color: white;
+  width: 700px;
+  padding-top: 29px;
+  padding-right: 350px
 }
 
 form.example input[type=text] {
@@ -138,6 +146,7 @@ form.example::after {
 			width: 25%;
 			text-align: center;
 			float:left;
+			color: black;
 			margin: 20px;
 			padding: 10px;
 			border: 2px solid black;
@@ -230,3 +239,76 @@ select{
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+
+	.shipping_address {
+		margin-bottom: 1px;
+		margin-top: 1px;
+    margin-left: 5px;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+  .address_cell {
+    display: inline-block;
+    margin: 8px;
+    width: 200px;
+    height: 100px;
+    border-style: solid;
+    border: 3px;
+    border-color: black;
+    border-radius: 2px;
+
+  }
+
+  .shippingAddressManager {
+    margin: auto;
+    margin-top: 50px;
+    padding: 10px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 7px;
+    background-color: #DDDDDD;
+    border-color: #DDDDDD;
+    width: 70%;
+  }
+
+  .myAccountPage {
+    overflow: hidden;
+	  align: center;
+    background-color:white;
+    padding: 0;
+    list-style: none;
+    width: 70%;
+    margin: auto;
+    border-left: solid;
+    border-color: grey;
+  }
+
+  .myAccountSideBox {
+    margin-top: 20px;
+    overflow: hidden;
+    align: center;
+    background:lightgray;
+    border: dimgray;
+    width: 15%;
+    float: right;
+  }
+
+  .myAccountSideBox a {
+    float: left;
+    color: black;
+    text-align: right;
+    padding: 10px 12px;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: "Helvetica";
+  }
+
+  .myAccountSideBox a:hover {
+    background-color: #15325C;
+    background: #EDEDE8
+  }
+
+  .userProfileName {
+    font-family: Helvetica;
+    float: left;
+  }

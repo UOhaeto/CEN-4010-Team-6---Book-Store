@@ -18,7 +18,7 @@
 
 	<form action = "" method = "post" enctype="multipart/form-data">
 
-			<table align = "center" width = "700" bgcolor = "skyblue">
+			<table align = "center" width = "700" bgcolor = "white">
 
 					<tr align = "center">
 								<th>Remove</th>
