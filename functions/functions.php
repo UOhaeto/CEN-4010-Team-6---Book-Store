@@ -160,17 +160,15 @@ function total_price(){
 		//connection to db
 			global $con;
 			//get 6 random books
-			$get_b = "select * from books order by RAND() LIMIT 0,6";
+			$get_b = "SELECT * FROM book_ratings_view GROUP BY RAND() LIMIT 0,6";
 
 			$run_b = mysqli_query($con, $get_b);
 			while($row_b=mysqli_fetch_array($run_b)){
 					//initializing variable with book name.
 					$b_title = $row_b['book_title'];
-					$b_author = $row_b['author'];
-					$b_genre = $row_b['genre'];
-					$b_release = $row_b['release_date'];
 					$b_price = $row_b['price'];
 					$b_image = $row_b['book_image'];
+					$b_rating = round ($row_b['avgRating']);
 
 					//primary key
 					//used to display individual details page.
@@ -182,6 +180,7 @@ function total_price(){
 							<h3>$b_title</h3>
 							<a href='details.php?b_isbn=$b_isbn'><img src='admin/book_images/$b_image' width='150px' height='200px'  /></a>
 							<p> $ $b_price </p>
+							<p> Rating: $b_rating/5</p>
 
 							<div style='margin: auto;'>
 							<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
