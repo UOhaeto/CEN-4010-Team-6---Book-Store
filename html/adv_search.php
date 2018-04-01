@@ -57,7 +57,8 @@
         <a href="index.php">Home</a>
         <a href="#news">Books</a>
         <a href="#top_sellers">Top Sellers</a>
-		<a href="index2.php"> Rate a Book </a>
+				<a href="index2.php"> Rate a Book </a>
+				<a href="genres.php"> Genres </a>
         <a href="shoppingCart.php" style="float: right"> Shopping Cart</a>
       </div>
     </div>

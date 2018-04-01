@@ -157,14 +157,86 @@ function total_price(){
 
 		if(!isset($_GET['genre'])){
 
+
 		//connection to db
 			global $con;
-			//get 6 random books
-			$get_b = "select * from books order by RAND() LIMIT 0,6";
+
+			$limit = 3;
+			if(isset($_GET['page'])) {
+				$page = $_GET['page'];
+			}else {
+				$page = 1;
+			}
+
+			$get_b = "SELECT * from books ORDER BY rand() LIMIT $limit";
 
 			$run_b = mysqli_query($con, $get_b);
+
+			while($row_b = mysqli_fetch_array($run_b)){
+				//initializing variable with book name.
+				$b_title = $row_b['book_title'];
+				$b_author = $row_b['author'];
+				$b_genre = $row_b['genre'];
+				$b_release = $row_b['release_date'];
+				$b_price = $row_b['price'];
+				$b_image = $row_b['book_image'];
+
+				//primary key
+				//used to display individual details page.
+				$b_isbn = $row_b['isbn'];
+				echo "
+					<div id='single_book'>
+
+						<h3>$b_title</h3>
+						<a href='details.php?b_isbn=$b_isbn'><img src='admin/book_images/$b_image' width='150px' height='200px'  /></a>
+						<p> $ $b_price </p>
+
+						<div style='margin: auto;'>
+						<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
+
+						<a href='index.php?add_cart=$b_isbn'><button style='float:right'>Add to Cart</button></a>
+
+						</div>
+					</div>
+
+				";
+				$sql = "SELECT COUNT(isbn) * FROM books";
+				if($result = mysqli_query($con, $sql)){
+					$rowcount = mysqli_query($con, $sql);
+					mysqli_free_result($result);
+
+				}
+				$rs_result = mysqli_query($con, $sql);
+				$row = mysqli_num_rows($sql);
+
+				$total_books = $row[0];
+				$total_pages = ceil(total_books / $limit);
+				$pagLink = "<div class='pagination'>";
+				for ($i=1; $i<=$total_pages; $i++) {
+             $pagLink .= "<a href='index.php?page=".$i."'>".$i."</a>";
+				};
+				echo $pagLink . "</div>";
+
+
+
+
+
+
+
+			}
+			//get 6 random book
+			/*
+			$get_b = "select * from books order by RAND()";
+
+
+			/* Working Code
+			$run_b = mysqli_query($con, $get_b);
+
+
+
 			while($row_b=mysqli_fetch_array($run_b)){
 					//initializing variable with book name.
+					echo "$result_limit";
 					$b_title = $row_b['book_title'];
 					$b_author = $row_b['author'];
 					$b_genre = $row_b['genre'];
@@ -194,7 +266,9 @@ function total_price(){
 					";
 
 			}
+			*/
 		}
+
 	}
 
 
