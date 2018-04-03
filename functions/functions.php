@@ -155,21 +155,59 @@ function total_price(){
 	//function to display books on main page.
 	function getBook(){
 
+		global $con;
 		if(!isset($_GET['genre'])){
 
 
-		//connection to db
-			global $con;
+			$rec_limit = 10;
 
-			$limit = 3;
-			if(isset($_GET['page'])) {
-				$page = $_GET['page'];
-			}else {
-				$page = 1;
-			}
-			$start_from = ($page -1) * $limit;
 
-			$get_b = "SELECT * from books ORDER BY rand() LIMIT $limit";
+		         /* Get total number of records */
+		         $sql = "SELECT count(isbn) FROM books ";
+		         $retval = mysqli_query($con, $sql );
+
+		         if(! $retval ) {
+		            die('Could not get data: ' . mysqli_error($con));
+		         }
+		         $row = mysqli_fetch_array($retval  );
+		         $rec_count = $row[0];
+
+		         if( isset($_GET{'page'} ) ) {
+		            $page = $_GET{'page'} + 1;
+		            $offset = $rec_limit * $page ;
+		         }else {
+		            $page = 0;
+		            $offset = 0;
+		         }
+
+		         $left_rec = $rec_count - ($page * $rec_limit);
+						 $total_pages = ceil($rec_count / $rec_limit);
+
+
+		         $retval = mysqli_query($con, $sql );
+
+		         if(! $retval ) {
+		            die('Could not get data: ' . mysql_error());
+		         }
+
+
+
+						 /*
+		         if( $page > 0 ) {
+		            $last = $page - 2;
+		            echo "<a href = \"$_PHP_SELF?page = $last\">Last 10 Records</a> |";
+		            echo "<a href = \"$_PHP_SELF?page = $page\">Next 10 Records</a>";
+		         }else if( $page == 0 ) {
+		            echo "<a href = \"$_PHP_SELF?page = $page\">Next 10 Records</a>";
+		         }else if( $left_rec < $rec_limit ) {
+		            $last = $page - 2;
+		            echo "<a href = \"$_PHP_SELF?page = $last\">Last 10 Records</a>";
+		         }
+
+						 */
+
+
+			$get_b = "SELECT * from books ORDER BY rand() LIMIT $rec_limit";
 
 			$run_b = mysqli_query($con, $get_b);
 
@@ -202,7 +240,39 @@ function total_price(){
 
 				";
 
+
+
+
+
 			}
+
+			$pagLink = "<div class='pagination'>";
+			for ($i=1; $i<=$total_pages; $i++) {
+									 $pagLink .= "<a href='index.php?page=".$i."'>".$i."</a>";
+			};
+			echo $pagLink . "</div>";
+
+
+/*
+			$limit = 3;
+			if(isset($_GET['page'])) {
+				$page = $_GET['page'];
+			}else {
+				$page = 1;
+				}
+			$start_from = ($page -1) * $limit;
+			$sql = "SELECT COUNT(isbn) FROM books";
+			$rs_result = mysqli_query($con, $sql);
+			$row = mysqli_fetch_row($rs_result);
+			$total_records = $row[0];
+			$total_pages = ceil($total_records / $limit);
+			$pagLink = "<div class='pagination'>";
+			for ($i=1; $i<=$total_pages; $i++) {
+									 $pagLink .= "<a href='index.php?page=".$i."'>".$i."</a>";
+			};
+			echo $pagLink . "</div>";
+
+ ?>
 /*
 			$limit = 3;
 			if(isset($_GET['page'])) {
