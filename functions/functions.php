@@ -159,7 +159,7 @@ function total_price(){
 		if(!isset($_GET['genre'])){
 
 
-			$rec_limit = 10;
+			$rec_limit = 3;
 
 
 		         /* Get total number of records */
@@ -173,8 +173,8 @@ function total_price(){
 		         $rec_count = $row[0];
 
 		         if( isset($_GET{'page'} ) ) {
-		            $page = $_GET{'page'} + 1;
-		            $offset = $rec_limit * $page ;
+		            $page = $_GET{'page'};
+		            $offset = $rec_limit * ($page - 1) ;
 		         }else {
 		            $page = 0;
 		            $offset = 0;
@@ -206,8 +206,7 @@ function total_price(){
 
 						 */
 
-
-			$get_b = "SELECT * from books ORDER BY rand() LIMIT $rec_limit";
+			$get_b = "SELECT * FROM books LIMIT $rec_limit OFFSET $offset";
 
 			$run_b = mysqli_query($con, $get_b);
 
@@ -230,6 +229,7 @@ function total_price(){
 						<a href='details.php?b_isbn=$b_isbn'><img src='admin/book_images/$b_image' width='150px' height='200px'  /></a>
 						<p> $ $b_price </p>
 
+
 						<div style='margin: auto;'>
 						<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
 
@@ -240,12 +240,7 @@ function total_price(){
 
 				";
 
-
-
-
-
 			}
-
 			$pagLink = "<div class='pagination'>";
 			for ($i=1; $i<=$total_pages; $i++) {
 									 $pagLink .= "<a href='index.php?page=".$i."'>".$i."</a>";
