@@ -88,7 +88,7 @@ INSERT INTO `books` (`book_title`, `isbn`, `author`, `author_bio`, `genre`, `rel
 ('Harry Potter: Cursed Child', 8, 'J.K. Rowling', '', '1', '2018-02-06', 11, 2018, 'Arthur A. Levine Books; Special Rehearsal Script ed. edition (July 31, 2016)', '', 10, '518VhA3dH9L._SX329_BO1,204,203,200_.jpg'),
 ('The Da Vinci Code', 9, 'Dan Brown', '', '3', '2003-03-18', 11, 2003, 'Transworld', '', 150, '220px-DaVinciCode.jpg'),
 ('Fifty Shades of Grey', 10, 'E. L. James', '', '4', '2011-05-01', 16, 2011, 'Random House', '', 200, 'Fifty shades of grey.jpg'),
-('Harry Potter: Cursed Child', 11, 'J.K. Rowling', '', '1', '2018-02-21', 10, 2019, 'Crown/Archetype', '', 50, 'Philosopher Stone.jpg');
+('Harry Potter: Philosophers Stone', 11, 'J.K. Rowling', '', '1', '2018-02-21', 10, 2019, 'Crown/Archetype', '', 50, 'Philosopher Stone.jpg');
 
 -- --------------------------------------------------------
 
@@ -210,6 +210,7 @@ AS
 SELECT
       b.isbn
     , b.book_title
+    , b.author
     , b.book_image
     , b.price
     , AVG(br.rating) AS avgRating
@@ -218,6 +219,7 @@ INNER JOIN book_ratings br ON b.isbn = br.book
 GROUP BY
       b.isbn
     , b.book_title
+    , b.author
     , b.book_image
     , b.price
 ;

@@ -65,7 +65,8 @@
 					echo"
 										
 						<h3>$b_title</h3>
-						<img src='admin/book_images/$b_image' width='300px' height='400px' />
+						<p> <a href='author.php?b_author=$b_author'>by $b_author </a> </p>
+						<img src='admin/book_images/$b_image' class='thumbnail' width='300px' height='400px' />
 										
 						<p> $ $b_price </p>
 						<p> Rating: $b_rating/5</p>
