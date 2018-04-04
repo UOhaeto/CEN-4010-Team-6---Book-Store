@@ -40,13 +40,21 @@
 								<option value="author">Author</option>
 								<!--
 								<option value="rating">Book Rating</option>
-							-->
-
+								-->
 								<option value="title">Book Title</option>
 								<option value="low-price">Price: Low to High</option>
 								<option value="high-price">Price: High to Low </option>
 								<option value="old-release">Release Year: Oldest to Newest</option>
 								<option value="new-release">Release Year: Oldest to Newest</option>
+							</select>
+
+
+							<label for="results_label" style="display: block; width: 100px;"><b><font face="helvetica">Results</font></b></label>
+							<select name="results">
+								<option value="5">5</option>
+								<option value="10">10</option>
+								<option value="20">20</option>
+
 
 							</select>
 						</div>

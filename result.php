@@ -26,6 +26,43 @@
 						$sort = "";
 					}
 
+					$rec_limit;
+					if(isset($_GET['results'])){
+						$rec_limit = $_GET['results'];
+					}else{
+						$rec_limit = 5;
+						}
+
+
+	         /* Get total number of records */
+	         $sql = "SELECT count(isbn) FROM books WHERE book_title like '%$search_query%' ";
+	         $retval = mysqli_query($con, $sql );
+
+	         if(! $retval ) {
+	            die('Could not get data: ' . mysqli_error($con));
+	         }
+	         $row = mysqli_fetch_array($retval  );
+	         $rec_count = $row[0];
+
+	         if( isset($_GET{'page'} ) ) {
+	            $page = $_GET{'page'};
+	            $offset = $rec_limit * ($page - 1) ;
+	         }else {
+	            $page = 0;
+	            $offset = 0;
+	         }
+
+	         $left_rec = $rec_count - ($page * $rec_limit);
+					 $total_pages = ceil($rec_count / $rec_limit);
+
+
+	         $retval = mysqli_query($con, $sql );
+
+	         if(! $retval ) {
+	            die('Could not get data: ' . mysql_error());
+	         }
+
+
 					//No filter.
 				$get_b = "select * from books where book_title like '%$search_query%'";
 
@@ -66,12 +103,10 @@
 				//	echo "<script>alert('Title Query')</script>";
 				}
 
+				$test = $get_b . " LIMIT $rec_limit OFFSET $offset";
 
-
-
-
-
-				$run_b = mysqli_query($con, $get_b);
+				//Getting book info and printing
+				$run_b = mysqli_query($con, $test);
 				while($row_b=mysqli_fetch_array($run_b)){
 						//initializing variable with book name.
 						$b_title = $row_b['book_title'];
@@ -103,6 +138,20 @@
 							</div>
 						";
 					}
+
+					//Printing Pagination Links
+					$pagLink = "<div class='pagination'>";
+					for ($i=1; $i<=$total_pages; $i++) {
+											if($page == $i){
+												$pagLink .= "<a class='active' href='result.php?page=".$i."&sort=".$sort."&search=".$search_query."&results=".$rec_limit."'>".$i."</a>";
+											}else{
+												$pagLink .= "<a  href='result.php?page=".$i."&sort=".$sort."&search=".$search_query."&results=".$rec_limit."'>".$i."</a>";
+											}
+
+					};
+					echo $pagLink . "</div>";
+
+
 				}
 
 				 ?>
