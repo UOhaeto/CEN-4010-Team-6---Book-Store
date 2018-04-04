@@ -243,7 +243,12 @@ function total_price(){
 			}
 			$pagLink = "<div class='pagination'>";
 			for ($i=1; $i<=$total_pages; $i++) {
-									 $pagLink .= "<a href='index.php?page=".$i."'>".$i."</a>";
+									if($page == $i){
+										$pagLink .= "<a class='active' href='index.php?page=".$i."'>".$i."</a>";
+									}else{
+										$pagLink .= "<a  href='index.php?page=".$i."'>".$i."</a>";
+									}
+
 			};
 			echo $pagLink . "</div>";
 
