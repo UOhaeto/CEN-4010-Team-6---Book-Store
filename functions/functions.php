@@ -155,7 +155,46 @@ function total_price(){
 	//function to display books on main page.
 	function getBook(){
 
+		global $con;
 		if(!isset($_GET['genre'])){
+
+
+
+			$rec_limit = 3;
+
+
+		         /* Get total number of records */
+		         $sql = "SELECT count(isbn) FROM books ";
+		         $retval = mysqli_query($con, $sql );
+
+		         if(! $retval ) {
+		            die('Could not get data: ' . mysqli_error($con));
+		         }
+		         $row = mysqli_fetch_array($retval  );
+		         $rec_count = $row[0];
+
+		         if( isset($_GET{'page'} ) ) {
+		            $page = $_GET{'page'};
+		            $offset = $rec_limit * ($page - 1) ;
+		         }else {
+		            $page = 0;
+		            $offset = 0;
+		         }
+
+		         $left_rec = $rec_count - ($page * $rec_limit);
+						 $total_pages = ceil($rec_count / $rec_limit);
+
+
+		         $retval = mysqli_query($con, $sql );
+
+		         if(! $retval ) {
+		            die('Could not get data: ' . mysql_error());
+		         }
+
+
+			$get_b = "SELECT * FROM books LIMIT $rec_limit OFFSET $offset";
+
+			$run_b = mysqli_query($con, $get_b);
 
 		//connection to db
 			global $con;
@@ -174,26 +213,55 @@ function total_price(){
 					//used to display individual details page.
 					$b_isbn = $row_b['isbn'];
 
-					echo "
-						<div id='single_book'>
+
+			while($row_b = mysqli_fetch_array($run_b)){
+				//initializing variable with book name.
+				$b_title = $row_b['book_title'];
+				$b_author = $row_b['author'];
+				$b_genre = $row_b['genre'];
+				$b_release = $row_b['release_date'];
+				$b_price = $row_b['price'];
+				$b_image = $row_b['book_image'];
+
+				//primary key
+				//used to display individual details page.
+				$b_isbn = $row_b['isbn'];
+				echo "
+					<div id='single_book'>
 
 							<h3>$b_title</h3>
 							<a href='details.php?b_isbn=$b_isbn'><img src='admin/book_images/$b_image' width='150px' height='200px'  /></a>
 							<p> $ $b_price </p>
 							<p> Rating: $b_rating/5</p>
 
-							<div style='margin: auto;'>
-							<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
+						<h3>$b_title</h3>
+						<a href='details.php?b_isbn=$b_isbn'><img src='admin/book_images/$b_image' width='150px' height='200px'  /></a>
+						<p> $ $b_price </p>
 
-							<a href='index.php?add_cart=$b_isbn'><button style='float:right'>Add to Cart</button></a>
 
-							</div>
+						<div style='margin: auto;'>
+						<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
+
+						<a href='index.php?add_cart=$b_isbn'><button style='float:right'>Add to Cart</button></a>
+
 						</div>
+					</div>
 
-					";
+				";
 
 			}
+			$pagLink = "<div class='pagination'>";
+			for ($i=1; $i<=$total_pages; $i++) {
+									if($page == $i){
+										$pagLink .= "<a class='active' href='index.php?page=".$i."'>".$i."</a>";
+									}else{
+										$pagLink .= "<a  href='index.php?page=".$i."'>".$i."</a>";
+									}
+
+			};
+			echo $pagLink . "</div>";
 		}
+
 	}
 
 
