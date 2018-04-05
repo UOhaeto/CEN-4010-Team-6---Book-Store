@@ -4,6 +4,7 @@
 <?php
 	include("functions/functions.php");
 	echo file_get_contents("html/header.php");
+	session_start();
 ?>
 
 <head>
@@ -17,16 +18,17 @@
 		<div id="book_container">
 			
 			<?php
+
+				$book = null;
 						
 				//check url for the isbn
 				if(isset($_GET['b_isbn'])){
 								
-				$isbn = $_GET['b_isbn'];
-								
-							
+				$isbn = $_GET['b_isbn'];	
 							
 				// query that gets the isbn
-				$get_b = "select * from books where isbn='$isbn'";
+				$get_b = "select *, AVG(book_ratings.rating) AS rating from books LEFT JOIN book_ratings
+				ON books.isbn = book_ratings.book where isbn='$isbn'";
 							
 				//running query
 				$run_b = mysqli_query($con, $get_b);
@@ -43,19 +45,32 @@
 					$b_description = $row_b['description'];
 					$b_a_description = $row_b['author_bio'];
 					$b_a_description = $row_b['author_bio'];
+					$b_rating = round ($row_b['rating']);
 
 					//primary key
 					//used to display individual datails page.
 					$b_isbn = $row_b['isbn'];
 
 					echo "
-						<div id='single_book' width: 70%; height: auto;>
+						<div id='single_book' width: 70%; height: auto;>";
+
+					?>
+					
+					Rate this book:
+					<?php 
+					foreach(range(1, 5) as $rating): ?>
+  						<a href="rate.php?book=<?php echo $b_isbn; ?>&rating=<?php echo $rating; ?>"><?php echo $rating; ?></a>
+  					<?php endforeach;
+
+					echo"
 										
 						<h3>$b_title</h3>
 						<img src='admin/book_images/$b_image' width='300px' height='400px' />
 										
 						<p> $ $b_price </p>
+						<p> Rating: $b_rating/5</p>
 						<p> Book Description: $b_description
+						<p> Rate this book: </p>
 
 						<div style='margin: auto; '>
 						<a href='index.php' style='float:left;'> Go Back</a>
@@ -72,10 +87,24 @@
 							}
 						
 						?>
-			
 		</div>
-		
 	</div>
 
+	<?php 
+	$filename = "comments/" . $isbn . 'comments.html';
+
+	if($_POST){
+		$name = $_SESSION['SESS_USERNAME'];
+		$comment = $_POST['commentArea'];
+		$handle = fopen($filename, "a");
+		fwrite($handle, "<b>" . $name. "</b>:</br>" . $comment . "</br>" );
+		fclose($handle);
+	}
+	?>
+				<form action = "" method = "POST">
+				Comments: <textarea rows = "10" cols = "30" name = "commentArea"></textarea></br>
+				<input type = "submit" value = "Post">
+				</form>
+				<?php include	$filename; ?>
 </body>
 </html>
