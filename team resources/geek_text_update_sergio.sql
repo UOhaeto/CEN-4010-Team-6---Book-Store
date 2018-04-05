@@ -212,6 +212,7 @@ SELECT
     , b.book_title
     , b.book_image
     , b.price
+    , b.year
     , AVG(br.rating) AS avgRating
 FROM books b
 INNER JOIN book_ratings br ON b.isbn = br.book
@@ -220,6 +221,7 @@ GROUP BY
     , b.book_title
     , b.book_image
     , b.price
+    , b. year
 ;
 --
 -- Indexes for dumped tables

@@ -114,7 +114,6 @@
 						$b_genre = $row_b['genre'];
 						$b_release = $row_b['year'];
 						$b_price = $row_b['price'];
-						$b_rating = $row_b['rating'];
 						$b_image = $row_b['book_image'];
 						//primary key
 						//used to display individual details page.
