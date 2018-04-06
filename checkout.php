@@ -43,7 +43,7 @@
 					<tr align = "center">
 								<th>Books</th>
 								<th>Quantity</th>
-								<th>Book Price</th>
+								<th>Total Price</th>
 					</tr>
 
 					<?php
@@ -138,6 +138,37 @@
 
 				<?php } } ?><!--end of the while loops-->
 
+				<?php
+
+				$cart_isbn = "";
+
+				$cart_query = "select * from cart";
+
+ 				echo $cart_isbn;
+
+				if(isset($_POST['place_order'])){
+				$run_isbn = mysqli_query($con, $cart_query);
+
+				while($row_b=mysqli_fetch_array($run_isbn)){
+						$temp_isbn = $row_b['book_id'];
+						$same_isbn = "select * from books where isbn = '$temp_isbn'";
+						$run_temp = mysqli_query($con, $same_isbn);
+
+						while($rowb_temp=mysqli_fetch_array($run_temp)){
+								$sold_amnt = $rowb_temp['sold'];
+								$sold_amnt = $sold_amnt + 1;
+								$sql_update = "update books set sold = '$sold_amnt' where isbn = '$temp_isbn'";
+								$update_run = mysqli_query($con, $sql_update);
+								$delete_sql = "delete from cart where book_id = '$temp_isbn'";
+								$run_dlt = mysqli_query($con, $delete_sql);
+						}	//Closes second while
+
+				}	//Closes first while
+			}	//Closes if statement
+
+				?>
+
+
 				<tr align = "right">
 						<td colspan="4"><b>Total:</b></td>
 						<td><?php echo "$" . $total; ?></td>
@@ -145,15 +176,17 @@
 
 				<tr align = "center">
 							<td><button><a href = "shoppingcart.php" style="text-decoration: none; color:black;">Back to Cart</a></button></a></td>
-							<td colspan ="2"><button><a href = "orderreview.php" style="text-decoration: underline; color:black;">Place Order</a></button></a></td>
+							<td colspan ="2"><input type= "submit" name= "place_order" value= "Place Order" style= "text-decoration: underline;"/></td>
 							<td></td>
 
-							<?php //if user clicks continue shopping, this will take him back to the main page
-								if(isset($_POST['continue'])){
-									echo "<script>window.open('index.php','_self')</script>";
+							<?php //if user clicks place order, this will take him to the order review page.
+								if(isset($_POST['place_order'])){
+									echo "<script>window.open('orderreview.php','_self')</script>";
 								}
 							 ?>
 				</tr>
+
+
 
 
 		</div>
