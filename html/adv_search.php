@@ -30,8 +30,34 @@
         <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a>
         <div class="search-container">
           <form action="result.php" class="search_form">
-            <input type="text" placeholder="Search.." name="search">
+
+            <input type="text" name="search" placeholder="Search.." value=""/>
             <button type="submit"><i class="fa fa-search"></i></button>
+							<div>
+							<label for="sort_label" style="display: block; width: 100px;"><b><font face="helvetica">Sort by</font></b></label>
+							<select name="sort">
+								<option value="">--</option>
+								<option value="author">Author</option>
+								<!--
+								<option value="rating">Book Rating</option>
+								-->
+								<option value="title">Book Title</option>
+								<option value="low-price">Price: Low to High</option>
+								<option value="high-price">Price: High to Low </option>
+								<option value="old-release">Release Year: Oldest to Newest</option>
+								<option value="new-release">Release Year: Oldest to Newest</option>
+							</select>
+
+
+							<label for="results_label" style="display: block; width: 100px;"><b><font face="helvetica">Results</font></b></label>
+							<select name="results">
+								<option value="5">5</option>
+								<option value="10">10</option>
+								<option value="20">20</option>
+
+
+							</select>
+						</div>
           </form>
         </div>
       </div>
@@ -39,9 +65,9 @@
         <a href="index.php">Home</a>
         <a href="#news">Books</a>
         <a href="#top_sellers">Top Sellers</a>
+				<a href="index2.php"> Rate a Book </a>
 				<a href="genres.php"> Genres </a>
-        <a href="top_rated.php"> Top Rated </a>
-	      <a href="shoppingCart.php" style="float: right"> Shopping Cart</a> 
+        <a href="shoppingCart.php" style="float: right"> Shopping Cart</a>
       </div>
     </div>
   </body>

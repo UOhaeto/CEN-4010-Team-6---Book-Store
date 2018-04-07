@@ -22,6 +22,8 @@
 
 		<div id="book_container">
 			<?php getBook(); ?>
+
+
 		</div>
 
 	</div>
