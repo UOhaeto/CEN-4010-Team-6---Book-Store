@@ -65,7 +65,8 @@
 					echo"
 										
 						<h3>$b_title</h3>
-						<img src='admin/book_images/$b_image' width='300px' height='400px' />
+						<p> <a href='author.php?b_author=$b_author'>by $b_author </a> </p>
+						<img src='admin/book_images/$b_image' class='thumbnail' width='300px' height='400px' />
 										
 						<p> $ $b_price </p>
 						<p> Rating: $b_rating/5</p>
@@ -96,9 +97,14 @@
 	if($_POST){
 		$name = $_SESSION['SESS_USERNAME'];
 		$comment = $_POST['commentArea'];
-		$handle = fopen($filename, "a");
-		fwrite($handle, "<b>" . $name. "</b>:</br>" . $comment . "</br>" );
-		fclose($handle);
+		if($name != 'guest'){
+			$handle = fopen($filename, "a");
+			fwrite($handle, "<b>" . $name. "</b>:</br>" . $comment . "</br>" );
+			fclose($handle);
+		}
+		else{
+			header('Location: login.php');
+		}
 	}
 	?>
 				<form action = "" method = "POST">

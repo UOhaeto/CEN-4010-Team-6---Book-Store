@@ -199,21 +199,23 @@ function total_price(){
 
 			$run_b = mysqli_query($con, $get_b);
 			while($row_b=mysqli_fetch_array($run_b)){
-					//initializing variable with book name.
-					$b_title = $row_b['book_title'];
-					$b_price = $row_b['price'];
-					$b_image = $row_b['book_image'];
-					$b_year = $row_b['year'];
-					$b_rating = round ($row_b['avgRating']);
+        
+				//initializing variable with book name.
+				$b_title = $row_b['book_title'];
+				$b_price = $row_b['price'];
+				$b_image = $row_b['book_image'];
+				$b_author = $row_b['author'];
+        $b_year = $row_b['year'];
+				$b_rating = round ($row_b['avgRating']);
 
-					//primary key
-					//used to display individual details page.
-					$b_isbn = $row_b['isbn'];
+				//primary key
+				//used to display individual details page.
+				$b_isbn = $row_b['isbn'];
 
 				echo "
 					<div id='single_book'>
-
 							<h3>$b_title</h3>
+              <p> <a href='author.php?b_author=$b_author'>by $b_author </a> </p>
 							<a href='details.php?b_isbn=$b_isbn'><img src='admin/book_images/$b_image' width='150px' height='200px'  /></a>
 							<p> $ $b_price </p>
 							<p> Year: $b_year </p>
@@ -228,7 +230,7 @@ function total_price(){
 					</div>
 
 				";
-
+        
 			}
 			$pagLink = "<div class='pagination'>";
 			for ($i=1; $i<=$total_pages; $i++) {
