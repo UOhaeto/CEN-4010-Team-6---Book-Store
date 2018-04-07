@@ -97,9 +97,14 @@
 	if($_POST){
 		$name = $_SESSION['SESS_USERNAME'];
 		$comment = $_POST['commentArea'];
-		$handle = fopen($filename, "a");
-		fwrite($handle, "<b>" . $name. "</b>:</br>" . $comment . "</br>" );
-		fclose($handle);
+		if($name != 'guest'){
+			$handle = fopen($filename, "a");
+			fwrite($handle, "<b>" . $name. "</b>:</br>" . $comment . "</br>" );
+			fclose($handle);
+		}
+		else{
+			header('Location: login.php');
+		}
 	}
 	?>
 				<form action = "" method = "POST">
