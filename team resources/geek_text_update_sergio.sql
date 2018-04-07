@@ -40,7 +40,8 @@ CREATE TABLE `books` (
   `publisher` text NOT NULL,
   `description` text NOT NULL,
   `quantity` int(100) NOT NULL,
-  `book_image` text NOT NULL
+  `book_image` text NOT NULL,
+  `sold` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -213,6 +214,7 @@ SELECT
     , b.book_image
     , b.price
     , b.year
+	, b.author
     , AVG(br.rating) AS avgRating
 FROM books b
 INNER JOIN book_ratings br ON b.isbn = br.book
@@ -221,6 +223,7 @@ GROUP BY
     , b.book_title
     , b.book_image
     , b.price
+	, b.author
     , b. year
 ;
 --
