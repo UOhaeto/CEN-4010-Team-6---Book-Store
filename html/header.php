@@ -17,14 +17,14 @@
         <a>Contact Us</a>
 		<?php
 			if(($_SESSION['SESS_USERID'] == 0)) {
-				echo '<a class="menu_link" href="login.php"> Login </a>'; 
+				echo '<a class="menu_link" href="login.php"> Login </a>';
 			}
 			else {
         echo '<a href="logout.php">Logout</a>';
 				echo '<a href="myAccount.php">My Account</a>';
 			}
 		?>
-		</b> 
+		</b>
       </div>
       <div class=topnav_mid>
         <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a>
@@ -39,8 +39,7 @@
         <a href="index.php">Home</a>
         <a href="#news">Books</a>
         <a href="#top_sellers">Top Sellers</a>
-		<a href="index2.php"> Rate a Book </a>
-        <a href="shoppingCart.php" style="float: right"> Shopping Cart</a> 
+        <a href="shoppingCart.php" style="float: right"> <?php echo getNumOfItems(); ?> Items/Shopping Cart</a>
       </div>
     </div>
   </body>

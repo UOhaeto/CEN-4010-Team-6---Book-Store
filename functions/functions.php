@@ -7,12 +7,58 @@
 		echo "Failed to connect to MySQL: " . mysqli_connect_errno();
 	}
 
+
+function getNumOfItems(){
+		global $con;
+		$check_book = "select * from cart" ;
+		$run_check = mysqli_query($con, $check_book);
+
+		$count = mysqli_num_rows($run_check);
+
+		echo $count ;
+}
+
+//creating save for later
+function saveForLater(){
+
+	global $con;
+
+	if(isset($_GET['save_later'])){
+
+			$ip = getIp();
+			$book_id = $_GET['save_later'];
+
+			$check_book = "select * from save_cart where ip_add='$ip' AND book_id='$book_id' ";
+
+			$run_check = mysqli_query($con, $check_book);
+
+			if(mysqli_num_rows($run_check)>0){
+
+				echo "";
+
+
+			}
+			else {
+
+				$insert_book = "insert into save_cart (book_id, ip_add) values ('$book_id','$ip')";
+
+				$run_pro = mysqli_query($con, $insert_book);
+
+				echo "<script>window.open('index.php','_self')</script>";
+
+			}
+
+
+		}
+
+
+}
 //Creating the shopping cart
-	function cart(){
+function cart(){
+
+		global $con;
 
 		if(isset($_GET['add_cart'])){
-
-				global $con;
 
 				$ip = getIp();
 				$book_id = $_GET['add_cart'];
@@ -160,19 +206,18 @@ function total_price(){
 		//connection to db
 			global $con;
 			//get 6 random books
-			$get_b = "SELECT books.isbn, books.book_title, books.book_image, books.price, AVG(book_ratings.rating) AS rating
-				FROM books
-				LEFT JOIN book_ratings
-				ON books.isbn = book_ratings.book
-				GROUP BY RAND() LIMIT 0,6";
+			$get_b = "SELECT * FROM book_ratings_view GROUP BY RAND() LIMIT 0,6";
 
 			$run_b = mysqli_query($con, $get_b);
+
+
+			//while loop to display all books saved in our databse
 			while($row_b=mysqli_fetch_array($run_b)){
 					//initializing variable with book name.
 					$b_title = $row_b['book_title'];
 					$b_price = $row_b['price'];
 					$b_image = $row_b['book_image'];
-					$b_rating = round ($row_b['rating']);
+					$b_rating = round ($row_b['avgRating']);
 
 					//primary key
 					//used to display individual details page.
@@ -190,6 +235,7 @@ function total_price(){
 							<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
 
 							<a href='index.php?add_cart=$b_isbn'><button style='float:right'>Add to Cart</button></a>
+							<a href='index.php?save_later=$b_isbn'><button style='float:right'>Save for later</button></a>
 
 							</div>
 						</div>

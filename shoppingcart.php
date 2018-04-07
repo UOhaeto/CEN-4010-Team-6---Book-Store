@@ -18,13 +18,13 @@
 
 	<form action = "" method = "post" enctype="multipart/form-data">
 
-			<table align = "center" width = "700" bgcolor = "white">
+			<table align = "center" width = "1000" bgcolor = "white">
 
 					<tr align = "center">
 								<th>Remove</th>
 								<th>Books</th>
 								<th>Quantity</th>
-								<th>Total Price</th>
+								<th>Price</th>
 					</tr>
 
 					<?php
@@ -67,7 +67,8 @@
 							<td><?php echo $book_tit; ?><br>
 							<img src='admin/book_images/<?php echo $book_img;?>' width ='100' height='120'/>
 							</td>
-							<td><input type = "text" size = "4" name = "quantity" /></td>
+							<td><input type = "text" size = "1" name = "quantity" /></td>
+
 							<?php
 
 							if(isset($_POST['update_cart'])){
@@ -115,15 +116,12 @@
 
 				<?php } } ?><!--end of the while loops-->
 
-				<tr align = "right">
-						<td colspan="4"><b>Total:</b></td>
-						<td><?php echo "$" . $total; ?></td>
-				</tr>
 
-				<tr align = "center">
+				<tr align = "center" >
 							<td colspan="1"><input type= "submit" name = "update_cart" value = "Update Cart"/></td>
 							<td><input type= "submit" name = "continue" value = "Continue Shopping"/></td>
-							<td><button><a href = "checkout.php" style="text-decoration: none; color:black;">Checkout</a></button></a></td>
+							<td ><button><a href = "checkout.php" style="text-decoration: none; color:black;">Checkout</a></button></a></td>
+							<td colspan= "10"><b>Total: <?php echo "$" . $total; ?></b></td>
 
 							<?php //if user clicks continue shopping, this will take him back to the main page
 								if(isset($_POST['continue'])){
@@ -131,7 +129,86 @@
 								}
 							 ?>
 				</tr>
+			</table>
+		</from>
 
+
+	<!--This table is for the "save me later"-->
+	<form action = "" method = "post" enctype="multipart/form-data">
+
+			<table align = "center" width = "1000" bgcolor = "white" cellspacing="20">
+				<tr align = "center">
+							<th><h2>Books saved for later:</h2></th>
+				</tr>
+
+				<tr align = "center">
+							<th>Books</th>
+							<th>Add to cart</th>
+							<th>Remove</th>
+				</tr>
+
+
+				<?php
+				global $con;
+
+				$ip = getIp();
+
+				$getAll = "select * from save_cart where ip_add= '$ip'";
+
+				$run_q = mysqli_query($con, $getAll);
+
+				while ($p = mysqli_fetch_array($run_q)){
+
+						$pro_id = $p['book_id'];
+
+						$products = "select * from books where isbn='$pro_id'";
+
+						$run_book_products = mysqli_query($con, $products);
+
+						while ($b = mysqli_fetch_array($run_book_products)){
+
+								$book_tit = $b['book_title'];
+
+								$book_img = $b['book_image'];
+
+								$single_price = $b['price'];
+
+				?>
+
+				<tr align = "center">
+						<td><?php echo $book_tit; ?><br>
+						<img src='admin/book_images/<?php echo $book_img;?>' width ='100' height='120'/>
+						</td>
+						<td>Need to finish</td>
+						<td><input type = "checkbox" name= "rem[]" value = "<?php echo $pro_id;?>"/></td>
+
+						<?php
+
+									//checking if remove checkbox was set
+									if(isset($_POST['rem'])){
+									foreach ($_POST['rem'] as $remove_id) {
+
+										$delete_book = "delete from save_cart where book_id= '$remove_id' AND ip_add = '$ip'";
+
+										$run_delete = mysqli_query($con, $delete_book);
+
+										if($run_delete){
+											echo "<script>window.open('shoppingcart.php','_self')</script>";
+
+										}
+
+									}//end of for each
+
+								}//end of remove if
+
+
+
+
+						?>
+				</tr>
+
+
+			<?php } } ?><!--end of the while loops-->
 
 			</table>
 
