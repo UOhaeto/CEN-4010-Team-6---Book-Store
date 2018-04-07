@@ -211,7 +211,6 @@ AS
 SELECT
       b.isbn
     , b.book_title
-    , b.author
     , b.book_image
     , b.price
     , b.year
@@ -225,7 +224,6 @@ GROUP BY
     , b.author
     , b.book_image
     , b.price
-	, b.author
     , b. year
 ;
 --
