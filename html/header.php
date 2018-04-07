@@ -40,6 +40,7 @@
         <a href="#news">Books</a>
         <a href="#top_sellers">Top Sellers</a>
 				<a href="genres.php"> Genres </a>
+        <a href="top_rated.php"> Top Rated </a>
 	      <a href="shoppingCart.php" style="float: right"> Shopping Cart</a> 
       </div>
     </div>
