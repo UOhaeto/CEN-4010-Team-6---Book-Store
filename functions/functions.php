@@ -215,7 +215,7 @@ function total_price(){
 				echo "
 					<div id='single_book'>
 							<h3>$b_title</h3>
-              <p> <a href='author.php?b_author=$b_author'>by $b_author </a> </p>
+							<p> <a href='author.php?b_author=$b_author'>by $b_author </a> </p>
 							<a href='details.php?b_isbn=$b_isbn'><img src='admin/book_images/$b_image' width='150px' height='200px'  /></a>
 							<p> $ $b_price </p>
 							<p> Year: $b_year </p>

@@ -69,14 +69,11 @@
 						<img src='admin/book_images/$b_image' class='thumbnail' width='300px' height='400px' />
 										
 						<p> $ $b_price </p>
-						<p> Rating: $b_rating/5</p>
+						<p> Rating: <img src='images/$b_rating.png' style = 'border: 0px'></p>
 						<p> Book Description: $b_description
-						<p> Rate this book: </p>
 
 						<div style='margin: auto; '>
-						<a href='index.php' style='float:left;'> Go Back</a>
-											
-											
+						<a href='index.php' style='float:left;'> Go Back</a>			
 											
 						<a href='index.php?b_isbn=$b_isbn'><button style='float:right'>Add to Cart</button></a>
 											
