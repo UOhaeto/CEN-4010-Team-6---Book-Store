@@ -69,9 +69,9 @@
 				<p align="left" class="shipping_address"><?php echo $shippingStreet1?></p>
         <p align="left" class="shipping_address"><?php echo $shippingCity1?></p>
         <p align="left" class="shipping_address"><?php echo $shippingState1, ', ', $shippingZip1 ?></p>
-        <form action="add_shipping_form.php">
+        <form method="post" action="add_shipping_form.php">
+          <input type="hidden" name="shpID" id="shpID" value="<?php echo $_POST["shpID"] = $shippingId1;?>" />
           <input type="submit" value="Edit Address" ></input>
-          <input type="hidden" name="shpID" id="shpID" value="<?php echo $_SESSION["shpID"] = $shippingZip1;?>" />
         </form>
 			</div>
 
@@ -80,9 +80,9 @@
 				<p align="left" class="shipping_address"><?php echo $shippingStreet2?></p>
         <p align="left" class="shipping_address"><?php echo $shippingCity2?></p>
         <p align="left" class="shipping_address"><?php echo $shippingState2, ', ', $shippingZip2 ?></p>
-        <form action="add_shipping_form.php">
+        <form method="post" action="add_shipping_form.php">
+          <input type="hidden" name="shpID" id="shpID" value="<?php echo $_POST["shpID"] = $shippingId2;?>" />
           <input type="submit" value="Edit Address" ></input>
-           <input type="hidden" name="shpID" id="shpID" value="<?php echo $_SESSION["shpID"] = $shippingZip2;?>" />
         </form>
 			</div>
 
@@ -91,9 +91,9 @@
 				<p align="left" class="shipping_address"><?php echo $shippingStreet3?></p>
         <p align="left" class="shipping_address"><?php echo $shippingCity3?></p>
         <p align="left" class="shipping_address"><?php echo $shippingState3, ', ', $shippingZip3 ?></p>
-        <form action="add_shipping_form.php">
+        <form method="post" action="add_shipping_form.php">
+          <input type="hidden" name="shpID" id="shpID" value="<?php echo $_POST["shpID"] = $shippingId3;?>" />
           <input type="submit" value="Edit Address" ></input>
-           <input type="hidden" name="shpID" id="shpID" value="<?php echo $_SESSION["shpID"] = $shippingZip3;?>" />
         </form>
 			</div>
 
@@ -102,9 +102,9 @@
 				<p align="left" class="shipping_address"><?php echo $shippingStreet4?></p>
         <p align="left" class="shipping_address"><?php echo $shippingCity4?></p>
         <p align="left" class="shipping_address"><?php echo $shippingState4, ', ', $shippingZip4 ?></p>
-        <form action="add_shipping_form.php">
+        <form method="post" action="add_shipping_form.php">
+          <input type="hidden" name="shpID" id="shpID" value="<?php echo $_POST["shpID"] = $shippingId4;?>" />
           <input type="submit" value="Edit Address" ></input>
-           <input type="hidden" name="shpID" id="shpID" value="<?php echo $_SESSION["shpID"] = $shippingZip4;?>" />
         </form>
 			</div>
 		</div>

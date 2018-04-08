@@ -171,16 +171,17 @@ INSERT INTO `shippingaddresses` (`shippingaddressID`, `shippingStreet`, `shippin
 
 CREATE TABLE `shippingaddressmapper` (
   `users_userID` int(10) UNSIGNED NOT NULL,
-  `shippingaddresses_shippingaddressID` int(11) NOT NULL
+  `shippingaddresses_shippingaddressID` int(11) NOT NULL,
+	`address_order` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `shippingaddressmapper`
 --
 
-INSERT INTO `shippingaddressmapper` (`users_userID`, `shippingaddresses_shippingaddressID`) VALUES
-(0, 0),
-(1, 1);
+INSERT INTO `shippingaddressmapper` (`users_userID`, `shippingaddresses_shippingaddressID`, `address_order`) VALUES
+(0, 0, 1),
+(1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -213,6 +214,14 @@ INSERT INTO `users` (`userID`, `username`, `password`, `fName`, `lName`, `email`
 (2, 'user2', 'password2', 'Hermione', 'Granger', 'hermione@hogwarts.edu', '456 Abc St.', 'Magic City', 'Florida', '33133', 'hg', '305-555-2323');
 
 -- --------------------------------------------------------
+
+CREATE TABLE `credit_cards` (`cc_ID` INT(16) NOT NULL, `cc_number` TEXT NOT NULL , `cc_name` TEXT NOT NULL , `exp_date` TEXT NOT NULL , `sec_code` INT(16) NOT NULL ) ENGINE = InnoDB  DEFAULT CHARSET=utf8;
+
+CREATE TABLE `credit_cards_mapper` ( `userID` INT(16) NOT NULL , `cc_ID` INT(16) NOT NULL, `cc_order` INT(16)) ENGINE = InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `credit_cards` (`cc_ID`, `cc_number`, `cc_name`, `exp_date`, `sec_code`) VALUES (0 ,'1234432112344321', 'Paul Kersey', '02/23', 123);
+
+INSERT INTO `credit_cards_mapper` (`userID`, `cc_ID`, `cc_order`) VALUES (1, 0, 1);
 
 --
 -- Structure for view `book_ratings_view`
@@ -307,3 +316,7 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
