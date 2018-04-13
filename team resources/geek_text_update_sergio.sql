@@ -53,7 +53,8 @@ CREATE TABLE `book_ratings` (
   `book` int(11) NOT NULL,
   `rating` int(11) NOT NULL,
   `userID` int(10) UNSIGNED NOT NULL,
-  `anonymous` text NOT NULL NULL,
+  `username` varchar(50) NOT NULL,
+  `anonymous` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
@@ -61,31 +62,31 @@ CREATE TABLE `book_ratings` (
 -- Dumping data for table `book_ratings`
 --
 
-INSERT INTO `book_ratings` (`book`, `rating`, `userID`, `anonymous`) VALUES
-(1, 1, '1', 'no'),
-(4, 2, '1', 'no'),
-(5, 3, '1', 'no'),
-(7, 4, '1', 'no'),
-(8, 5, '1', 'no'),
-(9, 2, '1', 'no'),
-(10, 3, '1', 'no'),
-(11, 2, '1', 'no'),
-(1, 5, '2', 'no'),
-(4, 4, '2', 'no'),
-(5, 1, '2', 'no'),
-(7, 2, '2', 'no'),
-(20, 5, '1', 'no'),
-(21, 1, '1', 'no'),
-(22, 2, '1', 'no'),
-(23, 3, '1', 'no'),
-(24, 4, '1', 'no'),
-(25, 5, '1', 'no'),
-(26, 4, '1', 'no'),
-(27, 3, '1', 'no'),
-(28, 2, '1', 'no'),
-(29, 1, '1', 'no'),
-(30, 4, '1', 'no'),
-(31, 5, '1', 'no');
+INSERT INTO `book_ratings` (`book`, `rating`, `userID`, `username`, `anonymous`) VALUES
+(1, 1, '1', 'user1', 'no'),
+(4, 2, '1', 'user1', 'no'),
+(5, 3, '1', 'user1', 'no'),
+(7, 4, '1', 'user1', 'no'),
+(8, 5, '1', 'user1', 'no'),
+(9, 2, '1', 'user1', 'no'),
+(10, 3, '1', 'user1', 'no'),
+(11, 2, '1', 'user1', 'no'),
+(1, 5, '2', 'user2', 'no'),
+(4, 4, '2', 'user2', 'no'),
+(5, 1, '2', 'user2', 'no'),
+(7, 2, '2', 'user2', 'no'),
+(20, 5, '1', 'user1', 'no'),
+(21, 1, '1', 'user1', 'no'),
+(22, 2, '1', 'user1', 'no'),
+(23, 3, '1', 'user1', 'no'),
+(24, 4, '1', 'user1', 'no'),
+(25, 5, '1', 'user1', 'no'),
+(26, 4, '1', 'user1', 'no'),
+(27, 3, '1', 'user1', 'no'),
+(28, 2, '1', 'user1', 'no'),
+(29, 1, '1', 'user1', 'no'),
+(30, 4, '1', 'user1', 'no'),
+(31, 5, '1', 'user1', 'no');
 
 -- --------------------------------------------------------
 
