@@ -6,24 +6,30 @@
 	include("functions/functions.php");
 	echo file_get_contents("html/header.php");
 	
-	if(isset($_GET['book'], $_GET['rating'])){
+	if(isset($_GET['book'], $_GET['rating']) && ($_SESSION['SESS_USERID'] > 0)){
 		$book = (int)$_GET['book'];
 		$rating = (int)$_GET['rating'];
 		if(in_array($rating, [1, 2, 3, 4, 5])){
 			$exists = $con->query("SELECT isbn FROM books WHERE isbn = {$book}")->num_rows ? true : false;
+			$rated = $con->query("SELECT book userID FROM book_ratings WHERE book = {$book} AND userID = {$_SESSION['SESS_USERID']}")->num_rows ? true : false;
 			if($exists){
-				$con->query("INSERT INTO book_ratings (book, rating) VALUES ({$book}, {$rating})");
+				if($rated){
+					header('Location: index.php');
+				}
+				else{
+					$con->query("INSERT INTO book_ratings (book, rating, userID) VALUES ({$book}, {$rating}, {$_SESSION['SESS_USERID']})");
+				}
 			}
 		}
 		header('Location: index.php');
-}
+	}
+	else{
+		header('Location: loginForm.php');
+	}
 ?>
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
-
-	Your rating has been submited.
-	<p> <a href='index.php'> Continue shopping... </a> </p>
 </head>
 </html>
