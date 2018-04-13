@@ -4,6 +4,7 @@
 <?php
 	include("functions/functions.php");
   echo file_get_contents("html/header.php");
+	include("includes/db.php");
 ?>
 
 <head>
@@ -81,7 +82,7 @@
                         <div style='margin: auto;'>
                         <a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
 
-                        <a href='index.php?add_cart=$b_isbn'><button style='float:right'>Add to Cart</button></a>
+                        <a href='top_rated.php?add_cart=$b_isbn&page=$page'><button style='float:right'>Add to Cart</button></a>
 
                         </div>
                     </div>
@@ -99,7 +100,7 @@
 
             };
             echo $pagLink . "</div>";
-        
+
 
 
 

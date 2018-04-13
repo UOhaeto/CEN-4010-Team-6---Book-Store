@@ -160,7 +160,7 @@ function total_price(){
 
 			$rec_limit = 5;
 			/* Get total number of records */
-			$sql = "SELECT count(isbn) FROM book_ratings_view";
+			$sql = "SELECT count(isbn) FROM books";
 			$retval = mysqli_query($con, $sql );
 
 			if(! $retval ) {
@@ -188,7 +188,7 @@ function total_price(){
 			}
 
 
-			$get_b = "SELECT * FROM book_ratings_view LIMIT $rec_limit OFFSET $offset";
+			$get_b = "SELECT * FROM books LIMIT $rec_limit OFFSET $offset";
 
 			$run_b = mysqli_query($con, $get_b);
 
@@ -199,14 +199,14 @@ function total_price(){
 
 			$run_b = mysqli_query($con, $get_b);
 			while($row_b=mysqli_fetch_array($run_b)){
-        
+
 				//initializing variable with book name.
 				$b_title = $row_b['book_title'];
 				$b_price = $row_b['price'];
 				$b_image = $row_b['book_image'];
 				$b_author = $row_b['author'];
         $b_year = $row_b['year'];
-				$b_rating = round ($row_b['avgRating']);
+
 
 				//primary key
 				//used to display individual details page.
@@ -219,7 +219,6 @@ function total_price(){
 							<a href='details.php?b_isbn=$b_isbn'><img src='admin/book_images/$b_image' width='150px' height='200px'  /></a>
 							<p> $ $b_price </p>
 							<p> Year: $b_year </p>
-							<p> Rating: $b_rating/5</p>
 
 						<div style='margin: auto;'>
 						<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
@@ -230,7 +229,7 @@ function total_price(){
 					</div>
 
 				";
-        
+
 			}
 			$pagLink = "<div class='pagination'>";
 			for ($i=1; $i<=$total_pages; $i++) {
@@ -290,7 +289,7 @@ function total_price(){
 							<div style='margin: auto;'>
 							<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
 
-							<a href='index.php?b_isbn=$b_isbn'><button style='float:right'>Add to Cart</button></a>
+							<a href='genres.php?b_isbn=$b_isbn&genre=$book_genre'><button style='float:right'>Add to Cart</button></a>
 
 							</div>
 						</div>
@@ -308,18 +307,18 @@ function total_price(){
 
 			global $con;
 			if(isset($_GET['toprated'])){
-	
+
 				$rec_limit = 5;
 				/* Get total number of records */
 				$sql = "SELECT count(isbn) FROM book_ratings_view";
 				$retval = mysqli_query($con, $sql );
-	
+
 				if(! $retval ) {
 				die('Could not get data: ' . mysqli_error($con));
 				}
 				$row = mysqli_fetch_array($retval  );
 				$rec_count = $row[0];
-	
+
 				if( isset($_GET{'page'} ) ) {
 				$page = $_GET{'page'};
 				$offset = $rec_limit * ($page - 1) ;
@@ -327,27 +326,27 @@ function total_price(){
 				$page = 0;
 				$offset = 0;
 				}
-	
+
 				$left_rec = $rec_count - ($page * $rec_limit);
 						$total_pages = ceil($rec_count / $rec_limit);
-	
-	
+
+
 				$retval = mysqli_query($con, $sql );
-	
+
 				if(! $retval ) {
 				die('Could not get data: ' . mysql_error());
 				}
-	
-	
+
+
 				$get_b = "SELECT * FROM book_ratings_view ORDER BY avgRating DESC LIMIT $rec_limit OFFSET $offset";
-	
+
 				$run_b = mysqli_query($con, $get_b);
-	
+
 			//connection to db
 				global $con;
 				//get 6 random books
 				//$get_b = "SELECT * FROM book_ratings_view LIMIT ";
-	
+
 				$run_b = mysqli_query($con, $get_b);
 				while($row_b=mysqli_fetch_array($run_b)){
 						//initializing variable with book name.
@@ -356,30 +355,30 @@ function total_price(){
 						$b_image = $row_b['book_image'];
 						$b_year = $row_b['year'];
 						$b_rating = round ($row_b['avgRating']);
-	
+
 						//primary key
 						//used to display individual details page.
 						$b_isbn = $row_b['isbn'];
-	
+
 					echo "
 						<div id='single_book'>
-	
+
 								<h3>$b_title</h3>
 								<a href='details.php?b_isbn=$b_isbn'><img src='admin/book_images/$b_image' width='150px' height='200px'  /></a>
 								<p> $ $b_price </p>
 								<p> Year: $b_year </p>
 								<p> Rating: $b_rating/5</p>
-	
+
 							<div style='margin: auto;'>
 							<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
-	
+
 							<a href='index.php?add_cart=$b_isbn'><button style='float:right'>Add to Cart</button></a>
-	
+
 							</div>
 						</div>
-	
+
 					";
-	
+
 				}
 				$pagLink = "<div class='pagination'>";
 				for ($i=1; $i<=$total_pages; $i++) {
@@ -388,11 +387,11 @@ function total_price(){
 					}else{
 						$pagLink .= "<a  href='top_rated.php?page=".$i."'>".$i."</a>";
 					}
-	
+
 				};
 				echo $pagLink . "</div>";
 			}
-	
+
 		}
 
 
