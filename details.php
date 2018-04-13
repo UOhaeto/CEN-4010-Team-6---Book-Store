@@ -14,34 +14,34 @@
 <body>
 
 	<div class="content" >
-	
+
 		<div id="book_container">
-			
+
 			<?php
 
 				$book = null;
-						
+
 				//check url for the isbn
 				if(isset($_GET['b_isbn'])){
-								
-				$isbn = $_GET['b_isbn'];	
-							
+
+				$isbn = $_GET['b_isbn'];
+
 				// query that gets the isbn
 				$get_b = "select *, AVG(book_ratings.rating) AS rating from books LEFT JOIN book_ratings
 				ON books.isbn = book_ratings.book where isbn='$isbn'";
-							
+
 				//running query
 				$run_b = mysqli_query($con, $get_b);
-						
+
 				while($row_b=mysqli_fetch_array($run_b)){
-									
+
 					//initializing variable with book name.
-					$b_title = $row_b['book_title']; 
-					$b_author = $row_b['author']; 
-					$b_genre = $row_b['genre']; 
+					$b_title = $row_b['book_title'];
+					$b_author = $row_b['author'];
+					$b_genre = $row_b['genre'];
 					$b_release = $row_b['release_date'];
-					$b_price = $row_b['price']; 
-					$b_image = $row_b['book_image'];	
+					$b_price = $row_b['price'];
+					$b_image = $row_b['book_image'];
 					$b_description = $row_b['description'];
 					$b_a_description = $row_b['author_bio'];
 					$b_a_description = $row_b['author_bio'];
@@ -73,33 +73,42 @@
 
   					<?php
 
+						$sql_genre = "SELECT * FROM book_genres WHERE genre_id=$b_genre";
+						$run_g = mysqli_query($con, $sql_genre);
+						$genre_name;
+
+						while($row_g = mysqli_fetch_array($run_g)){
+							$genre_name = $row_g['genre_type'];
+						}
 					echo"
-										
+
 						<h3>$b_title</h3>
 						<p> <a href='author.php?b_author=$b_author'>by $b_author </a> </p>
 						<img src='admin/book_images/$b_image' class='thumbnail' width='300px' height='400px' />
-										
+
 						<p> $ $b_price </p>
+
+						<p> Genre: <a href='genres.php?genre=$b_genre'>$genre_name</a> </p>
 						<p> Rating: <img src='images/$b_rating.png' style = 'border: 0px'></p>
 						<p> Book Description: $b_description
 
 						<div style='margin: auto; '>
-						<a href='index.php' style='float:left;'> Go Back</a>			
-											
+						<a href='index.php' style='float:left;'> Go Back</a>
+
 						<a href='index.php?b_isbn=$b_isbn'><button style='float:right'>Add to Cart</button></a>
-											
+
 							</div>
 						</div>
-				
+
 									";
 								}
 							}
-						
+
 						?>
 		</div>
 	</div>
 
-	<?php 
+	<?php
 
 	$filename = "comments/" . $isbn . 'comments.html';
 
