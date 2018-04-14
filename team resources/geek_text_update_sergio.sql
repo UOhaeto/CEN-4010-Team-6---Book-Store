@@ -49,10 +49,32 @@ CREATE TABLE `books` (
 
 CREATE TABLE `book_ratings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `book` int(11) DEFAULT NULL,
-  `rating` int(11) DEFAULT NULL,
+  `book` int(11) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `userID` int(10) UNSIGNED NOT NULL,
+  `anonymous` text NOT NULL NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `book_ratings`
+--
+
+INSERT INTO `book_ratings` (`book`, `rating`, `userID`, `anonymous`) VALUES
+(1, 1, '1', 'no'),
+(4, 2, '1', 'no'),
+(5, 3, '1', 'no'),
+(7, 4, '1', 'no'),
+(8, 5, '1', 'no'),
+(9, 2, '1', 'no'),
+(10, 3, '1', 'no'),
+(11, 2, '1', 'no'),
+(1, 5, '2', 'no'),
+(4, 4, '2', 'no'),
+(5, 1, '2', 'no'),
+(7, 2, '2', 'no');
+
+-- --------------------------------------------------------
 
 --
 -- Dumping data for table `books`
@@ -129,6 +151,7 @@ INSERT INTO `shippingaddresses` (`shippingaddressID`, `shippingStreet`, `shippin
 (0, '123 Abc St.', 'Magic City', 'Florida', '33133'),
 (1, '456 Abc St.', 'Magic City', 'Florida', '33133');
 
+
 -- --------------------------------------------------------
 
 --
@@ -178,6 +201,26 @@ INSERT INTO `users` (`userID`, `username`, `password`, `fName`, `lName`, `email`
 (2, 'user2', 'password2', 'Hermione', 'Granger', 'hermione@hogwarts.edu', '456 Abc St.', 'Magic City', 'Florida', '33133', 'hg', '305-555-2323'),
 (0, 'guest', 'guest', 'Guest', '', '', '', '', '', '', '', '');
 
+--
+-- View for vs and ratings, no duplicates.
+--
+
+CREATE VIEW book_ratings_view
+AS
+SELECT
+      b.isbn
+    , b.book_title
+    , b.book_image
+    , b.price
+    , AVG(br.rating) AS avgRating
+FROM books b
+INNER JOIN book_ratings br ON b.isbn = br.book
+GROUP BY
+      b.isbn
+    , b.book_title
+    , b.book_image
+    , b.price
+;
 --
 -- Indexes for dumped tables
 --

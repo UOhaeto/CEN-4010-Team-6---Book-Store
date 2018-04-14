@@ -4,6 +4,7 @@
 <?php
 	include("functions/functions.php");
 	echo file_get_contents("html/header.php");
+	session_start();
 ?>
 
 <head>
@@ -19,17 +20,6 @@
 			<?php
 
 				$book = null;
-				if(isset($_GET['isbn'])){
-		
-					$isbn = (int)$_GET['isbn'];
-					$book = $con->query("
-						SELECT books.isbn, books.book_title, AVG(book_ratings.rating) AS rating
-						FROM books
-						LEFT JOIN book_ratings
-						ON books.isbn = book_ratings.book
-						WHERE books.isbn = {$isbn}
-					")->fetch_object();
-				}
 						
 				//check url for the isbn
 				if(isset($_GET['b_isbn'])){
@@ -98,8 +88,23 @@
 						
 						?>
 		</div>
-		
 	</div>
 
+	<?php 
+	$filename = "comments/" . $isbn . 'comments.html';
+
+	if($_POST){
+		$name = $_SESSION['SESS_USERNAME'];
+		$comment = $_POST['commentArea'];
+		$handle = fopen($filename, "a");
+		fwrite($handle, "<b>" . $name. "</b>:</br>" . $comment . "</br>" );
+		fclose($handle);
+	}
+	?>
+				<form action = "" method = "POST">
+				Comments: <textarea rows = "10" cols = "30" name = "commentArea"></textarea></br>
+				<input type = "submit" value = "Post">
+				</form>
+				<?php include	$filename; ?>
 </body>
 </html>
