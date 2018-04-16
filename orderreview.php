@@ -26,5 +26,5 @@
 
       <p2> <br>Thank you for shopping with us.</br> </p2>
       <p3> Feel free to rate your purchased books </p3>
-      <?php echo '<a href="index.php">Here</a>'; ?>
+      <?php //echo '<a href="index.php">Here</a>'; ?>
     </div>
