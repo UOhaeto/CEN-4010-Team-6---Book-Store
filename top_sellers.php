@@ -65,28 +65,23 @@
                     $b_year = $row_b['year'];
                     $b_sold = $row_b['sold'];
                     //$b_rating = round ($row_b['avgRating']);
-
                     //primary key
                     //used to display individual details page.
                     $b_isbn = $row_b['isbn'];
 
                 echo "
                     <div id='single_book'>
-
                             <h3>$b_title</h3>
                             <a href='details.php?b_isbn=$b_isbn'><img src='admin/book_images/$b_image' width='150px' height='200px'  /></a>
                             <p> $ $b_price </p>
                             <p> Year: $b_year </p>
                             <p> Sold: $b_sold </p>
-                        
+
                         <div style='margin: auto;'>
                         <a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
-
-                        <a href='index.php?add_cart=$b_isbn'><button style='float:right'>Add to Cart</button></a>
-
+                        <a href='top_sellers.php?add_cart=$b_isbn&page=$page'><button style='float:right'>Add to Cart</button></a>
                         </div>
                     </div>
-
                 ";
 
             }
@@ -100,7 +95,7 @@
 
             };
             echo $pagLink . "</div>";
-        
+
 
 
 
