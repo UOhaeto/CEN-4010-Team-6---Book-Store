@@ -13,6 +13,26 @@
 </head>
 <body>
 
+	<?php
+		//check url for the isbn
+		if(isset($_GET['b_isbn'])){
+
+		$isbn = $_GET['b_isbn'];
+		
+		$bookBought = False;
+		$userID = $_SESSION['SESS_USERID'];
+
+		$checkBought = "SELECT * FROM myLibrary where userID='$userID' AND bookID='$isbn'";
+		$run_checkBought = mysqli_query($con, $checkBought);
+		$numberOfRows = mysqli_num_rows($run_checkBought);
+		if($numberOfRows == 0){
+			$bookBought = False;
+		}
+		else{
+			$bookBought = True;
+		}
+	?>
+
 	<div class="content" >
 
 		<div id="book_container">
@@ -20,11 +40,6 @@
 			<?php
 
 				$book = null;
-
-				//check url for the isbn
-				if(isset($_GET['b_isbn'])){
-
-				$isbn = $_GET['b_isbn'];
 
 				// query that gets the isbn
 				$get_b = "select *, AVG(book_ratings.rating) AS rating from books LEFT JOIN book_ratings
@@ -53,23 +68,29 @@
 
 					echo "
 						<div id='single_book' width: 70%; height: auto;>";
-
 					?>
 
-					Rate this book:
-					<form action="rate.php" method="get" enctype="multipart/form-data">
-						<input type="hidden" name="book" value="<?php echo $b_isbn; ?>">
-						<select name="rating">
-							<option value="1" >1 Star</option>
-							<option value="2" >2 Stars</option>
-							<option value="3" >3 Stars</option>
-							<option value="4" >4 Stars</option>
-							<option value="5" >5 Stars</option>
-						</select>
-						<input type="radio" name="anonymous" value="yes"> Anonymous
-						<input type="radio" name="anonymous" value="no"> Use Username
-						<p><input type="submit" value="Submit"></p>
-					</form>
+					<?php
+
+					if($bookBought == True){
+					?>
+						Rate this book:
+						<form action="rate.php" method="get" enctype="multipart/form-data">
+							<input type="hidden" name="book" value="<?php echo $b_isbn; ?>">
+							<select name="rating">
+								<option value="1" >1 Star</option>
+								<option value="2" >2 Stars</option>
+								<option value="3" >3 Stars</option>
+								<option value="4" >4 Stars</option>
+								<option value="5" >5 Stars</option>
+							</select>
+							<input type="radio" name="anonymous" value="yes"> Anonymous
+							<input type="radio" name="anonymous" value="no"> Use Username
+							<p><input type="submit" value="Submit"></p>
+						</form>
+					<?php
+					}
+					?>
 
   					<?php
 
@@ -110,24 +131,41 @@
 
 	<?php
 
+	$loggedIn = True;
+	$promptToLogIn = "";
+
 	$filename = "comments/" . $isbn . 'comments.html';
 
 	if($_POST){
 		$comment = $_POST['commentArea'];
 		$name = $_SESSION['SESS_USERNAME'];
-		if($name != 'guest'){
+		if($name != 'guest' && isset($_POST['anonymous-no']) && $bookBought == True){
 			$handle = fopen($filename, "a");
 			fwrite($handle, "<b>" . $name. "</b>:</br>" . $comment . "</br>" );
 			fclose($handle);
 		}
+		elseif($name != 'guest' && isset($_POST['anonymous-yes']) && $bookBought == True){
+			$handle = fopen($filename, "a");
+			fwrite($handle, "<b>" . "anonymous". "</b>:</br>" . $comment . "</br>" );
+			fclose($handle);
+		}
 		else{
-			header('Location: login.php');
+			$loggedIn = False;
+			$promptToLogIn = "You have either not purchased the book, did not select a posting option, or are not logged in.";
 		}
 	}
 	?>
 		<h2> Submit a comment </h2>
+		<?php 
+		if($loggedIn == False){
+			echo "$promptToLogIn";?>
+			<a href='login.php'>Login.</a><?php
+		}
+		?><p></p>
 		<form action = "" method = "POST">
 		<textarea rows = "10" cols = "30" name = "commentArea"></textarea></br>
+		<input type="radio" name="anonymous-yes" value="yes"> Anonymous
+		<input type="radio" name="anonymous-no" value="no"> Use Username
 		<input type = "submit" value = "Post">
 		</form>
 		<h2> Comments </h2>
@@ -154,4 +192,4 @@
 	}
 	?>
 </body>
-</html>
+</html

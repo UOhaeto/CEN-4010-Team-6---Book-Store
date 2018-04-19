@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
 <?php
 	session_start();
@@ -62,5 +62,26 @@
 		</div>
 	</div>
 
+	<br>><center><h2>My Purchased Books</h2>
+	<div id='myBooks'>
+	<?php
+	$checkBought = "SELECT * FROM myLibrary INNER JOIN books ON myLibrary.bookID = books.isbn where userID='$id'";
+	$run_checkBought = mysqli_query($con, $checkBought);
+	$numberOfRows = mysqli_num_rows($run_checkBought);
+	if($numberOfRows == 0){
+		echo "No books purchased yet.";
+	}
+	else{
+		while($row_books=mysqli_fetch_array($run_checkBought)){
+			$b_title = $row_books['book_title'];
+			$b_author = $row_books['author'];
+			$b_image = $row_books['book_image'];
+
+			echo "<div id='book' style='display:inline-block'><h4>$b_title</h4>
+			<p> <a href='author.php?b_author=$b_author'>by $b_author </a> </p>
+			<img src='admin/book_images/$b_image' width='150px' height='200px' style='padding-right: 20px'/></div>";
+		}
+	}
+	?></center>
 </body>
 </html>
