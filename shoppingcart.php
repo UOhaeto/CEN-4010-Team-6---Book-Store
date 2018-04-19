@@ -18,7 +18,7 @@
 
 	<form action = "" method = "post" enctype="multipart/form-data">
 
-			<table align = "center" width = "1000" bgcolor = "white">
+			<table align = "center" width = "800" bgcolor = "white">
 
 					<tr align = "center">
 								<th>Remove</th>
@@ -40,6 +40,7 @@
 					while ($p_price=mysqli_fetch_array($run_price)){
 
 							$pro_id = $p_price['book_id'];
+
 							$pro_qty = $p_price['quantity'];
 
 							$pro_price = "select * from books where isbn='$pro_id'";
@@ -56,7 +57,7 @@
 
 									$values = $single_price * $pro_qty;
 
-									$total +=$values;
+									$total += $values;
 
 					?>
 
@@ -65,13 +66,34 @@
 							<td><?php echo $book_tit; ?><br>
 							<img src='admin/book_images/<?php echo $book_img;?>' width ='100' height='120'/>
 							</td>
-							<td><input type = "text" size = "1" name = "quantity" /></td>
-
+							<td width = "2">
+								<select name = "quantity">
+  								<option value="1">1</option>
+  								<option value="2">2</option>
+  								<option value="3">3</option>
+  								<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+								</select>
+							</td>
+							<?php
+							$q = 1;
+							if(isset($_POST['quantity'])){
+								$q = $_POST['quantity'];
+								$update_q = "update cart set quantity='$q' where book_id = '$pro_id'";
+								$run_q = mysqli_query($con, $update_q);
+							} ?>
 							<td><?php echo "$" . $single_price; ?></td>
 					</tr>
 
 
-				<?php } } ?><!--end of the while loops-->
+				<?php
+
+			} } ?><!--end of the while loops-->
 
 
 				<tr align = "right" >
@@ -105,11 +127,16 @@
 
 					<?php
 					global $con;
+
+					/*
 					$total = 0;
 
 					$ip = getIp();
 
 					if(isset($_POST['quantity'])){
+						$arr = array("");
+						array_push($arr, $_POST['quantity']);
+
 						$getALL = "select * from cart where ip_add= '$ip'";
 						$running = mysqli_query($con, $getALL);
 						while ($p = mysqli_fetch_array($running)){
@@ -117,16 +144,16 @@
 							$id = $p['book_id'];
 							$theqty = $p['quantity'];
 							$onePrice = $p['the_price'];
-							if(is_numeric($x)){
-								$update_qty = "update cart set quantity='$x' where book_id = '$id'";
-								$run_qty = mysqli_query($con, $update_qty);
-								$values = $onePrice * $x;
-								$total += $values;
+							foreach ($arr as $x) {
+							$update_qty = "update cart set quantity='$x' where book_id = '$id'";
+							$run_qty = mysqli_query($con, $update_qty);
+							$values = $onePrice * $x;
+							$total += $values;
 								break;
-								}
+							}
 						}
 						//if quantity is set
-
+ */
 
 								//checking if remove checkbox was set
 								if(isset($_POST['remove'])){
@@ -145,7 +172,7 @@
 
 							}//end of remove if
 
-					}//end of outer if
+
 
 
 					?>

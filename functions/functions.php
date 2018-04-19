@@ -61,7 +61,6 @@ function cart(){
 		if(isset($_GET['add_cart'])){
 
 				$ip = getIp();
-				$defaultQTY = 1;
 				$book_id = $_GET['add_cart'];
 
 				$check_book = "select * from cart where ip_add='$ip' AND book_id='$book_id' ";
@@ -81,7 +80,7 @@ function cart(){
 					while($p = mysqli_fetch_array($running)){
 						$singlePrice = $p['price'];
 
-						$insert_book = "insert into cart (book_id, ip_add, the_price ,quantity) values ('$id','$ip', '$singlePrice','$defaultQTY')";
+						$insert_book = "insert into cart (book_id, ip_add, the_price) values ('$id','$ip', '$singlePrice')";
 						$run_pro = mysqli_query($con, $insert_book);
 					}
 
