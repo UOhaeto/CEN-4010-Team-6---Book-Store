@@ -29,7 +29,18 @@
 
 					<?php
 					global $con;
-					$total = 0;
+					$book_total = 0;
+					$cart_total = 0;
+
+					$book_price = null;
+
+					$book_tit = null;
+
+					$book_img = null;
+
+					$single_price = null;
+
+					$book_isbn = null;
 
 					$ip = getIp();
 
@@ -47,7 +58,7 @@
 
 							while ($b_price = mysqli_fetch_array($run_book_price)){
 
-									$book_price = array($b_price['price']);
+									$book_price = $b_price['price'];
 
 									$book_tit = $b_price['book_title'];
 
@@ -55,11 +66,9 @@
 
 									$single_price = $b_price['price'];
 
-									$values = array_sum($book_price);
+									$book_isbn = $b_price['isbn'];
 
-									$total +=$values;
-
-
+							}
 					?>
 
 					<tr align = "center">
@@ -67,7 +76,7 @@
 							<td><?php echo $book_tit; ?><br>
 							<img src='admin/book_images/<?php echo $book_img;?>' width ='100' height='120'/>
 							</td>
-							<td><input type = "text" size = "4" name = "quantity" /></td>
+							<td><input type = "text" size = "4" name = "quantity"  value="<?php if(isset($_POST['quantity'])){echo $_POST['quantity']; } ?>"/></td>
 							<?php
 
 							if(isset($_POST['update_cart'])){
@@ -77,13 +86,13 @@
 
 											$qty = $_POST['quantity'];
 
-											$update_qty = "update cart set quantity='$qty'";
+											$update_qty = "update cart set quantity='$qty' WHERE book_id='$book_isbn'";
 
 											$run_qty = mysqli_query($con, $update_qty);
 
-											$_SESSION['quantity'] = $qty;
+											//$_SESSION['quantity'] = $qty;
 
-											$total = $total * $qty;
+											$book_total = $book_price * $qty;
 										}
 										//checking if remove checkbox was set
 										if(isset($_POST['remove'])){
@@ -109,11 +118,11 @@
 
 
 
-							<td><?php echo "$" . $single_price; ?></td>
+							<td><?php echo "$" . $book_total; ?></td>
 					</tr>
 
 
-				<?php } } ?><!--end of the while loops-->
+				<?php  } ?><!--end of the while loops-->
 
 				<tr align = "right">
 						<td colspan="4"><b>Total:</b></td>

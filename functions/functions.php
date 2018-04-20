@@ -29,7 +29,7 @@
 				}
 				else {
 
-					$insert_book = "insert into cart (book_id, ip_add) values ('$book_id','$ip')";
+					$insert_book = "insert into cart (book_id, ip_add, quantity) values ('$book_id','$ip', 1)";
 
 					$run_pro = mysqli_query($con, $insert_book);
 
