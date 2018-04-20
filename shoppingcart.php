@@ -14,7 +14,6 @@
 <body>
 
 	<div class="content" >
-		<?php  cart(); ?>
 
 	<form action = "" method = "post" enctype="multipart/form-data">
 
