@@ -40,12 +40,10 @@
 				<a href="top_sellers.php"> Top Sellers </a>
 				<a href="genres.php">Genres </a>
 
-				<!--
+
         <a href="genres.php"> Genres </a>
 
-
-
-			/*
+				<?php
 				//getting and displying genres
 					$get_genres = "select * from book_genres";
 					$run_genres =  mysqli_query($con, $get_genres);
@@ -59,11 +57,20 @@
 						echo "<a href=genres.php?genre=$genre_id>$genre_type </a>";
 					}
 
+					?>
 
-				?>
+
+					<!--
+
+
+
         <form class="user" action="genres.php">
         	<label for="label_genre"><b><font face="helvetica">Genres</font></b></label>
         	<select name="genre">
+
+
+
+
 	          $get_genres = "select * from book_genres";
 	          $run_genres =  mysqli_query($con, $get_genres);
 
@@ -81,15 +88,18 @@
 
 
 
+
+
 					?>
           <input type="submit" value="Go" />
 					</select>
         <form>
+				-->
 
-				*/
-				?>
 
-			-->
+
+
+
 
 
 
