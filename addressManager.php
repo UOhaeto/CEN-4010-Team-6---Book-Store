@@ -14,7 +14,9 @@
       
       
 
-    $query = mysqli_query($con, "SELECT * FROM shippingaddresses, shippingaddressmapper WHERE users_userID=$id  AND address_order=1");
+    $query = mysqli_query($con, "SELECT a.shippingStreet, a.shippingCity, a.shippingState, a.shippingZip, a.shippingaddressID 
+                                  FROM shippingaddresses a INNER JOIN shippingaddressmapper m1 ON a.shippingaddressID = m1.shippingaddresses_shippingaddressID 
+                                  WHERE address_order=1 AND m1.users_userID=$id");
     while($result = mysqli_fetch_array($query))
     {
       $shippingStreet1 = $result['shippingStreet'];
@@ -24,7 +26,9 @@
       $shippingId1 = $result['shippingaddressID'];
     }
 
-    $query = mysqli_query($con, "SELECT * FROM shippingaddresses, shippingaddressmapper WHERE users_userID=$id  AND address_order=2");
+    $query = mysqli_query($con, "SELECT a.shippingStreet, a.shippingCity, a.shippingState, a.shippingZip, a.shippingaddressID 
+                                  FROM shippingaddresses a INNER JOIN shippingaddressmapper m1 ON a.shippingaddressID = m1.shippingaddresses_shippingaddressID 
+                                  WHERE address_order=2 AND m1.users_userID=$id");
     while($result = mysqli_fetch_array($query))
     {
       $shippingStreet2 = $result['shippingStreet'];
@@ -34,7 +38,9 @@
       $shippingId2 = $result['shippingaddressID'];
     }
 
-    $query = mysqli_query($con, "SELECT * FROM shippingaddresses, shippingaddressmapper WHERE users_userID=$id  AND address_order=3");
+    $query = mysqli_query($con, "SELECT a.shippingStreet, a.shippingCity, a.shippingState, a.shippingZip, a.shippingaddressID 
+                                  FROM shippingaddresses a INNER JOIN shippingaddressmapper m1 ON a.shippingaddressID = m1.shippingaddresses_shippingaddressID 
+                                  WHERE address_order=3 AND m1.users_userID=$id");
     while($result = mysqli_fetch_array($query))
     {
       $shippingStreet3 = $result['shippingStreet'];
@@ -44,7 +50,9 @@
       $shippingId3 = $result['shippingaddressID'];
     }
 
-    $query = mysqli_query($con, "SELECT * FROM shippingaddresses, shippingaddressmapper WHERE users_userID=$id  AND address_order=4");
+    $query = mysqli_query($con, "SELECT a.shippingStreet, a.shippingCity, a.shippingState, a.shippingZip, a.shippingaddressID 
+                                  FROM shippingaddresses a INNER JOIN shippingaddressmapper m1 ON a.shippingaddressID = m1.shippingaddresses_shippingaddressID 
+                                  WHERE address_order=4 AND m1.users_userID=$id");
     while($result = mysqli_fetch_array($query))
     {
       $shippingStreet4 = $result['shippingStreet'];

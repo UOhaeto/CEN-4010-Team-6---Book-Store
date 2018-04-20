@@ -32,16 +32,6 @@
 					$book_total = 0;
 					$cart_total = 0;
 
-					$book_price = null;
-
-					$book_tit = null;
-
-					$book_img = null;
-
-					$single_price = null;
-
-					$book_isbn = null;
-
 					$ip = getIp();
 
 					$sel_price = "select * from cart where ip_add= '$ip'";
@@ -68,7 +58,11 @@
 
 									$book_isbn = $b_price['isbn'];
 
-							}
+									//$values = array_sum($book_price);
+
+									//$total +=$values;
+
+
 					?>
 
 					<tr align = "center">
@@ -86,7 +80,7 @@
 
 											$qty = $_POST['quantity'];
 
-											$update_qty = "update cart set quantity='$qty' WHERE book_id='$book_isbn'";
+											$update_qty = "update cart set quantity='$qty' WHERE book_id='$book_isbn' AND item_id=''";
 
 											$run_qty = mysqli_query($con, $update_qty);
 
@@ -122,7 +116,7 @@
 					</tr>
 
 
-				<?php  } ?><!--end of the while loops-->
+				<?php } } ?><!--end of the while loops-->
 
 				<tr align = "right">
 						<td colspan="4"><b>Total:</b></td>

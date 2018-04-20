@@ -90,6 +90,21 @@ if ($user) { // if user exists
 */
 			$insert_u = "insert into users (userID, username, password, fName, lName, email, homeStreet, homeCity, homeState, homeZip, nickname, entireNumber) values ('$user_id','$user_username','$u_password','$u_first_name','$u_last_name','$u_email','$user_address','$user_city', '$user_state', '$user_zip', '$user_nickname', '$u_phone')";
 			$run_c = mysqli_query($con, $insert_u);
+
+			//Adding 4 shipping address slots.
+			for ($c = 1; $c < 5; $c++) {
+				$guid = rand(1, 9) + rand(10, 90) + rand(100, 900) + rand(1000, 9000);
+				$add_shp_add = mysqli_query($con, "INSERT INTO shippingaddresses (shippingaddressID, shippingStreet, shippingCity, shippingState, shippingzip) values ('$guid', '-', '-', '-', '-')");
+				$add_to_shp_mapper = mysqli_query($con, "INSERT INTO shippingaddressmapper (users_userID, shippingaddresses_shippingaddressID, address_order) values ('$user_id', '$guid', '$c')");
+			}
+
+			//Adding 4 credit card slots.
+			for ($c = 1; $c < 5; $c++) {
+				$guid = rand(1, 9) + rand(10, 90) + rand(100, 900) + rand(1000, 9000);
+				$add_shp_add = mysqli_query($con, "INSERT INTO credit_cards (cc_ID, cc_number, cc_name, exp_date, sec_code) values ('$guid', '-', '-', '-', '-')");
+				$add_to_shp_mapper = mysqli_query($con, "INSERT INTO credit_cards_mapper (userID, cc_ID, cc_order) values ('$user_id', '$guid', '$c')");
+			}
+
 			if($run_c){
 				echo "<script>alert('user registered successfully!')</script>";
 			}

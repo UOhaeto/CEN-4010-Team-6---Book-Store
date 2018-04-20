@@ -142,9 +142,9 @@
 
 				$cart_isbn = "";
 
-				$cart_query = "select * from cart";
+				$order_ISBNS = array();
 
-				$order_isbn = array();
+				$cart_query = "select * from cart";
 
  				echo $cart_isbn;
 
@@ -154,11 +154,8 @@
 				while($row_b=mysqli_fetch_array($run_isbn)){
 						$temp_isbn = $row_b['book_id'];
 						$same_isbn = "select * from books where isbn = '$temp_isbn'";
+						array_push($order_ISBNS, $same_isbn);
 						$run_temp = mysqli_query($con, $same_isbn);
-						//array_push($order_isbn, $run_temp);
-						$usernum = $_SESSION['SESS_USERID'];
-						//$cur_isbn = $run_temp['isbn'];
-						$run_lib = mysqli_query($con, "insert into myLibrary (userID, bookID) values ({$usernum}, {$temp_isbn})");
 
 						while($rowb_temp=mysqli_fetch_array($run_temp)){
 								$sold_amnt = $rowb_temp['sold'];
@@ -170,36 +167,7 @@
 						}	//Closes second while
 
 				}	//Closes first while
-
-			
 			}	//Closes if statement
-
-				?>
-
-
-				<?php
-
-				//$userlogg_in = "select userID from users where userID= {$_SESSION['SESS_USERID']}";
-				//$run_login = mysqli_query($con, $userlogg_in);
-				//$book_code = "select isbn from books where sold > 0";
-				//$run_code = mysqli_query($con, $book_code);
-
-				//if(isset($_POST['place_order']) && ($_SESSION['SESS_USERID'] > 0) ){
-
-					//while($row_c=mysqli_fetch_array($run_login)&&($row_ctemp=mysqli_fetch_array($run_code))){
-							//$currlogg_in = $row_c['userID'];
-							//$bk_code
-
-
-							//echo $bk_sold;
-					//}			//Close first while
-					//echo $currlogg_in;
-
-
-
-				//}
-
-
 
 				?>
 

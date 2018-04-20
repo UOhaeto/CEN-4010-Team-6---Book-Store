@@ -14,7 +14,9 @@
       
       
 
-    $query = mysqli_query($con, "SELECT * FROM credit_cards, credit_cards_mapper WHERE userID=$id  AND cc_order=1");
+    $query = mysqli_query($con, "SELECT c.cc_ID, c.cc_name, c.cc_number, c.exp_date, c.sec_code 
+                                 FROM credit_cards c INNER JOIN credit_cards_mapper m1 ON c.cc_ID = m1.cc_ID
+                                 WHERE cc_order=1 AND m1.userID=$id");
     while($result = mysqli_fetch_array($query))
     {
       $cc_ID1 = $result['cc_ID'];
@@ -24,7 +26,9 @@
       $cc_code1 = $result['sec_code'];
     }
 
-    $query = mysqli_query($con, "SELECT * FROM credit_cards, credit_cards_mapper WHERE userID=$id  AND cc_order=2");
+    $query = mysqli_query($con, "SELECT c.cc_ID, c.cc_name, c.cc_number, c.exp_date, c.sec_code 
+                                 FROM credit_cards c INNER JOIN credit_cards_mapper m1 ON c.cc_ID = m1.cc_ID
+                                 WHERE cc_order=2 AND m1.userID=$id");
     while($result = mysqli_fetch_array($query))
     {
       $cc_ID2 = $result['cc_ID'];
@@ -34,7 +38,9 @@
       $cc_code2 = $result['sec_code'];
     }
 
-    $query = mysqli_query($con, "SELECT * FROM credit_cards, credit_cards_mapper WHERE userID=$id  AND cc_order=3");
+    $query = mysqli_query($con, "SELECT c.cc_ID, c.cc_name, c.cc_number, c.exp_date, c.sec_code 
+                                 FROM credit_cards c INNER JOIN credit_cards_mapper m1 ON c.cc_ID = m1.cc_ID
+                                 WHERE cc_order=3 AND m1.userID=$id");
     while($result = mysqli_fetch_array($query))
     {
       $cc_ID3 = $result['cc_ID'];
@@ -44,7 +50,9 @@
       $cc_code3 = $result['sec_code'];
     }
 
-    $query = mysqli_query($con, "SELECT * FROM credit_cards, credit_cards_mapper WHERE userID=$id  AND cc_order=4");
+    $query = mysqli_query($con, "SELECT c.cc_ID, c.cc_name, c.cc_number, c.exp_date, c.sec_code 
+                                 FROM credit_cards c INNER JOIN credit_cards_mapper m1 ON c.cc_ID = m1.cc_ID
+                                 WHERE cc_order=4 AND m1.userID=$id");
     while($result = mysqli_fetch_array($query))
     {
       $cc_ID4 = $result['cc_ID'];

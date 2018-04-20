@@ -2,7 +2,7 @@
 <html>
 
 <?php
-
+	session_start();
 	include("functions/functions.php");
   echo file_get_contents("html/adv_search.php");
 ?>

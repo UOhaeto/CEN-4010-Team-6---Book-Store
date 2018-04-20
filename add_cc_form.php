@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
 <?php
-	session_start();
-	$ccID = $_POST['ccID'];
+	//session_start();
+	include('add_cc.php');
+	//$ccID = $_POST['ccID'];
 ?>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
   <h1 align="center"> <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a> </h1>  
 </head>
+
 	
+
 <body>
   <div id="add_shp" class="login_div">
-    <form class="user" action="add_cc.php" method="post" enctype="multipart/form-data">
+    <form class="user" action="creditCardManager.php" method="post" enctype="multipart/form-data">
+
+			<?php include('errors.php'); ?>
+
       <label for="cc_name"><b><font face="helvetica">Name on Credit Card</font></b></label>
 			<input type="text" name="cc_name" required placeholder="Name" value="<?php if(isset($_POST['cc_name'])){echo $_POST['cc_name']; } ?>"/>
 
