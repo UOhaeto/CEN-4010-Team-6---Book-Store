@@ -43,7 +43,7 @@ function getNumOfItems(){
 
 					$run_pro = mysqli_query($con, $insert_book);
 
-					echo "<script>window.open('index.php','_self')</script>";
+					header("Refresh:0");
 
 				}
 
@@ -83,7 +83,7 @@ function getNumOfItems(){
 							$run_pro = mysqli_query($con, $insert_book);
 						}
 
-						echo "<script>window.open('index.php','_self')</script>";
+						header("Refresh:0");
 
 					}
 

@@ -17,6 +17,7 @@
 		<div id="book_container">
 
 				<?php
+				cart(); saveForLater();
 				if(isset($_GET['search'])){
 					$search_query = $_GET['search'];
 
@@ -131,7 +132,8 @@
 								<div style='margin: auto;'>
 								<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
 
-								<a href='index.php?b_isbn=$b_isbn'><button style='float:right'>Add to Cart</button></a>
+								<a href='result.php?add_cart=$b_isbn&page=$page&search=$search_query&sort=$sort&results=$rec_limit'><button style='float:right'>Add to Cart</button></a>
+								<a href='result.php?save_later=$b_isbn&page=$page&search=$search_query&sort=$sort&results=$rec_limit'><button style='float:right'>Save for later</button></a>
 
 								</div>
 							</div>

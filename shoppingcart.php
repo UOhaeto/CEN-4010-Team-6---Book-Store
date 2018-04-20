@@ -2,9 +2,8 @@
 <html>
 
 <?php
-	session_start();
-	include("functions/functions.php");
-  echo file_get_contents("html/header.php");
+	//include("functions/functions.php");
+  include("html/header.php");
 ?>
 
 <head>

@@ -2,8 +2,8 @@
 <html>
 
 <?php
-include('functions/functions.php');
-echo file_get_contents("html/header.php");
+//include('functions/functions.php');
+include("html/header.php");
 ?>
 
 <head>
@@ -17,7 +17,7 @@ echo file_get_contents("html/header.php");
 
         <?php
 
-						cart();
+						cart(); saveForLater();
             $rec_limit = 5;
             /* Get total number of records */
             $sql = "SELECT count(isbn) FROM books";
@@ -81,6 +81,7 @@ echo file_get_contents("html/header.php");
                         <div style='margin: auto;'>
                         <a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
                         <a href='top_sellers.php?add_cart=$b_isbn&page=$page'><button style='float:right'>Add to Cart</button></a>
+												<a href='top_sellers.php?save_later=$b_isbn&page=$page'><button style='float:right'>Save for later</button></a>
                         </div>
                     </div>
                 ";
