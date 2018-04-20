@@ -4,7 +4,7 @@
 <?php
 
 	include("html/header.php");
-	session_start();
+
 ?>
 
 <head>
