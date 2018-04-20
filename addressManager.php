@@ -2,17 +2,17 @@
 <html>
 <?php
 	session_start();
-	
+
 	include("functions/functions.php");
-	include("html/header.php");
-	
+	echo file_get_contents("html/header.php");
+
 	$id=$_SESSION['SESS_USERID'];
     $shippingStreet1 = $shippingId1 = $shippingCity1 = $shippingState1 = $shippingZip1 = "-";
     $shippingStreet2 = $shippingId2 = $shippingCity2 = $shippingState2 = $shippingZip2 = "-";
     $shippingStreet3 = $shippingId3 = $shippingCity3 = $shippingState3 = $shippingZip3 = "-";
-    $shippingStreet4 = $shippingId4 = $shippingCity4 = $shippingState4 = $shippingZip4 = "-"; 
-      
-      
+    $shippingStreet4 = $shippingId4 = $shippingCity4 = $shippingState4 = $shippingZip4 = "-";
+
+
 
     $query = mysqli_query($con, "SELECT * FROM shippingaddresses, shippingaddressmapper WHERE users_userID=$id  AND address_order=1");
     while($result = mysqli_fetch_array($query))

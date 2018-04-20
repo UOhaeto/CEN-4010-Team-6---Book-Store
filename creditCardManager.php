@@ -2,17 +2,17 @@
 <html>
 <?php
 	session_start();
-	
+
 	include("functions/functions.php");
-	include("html/header.php");
+	echo file_get_contents("html/header.php");
 	
 	$id=$_SESSION['SESS_USERID'];
     $cc_ID1 = $cc_name1 = $cc_number1 = $cc_expDate1 = $cc_code1 = "-";
     $cc_ID2 = $cc_name2 = $cc_number2 = $cc_expDate2 = $cc_code2 = "-";
     $cc_ID3 = $cc_name3 = $cc_number3 = $cc_expDate3 = $cc_code3 = "-";
     $cc_ID4 = $cc_name4 = $cc_number4 = $cc_expDate4 = $cc_code4 = "-";
-      
-      
+
+
 
     $query = mysqli_query($con, "SELECT * FROM credit_cards, credit_cards_mapper WHERE userID=$id  AND cc_order=1");
     while($result = mysqli_fetch_array($query))

@@ -5,6 +5,7 @@
 
 	$con = mysqli_connect("localhost","root","","geek_text");
 	global $con;
+	include("functions/functions.php");
 	session_start();
 ?>
 
@@ -42,7 +43,7 @@
 				<a href="top_rated.php"> Top Rated </a>
 				<a href="top_sellers.php"> Top Sellers </a>
 
-				
+
 				<a href="shoppingCart.php" style="float: right"> <?php echo getNumOfItems() ?> Items/Shopping Cart</a>
 
 
@@ -109,14 +110,6 @@
         <form>
 				-->
 
-
-
-
-
-
-
-
-	      <a href="shoppingCart.php" style="float: right"> Shopping Cart</a>
 
 
       </div>
