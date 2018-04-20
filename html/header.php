@@ -2,6 +2,9 @@
 <html>
 
 <?php
+
+	$con = mysqli_connect("localhost","root","","geek_text");
+	global $con;
 	include("functions/functions.php");
 	session_start();
 ?>
@@ -20,7 +23,8 @@
 				echo "<a class='menu_link' href='login.php'> Login </a>";
 			}
 			else {
-        echo "<a href='logout.php'>Logout</a>";
+
+				echo "<a href='logout.php'>Logout</a>";
 				echo "<a href='myAccount.php'>My Account</a>";
 			}
 		?>
@@ -38,15 +42,20 @@
         <a href="index.php">Home</a>
 				<a href="top_rated.php"> Top Rated </a>
 				<a href="top_sellers.php"> Top Sellers </a>
-				<a href="genres.php">Genres </a>
-
-				<!--
-        <a href="genres.php"> Genres </a>
 
 
+				<a href="shoppingCart.php" style="float: right"> <?php echo getNumOfItems() ?> Items/Shopping Cart</a>
 
-			/*
+
+
+
+        <div class="dropdown">
+
+					<button class="dropbtn">Genres</button>
+					<div class="dropdown-content">
+				<?php
 				//getting and displying genres
+				global $con;
 					$get_genres = "select * from book_genres";
 					$run_genres =  mysqli_query($con, $get_genres);
 					//loop that runs depending on the amount of rows on the book_genres table
@@ -57,13 +66,25 @@
 						$genre_type = $row_genres['genre_type'];
 						//display genres
 						echo "<a href=genres.php?genre=$genre_id>$genre_type </a>";
+
 					}
 
+					?>
+				</div>
+			</div>
 
-				?>
+
+					<!--
+
+
+
         <form class="user" action="genres.php">
         	<label for="label_genre"><b><font face="helvetica">Genres</font></b></label>
         	<select name="genre">
+
+
+
+
 	          $get_genres = "select * from book_genres";
 	          $run_genres =  mysqli_query($con, $get_genres);
 
@@ -81,19 +102,14 @@
 
 
 
+
+
 					?>
           <input type="submit" value="Go" />
 					</select>
         <form>
+				-->
 
-				*/
-				?>
-
-			-->
-
-
-
-	      <a href="shoppingCart.php" style="float: right"> Shopping Cart</a>
 
 
       </div>

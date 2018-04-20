@@ -2,7 +2,7 @@
 <html>
 <?php
 	session_start();
-	
+
 	include("functions/functions.php");
 	echo file_get_contents("html/header.php");
 	
@@ -11,8 +11,8 @@
     $cc_ID2 = $cc_name2 = $cc_number2 = $cc_expDate2 = $cc_code2 = "-";
     $cc_ID3 = $cc_name3 = $cc_number3 = $cc_expDate3 = $cc_code3 = "-";
     $cc_ID4 = $cc_name4 = $cc_number4 = $cc_expDate4 = $cc_code4 = "-";
-      
-      
+
+
 
     $query = mysqli_query($con, "SELECT c.cc_ID, c.cc_name, c.cc_number, c.exp_date, c.sec_code 
                                  FROM credit_cards c INNER JOIN credit_cards_mapper m1 ON c.cc_ID = m1.cc_ID

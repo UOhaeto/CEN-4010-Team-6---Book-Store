@@ -17,8 +17,8 @@
 		?>! </b></center>
 	<div class="content" >
 
-	<?php cart(); ?>
-		Your Cart: <?php total_books();?> Total Price: <?php total_price(); ?>
+	<?php cart();  saveForLater();?>
+
 
 		<div id="book_container">
 			<?php getBook(); ?>
