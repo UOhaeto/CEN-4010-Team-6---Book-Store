@@ -17,7 +17,7 @@
 		<div id="book_container">
 
 				<?php
-				cart(); saveForLater();
+				@cart(); @saveForLater();
 				if(isset($_GET['search'])){
 					$search_query = $_GET['search'];
 
@@ -45,9 +45,9 @@
 	         $row = mysqli_fetch_array($retval  );
 	         $rec_count = $row[0];
 
-	         if( isset($_GET{'page'} ) ) {
+	         if(isset($_GET{'page'} ) && ($_GET{'page'} > 0) ) {
 	            $page = $_GET{'page'};
-	            $offset = $rec_limit * ($page - 1) ;
+	            $offset = $rec_limit * ($page - 1);
 	         }else {
 	            $page = 0;
 	            $offset = 0;
@@ -105,7 +105,7 @@
 				}
 
 				$test = $get_b . " LIMIT $rec_limit OFFSET $offset";
-
+				//echo $test;
 				//Getting book info and printing
 				$run_b = mysqli_query($con, $test);
 				while($row_b=mysqli_fetch_array($run_b)){

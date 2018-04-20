@@ -383,6 +383,7 @@ function total_price(){
 							<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
 
 							<a href='genres.php?add_cart=$b_isbn&genre=$book_genre&page=$page'><button style='float:right'>Add to Cart</button></a>
+							<a href='genres.php?genre=$book_genre&save_later=$b_isbn&page=$page'><button style='float:right'>Save for later</button></a>
 
 
 							</div>

@@ -60,7 +60,7 @@
 		</div>
 	</div>
 
-	<br>><center><h2>My Purchased Books</h2>
+	<br><center><h2>My Purchased Books</h2>
 	<div id='myBooks'>
 	<?php
 	$checkBought = "SELECT * FROM myLibrary INNER JOIN books ON myLibrary.bookID = books.isbn where userID='$id'";

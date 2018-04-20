@@ -92,6 +92,7 @@ if ($user) { // if user exists
 			$run_c = mysqli_query($con, $insert_u);
 			if($run_c){
 				echo "<script>alert('user registered successfully!')</script>";
+				header("Location: loginForm.php", true, 301);
 			}
 			else{
 				echo "<script>alert('could not register user :\')</script>";
