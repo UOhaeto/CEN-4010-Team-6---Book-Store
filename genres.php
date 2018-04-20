@@ -14,6 +14,7 @@
 	<div class="content" >
 
 		<div id="book_container">
+			<?php cart(); ?>
 			<?php getGenres(); ?>
 			<?php getBookGenre(); ?>
 		</div>

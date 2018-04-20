@@ -33,7 +33,8 @@
 
 					$run_pro = mysqli_query($con, $insert_book);
 
-					echo "<script>window.open('index.php','_self')</script>";
+					//echo "<script>window.open('index.php','_self')</script>";
+					echo "<script>alert('Book added to cart!')</script>";
 
 				}
 
@@ -169,7 +170,7 @@ function total_price(){
 			$row = mysqli_fetch_array($retval  );
 			$rec_count = $row[0];
 
-			if( isset($_GET{'page'} ) ) {
+			if( isset($_GET{'page'} ) && ($_GET{'page'} > 0) ) {
 			$page = $_GET{'page'};
 			$offset = $rec_limit * ($page - 1) ;
 			}else {
@@ -198,6 +199,7 @@ function total_price(){
 			//$get_b = "SELECT * FROM book_ratings_view LIMIT ";
 
 			$run_b = mysqli_query($con, $get_b);
+			//echo $get_b;
 			while($row_b=mysqli_fetch_array($run_b)){
 
 				//initializing variable with book name.
@@ -223,7 +225,7 @@ function total_price(){
 						<div style='margin: auto;'>
 						<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
 
-						<a href='index.php?add_cart=$b_isbn'><button style='float:right'>Add to Cart</button></a>
+						<a href='index.php?add_cart=$b_isbn&page=$page'><button style='float:right'>Add to Cart</button></a>
 
 						</div>
 					</div>
@@ -250,16 +252,57 @@ function total_price(){
 
 	function getBookGenre(){
 
+		$book_genre;
+
 		if(isset($_GET['genre'])){
 
-			//getting book genre from url
-			$book_genre = $_GET['genre'];
+			global $con;
+
+
+				$rec_limit = 5;
+				//getting book genre from url
+				$book_genre = $_GET['genre'];
+
+				/* Get total number of records */
+				$sql = "SELECT count(isbn) FROM books WHERE genre = '$book_genre'";
+				$retval = mysqli_query($con, $sql );
+
+				if(! $retval ) {
+				die('Could not get data: ' . mysqli_error($con));
+				}
+				$row = mysqli_fetch_array($retval  );
+				$rec_count = $row[0];
+
+				if( isset($_GET{'page'} ) && ($_GET{'page'} > 0) ) {
+				$page = $_GET{'page'};
+				$offset = $rec_limit * ($page - 1) ;
+				}else {
+				$page = 0;
+				$offset = 0;
+				}
+
+				$left_rec = $rec_count - ($page * $rec_limit);
+						$total_pages = ceil($rec_count / $rec_limit);
+
+
+				$retval = mysqli_query($con, $sql );
+
+				if(! $retval ) {
+				die('Could not get data: ' . mysql_error());
+				}
+
+
+				$get_b = "SELECT * FROM books LIMIT $rec_limit OFFSET $offset";
+
+				$run_b = mysqli_query($con, $get_b);
+
+
 
 			//connection to db
 			global $con;
 
 			//get 6 random books
-			$get_books_genre = "select * from books where genre ='$book_genre' LIMIT 0,6";
+			$get_books_genre = "select * from books where genre ='$book_genre' LIMIT $rec_limit OFFSET $offset";;
 			$run_books_genre = mysqli_query($con, $get_books_genre);
 			$book_counter = mysqli_num_rows($run_books_genre);
 
@@ -289,16 +332,29 @@ function total_price(){
 							<div style='margin: auto;'>
 							<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
 
-							<a href='genres.php?b_isbn=$b_isbn&genre=$book_genre'><button style='float:right'>Add to Cart</button></a>
+							<a href='genres.php?add_cart=$b_isbn&genre=$book_genre&page=$page'><button style='float:right'>Add to Cart</button></a>
+
 
 							</div>
 						</div>
 
 						";
 				}
-			}
+
+				$pagLink = "<div class='pagination'>";
+				for ($i=1; $i<=$total_pages; $i++) {
+					if($page == $i){
+						$pagLink .= "<a class='active' href='genres.php?genre=$book_genre&page=".$i."'>".$i."</a>";
+					}else{
+						$pagLink .= "<a  href='genres.php?genre=$book_genre&page=".$i."'>".$i."</a>";
+					}
+			};
+
+			echo $pagLink . "</div>";
+
 		}
 	}
+}
 
 
 

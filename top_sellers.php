@@ -17,6 +17,7 @@
 
         <?php
 
+						cart();
             $rec_limit = 5;
             /* Get total number of records */
             $sql = "SELECT count(isbn) FROM books";
@@ -28,7 +29,7 @@
             $row = mysqli_fetch_array($retval  );
             $rec_count = $row[0];
 
-            if( isset($_GET{'page'} ) ) {
+            if( isset($_GET{'page'} ) && ($_GET{'page'} > 0) ) {
             $page = $_GET{'page'};
             $offset = $rec_limit * ($page - 1) ;
             }else {
