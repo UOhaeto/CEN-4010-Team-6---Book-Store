@@ -2,6 +2,7 @@
 <html>
 
 <?php
+
 	$con = mysqli_connect("localhost","root","","geek_text");
 	global $con;
 	session_start();
@@ -40,6 +41,10 @@
         <a href="index.php">Home</a>
 				<a href="top_rated.php"> Top Rated </a>
 				<a href="top_sellers.php"> Top Sellers </a>
+
+				
+				<a href="shoppingCart.php" style="float: right"> <?php echo getNumOfItems() ?> Items/Shopping Cart</a>
+
 
 
 

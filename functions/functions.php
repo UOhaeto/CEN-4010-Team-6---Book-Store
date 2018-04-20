@@ -7,17 +7,27 @@
 		echo "Failed to connect to MySQL: " . mysqli_connect_errno();
 	}
 
-//Creating the shopping cart
-	function cart(){
 
-		if(isset($_GET['add_cart'])){
+function getNumOfItems(){
+			global $con;
+			$check_book = "select * from cart" ;
+			$run_check = mysqli_query($con, $check_book);
 
-				global $con;
+			$count = mysqli_num_rows($run_check);
+
+			echo $count ;
+}
+	//creating save for later
+	function saveForLater(){
+
+		global $con;
+
+		if(isset($_GET['save_later'])){
 
 				$ip = getIp();
-				$book_id = $_GET['add_cart'];
+				$book_id = $_GET['save_later'];
 
-				$check_book = "select * from cart where ip_add='$ip' AND book_id='$book_id' ";
+				$check_book = "select * from save_cart where ip_add='$ip' AND book_id='$book_id' ";
 
 				$run_check = mysqli_query($con, $check_book);
 
@@ -29,18 +39,57 @@
 				}
 				else {
 
-					$insert_book = "insert into cart (book_id, ip_add) values ('$book_id','$ip')";
+					$insert_book = "insert into save_cart (book_id, ip_add) values ('$book_id','$ip')";
 
 					$run_pro = mysqli_query($con, $insert_book);
 
-					//echo "<script>window.open('index.php','_self')</script>";
-					echo "<script>alert('Book added to cart!')</script>";
+					echo "<script>window.open('index.php','_self')</script>";
 
 				}
 
 
 			}
-}
+
+
+	}
+	//Creating the shopping cart
+	function cart(){
+
+			global $con;
+
+			if(isset($_GET['add_cart'])){
+
+					$ip = getIp();
+					$book_id = $_GET['add_cart'];
+
+					$check_book = "select * from cart where ip_add='$ip' AND book_id='$book_id' ";
+
+					$run_check = mysqli_query($con, $check_book);
+
+					if(mysqli_num_rows($run_check)>0){
+
+						echo "";
+
+
+					}
+					else {
+						$id = $_GET['add_cart'];
+						$check = "select * from books where isbn='$id' ";
+						$running = mysqli_query($con, $check);
+						while($p = mysqli_fetch_array($running)){
+							$singlePrice = $p['price'];
+
+							$insert_book = "insert into cart (book_id, ip_add, the_price, quantity) values ('$id','$ip', '$singlePrice', '1')";
+							$run_pro = mysqli_query($con, $insert_book);
+						}
+
+						echo "<script>window.open('index.php','_self')</script>";
+
+					}
+
+
+				}
+	}
 
 //getting the total books added
 function total_books() {
@@ -226,6 +275,7 @@ function total_price(){
 						<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
 
 						<a href='index.php?add_cart=$b_isbn&page=$page'><button style='float:right'>Add to Cart</button></a>
+						<a href='index.php?save_later=$b_isbn'><button style='float:right'>Save for later</button></a>
 
 						</div>
 					</div>
