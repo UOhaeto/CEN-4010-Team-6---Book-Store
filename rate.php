@@ -4,7 +4,7 @@
 	session_start();
 	
 	include("functions/functions.php");
-	echo file_get_contents("html/header.php");
+	include("html/header.php");
 	
 	if(isset($_GET['book'], $_GET['rating'], $_GET['anonymous']) && ($_SESSION['SESS_USERID'] > 0) ){
 		$book = (int)$_GET['book'];

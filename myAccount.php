@@ -4,7 +4,7 @@
 	session_start();
 	
 	include("functions/functions.php");
-	echo file_get_contents("html/header.php");
+	include("html/header.php");
 	
 	$id=$_SESSION['SESS_USERID'];
 	$query = mysqli_query($con, "SELECT * FROM users INNER JOIN shippingaddresses WHERE userID=$id");

@@ -4,7 +4,7 @@
 	session_start();
 	
 	include("functions/functions.php");
-	echo file_get_contents("html/header.php");
+	include("html/header.php");
 	
 	$id=$_SESSION['SESS_USERID'];
     $cc_ID1 = $cc_name1 = $cc_number1 = $cc_expDate1 = $cc_code1 = "-";

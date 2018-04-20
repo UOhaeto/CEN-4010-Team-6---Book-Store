@@ -3,6 +3,7 @@
 
 <?php
 	include("html/header.php");
+	include("functions/functions.php");
 	require_once('authorize.php');
 ?>
 
