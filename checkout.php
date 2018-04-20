@@ -4,7 +4,7 @@
 <?php
 	session_start();
 	include('functions/functions.php');
-	include("html/header.php");
+  echo file_get_contents("html/header.php");
 ?>
 
 <head>
@@ -34,7 +34,7 @@
 		</body>
 
 
-	<?php cart(); ?>
+
 
 	<form action = "" method = "post" enctype="multipart/form-data">
 
@@ -171,7 +171,7 @@
 
 				}	//Closes first while
 
-			
+
 			}	//Closes if statement
 
 				?>
@@ -218,6 +218,13 @@
 								if(isset($_POST['place_order'])){
 									echo "<script>window.open('orderreview.php','_self')</script>";
 								}
+							 ?>
+
+							 <?php
+							  if($_SESSION['SESS_USERID'] == 0){
+								 header('Location: loginForm.php');
+							 }
+
 							 ?>
 				</tr>
 
