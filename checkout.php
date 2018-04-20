@@ -138,43 +138,7 @@
 
 				<?php } } ?><!--end of the while loops-->
 
-				<?php
 
-				$cart_isbn = "";
-
-				$cart_query = "select * from cart";
-
-				$order_isbn = array();
-
- 				echo $cart_isbn;
-
-				if(isset($_POST['place_order'])){
-				$run_isbn = mysqli_query($con, $cart_query);
-
-				while($row_b=mysqli_fetch_array($run_isbn)){
-						$temp_isbn = $row_b['book_id'];
-						$same_isbn = "select * from books where isbn = '$temp_isbn'";
-						$run_temp = mysqli_query($con, $same_isbn);
-						//array_push($order_isbn, $run_temp);
-						$usernum = $_SESSION['SESS_USERID'];
-						//$cur_isbn = $run_temp['isbn'];
-						$run_lib = mysqli_query($con, "insert into myLibrary (userID, bookID) values ({$usernum}, {$temp_isbn})");
-
-						while($rowb_temp=mysqli_fetch_array($run_temp)){
-								$sold_amnt = $rowb_temp['sold'];
-								$sold_amnt = $sold_amnt + 1;
-								$sql_update = "update books set sold = '$sold_amnt' where isbn = '$temp_isbn'";
-								$update_run = mysqli_query($con, $sql_update);
-								$delete_sql = "delete from cart where book_id = '$temp_isbn'";
-								$run_dlt = mysqli_query($con, $delete_sql);
-						}	//Closes second while
-
-				}	//Closes first while
-
-
-			}	//Closes if statement
-
-				?>
 
 
 				<?php
@@ -214,18 +178,95 @@
 							<td colspan ="2"><input type= "submit" name= "place_order" value= "Place Order" style= "text-decoration: underline;"/></td>
 							<td></td>
 
-							<?php //if user clicks place order, this will take him to the order review page.
-								if(isset($_POST['place_order'])){
-									echo "<script>window.open('orderreview.php','_self')</script>";
-								}
-							 ?>
+
+
 
 							 <?php
-							  if($_SESSION['SESS_USERID'] == 0){
-								 header('Location: loginForm.php');
+							 $cardexists = False;
+							 $addressexists = False;
+							 $user_ready = False;
+							 $myID = $_SESSION['SESS_USERID'];
+							 $check_address = "select * from shippingaddressmapper where users_userID = '$myID'";
+							 $run_address = mysqli_query($con, $check_address);
+
+							 $shipping_rows = mysqli_num_rows($run_address);
+							 if($shipping_rows > 0){
+								 $addressexists = True;
 							 }
 
-							 ?>
+							 $check_card = "select * from credit_cards_mapper where userID = '$myID'";
+							 $run_card = mysqli_query($con, $check_card);
+
+							 $card_rows = mysqli_num_rows($run_card);
+							 if($card_rows > 0){
+								 $cardexists = True;
+							 }
+
+
+							 if($_SESSION['SESS_USERID'] == 0){
+								 header('Location: loginForm.php');
+							 }
+							 elseif($cardexists == False){
+								 echo '<center><a href="creditCardManager.php">A valid credit card is required to place an order.</a></center><br>';
+							 }
+							 elseif($addressexists == False){
+								 echo "<center><a href='addressManager.php'>A valid shipping address is required to place an order. </a></center><br>";
+							 }
+							 else{
+								 $user_ready = True;
+							 }
+
+							  ?>
+
+								<?php
+
+								$cart_isbn = "";
+
+								$cart_query = "select * from cart";
+
+								$order_isbn = array();
+
+				 				echo $cart_isbn;
+
+								if(isset($_POST['place_order']) && $user_ready == True){
+								$run_isbn = mysqli_query($con, $cart_query);
+
+								while($row_b=mysqli_fetch_array($run_isbn)){
+										$temp_isbn = $row_b['book_id'];
+										$same_isbn = "select * from books where isbn = '$temp_isbn'";
+										$run_temp = mysqli_query($con, $same_isbn);
+										//array_push($order_isbn, $run_temp);
+										$usernum = $_SESSION['SESS_USERID'];
+										//$cur_isbn = $run_temp['isbn'];
+										$run_lib = mysqli_query($con, "insert into myLibrary (userID, bookID) values ({$usernum}, {$temp_isbn})");
+
+										while($rowb_temp=mysqli_fetch_array($run_temp)){
+												$sold_amnt = $rowb_temp['sold'];
+												$sold_amnt = $sold_amnt + 1;
+												$sql_update = "update books set sold = '$sold_amnt' where isbn = '$temp_isbn'";
+												$update_run = mysqli_query($con, $sql_update);
+												$delete_sql = "delete from cart where book_id = '$temp_isbn'";
+												$run_dlt = mysqli_query($con, $delete_sql);
+										}	//Closes second while
+
+								}	//Closes first while
+
+
+							}	//Closes if statement
+
+								?>
+
+								<?php //if user clicks place order, this will take him to the order review page.
+									if(isset($_POST['place_order'])){
+										if($user_ready == True){
+											echo "<script>window.open('orderreview.php','_self')</script>";
+										}
+										else{
+											echo "<script>window.open('checkout.php','_self')</script>";
+										}
+
+									}
+								 ?>
 				</tr>
 
 
