@@ -2,7 +2,7 @@
 <html>
 
 <?php
-	include("functions/functions.php");
+
 	include("html/header.php");
 	session_start();
 ?>
@@ -18,7 +18,7 @@
 		if(isset($_GET['b_isbn'])){
 
 		$isbn = $_GET['b_isbn'];
-		
+
 		$bookBought = False;
 		$userID = $_SESSION['SESS_USERID'];
 
@@ -156,7 +156,7 @@
 	}
 	?>
 		<h2> Submit a comment </h2>
-		<?php 
+		<?php
 		if($loggedIn == False){
 			echo "$promptToLogIn";?>
 			<a href='login.php'>Login.</a><?php
