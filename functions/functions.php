@@ -80,7 +80,7 @@ function cart(){
 					while($p = mysqli_fetch_array($running)){
 						$singlePrice = $p['price'];
 
-						$insert_book = "insert into cart (book_id, ip_add, the_price) values ('$id','$ip', '$singlePrice')";
+						$insert_book = "insert into cart (book_id, ip_add, the_price, quantity) values ('$id','$ip', '$singlePrice', '1')";
 						$run_pro = mysqli_query($con, $insert_book);
 					}
 

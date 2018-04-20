@@ -247,7 +247,7 @@
 								if(isset($_POST['sav'])){
 									foreach ($_POST['sav'] as $save_id) {
 
-										$addToCart = "insert into cart (book_id, ip_add) values ('$save_id','$ip')";
+										$addToCart = "insert into cart (book_id, ip_add, quantity) values ('$save_id','$ip', '1')";
 										$delete_book = "delete from save_cart where book_id= '$save_id' AND ip_add = '$ip'";
 
 										$run_delete = mysqli_query($con, $addToCart);
