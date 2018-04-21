@@ -142,12 +142,13 @@
 	if($_POST){
 		$comment = $_POST['commentArea'];
 		$name = $_SESSION['SESS_NICKNAME'];
-		if($name != 'guest' && isset($_POST['anonymous-no']) && $bookBought == True){
+		$annonymous_answer = $_POST['anonymous'];
+		if($name != 'guest' && $annonymous_answer =="no" && $bookBought == True){
 			$handle = fopen($filename, "a");
 			fwrite($handle, "<b>" . $name. "</b>:</br>" . $comment . "</br>" );
 			fclose($handle);
 		}
-		elseif($name != 'guest' && isset($_POST['anonymous-yes']) && $bookBought == True){
+		elseif($name != 'guest' && $annonymous_answer =="yes" && $bookBought == True){
 			$handle = fopen($filename, "a");
 			fwrite($handle, "<b>" . "anonymous". "</b>:</br>" . $comment . "</br>" );
 			fclose($handle);
@@ -167,8 +168,8 @@
 		?><p></p>
 		<form action = "" method = "POST">
 		<textarea rows = "10" cols = "30" name = "commentArea"></textarea></br>
-		<input type="radio" name="anonymous-yes" value="yes"> Anonymous
-		<input type="radio" name="anonymous-no" value="no"> Use Username
+		<input type="radio" name="anonymous" value="yes"> Anonymous
+		<input type="radio" name="anonymous" value="no"> Use Username
 		<input type = "submit" value = "Post">
 		</form>
 		<h2> Comments </h2>
