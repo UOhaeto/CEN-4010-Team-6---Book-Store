@@ -31,12 +31,13 @@
 			$b_description[$i] = $row_b['description'];
 
 			echo"
-
+			<div style=\"width: 60%; margin: auto\">
 				<center> <h3>$b_title[$i]</h3>
 				<a href='details.php?b_isbn=$b_isbn[$i]'> <img src='admin/book_images/$b_image[$i]' width='300px' height='400px' /> </a>
-				<p> Book Description: $b_description[$i] </center>
-
+				<p > Book Description: $b_description[$i] </center>
+				</div>
 				";
+			
 			}
 
 			$i = $i + 1;
