@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\html",
     "\\styles"
   ],
-  "SelectedNode": "\\styles\\new_style.css",
+  "SelectedNode": "\\html\\header.php",
   "PreviewInSolutionExplorer": false
 }

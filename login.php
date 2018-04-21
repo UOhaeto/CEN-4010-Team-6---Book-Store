@@ -23,6 +23,7 @@
 			$_SESSION['SESS_USERID'] = $user['userID'];
 			$_SESSION['SESS_USERNAME'] = $user['username'];
 			$_SESSION['SESS_PASSWORD'] = $user['password'];
+			$_SESSION['SESS_NICKNAME'] = $user['nickname'];
 			session_write_close();
 			header("location: myAccount.php");
 			exit();

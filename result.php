@@ -18,6 +18,7 @@
 		<div id="book_container">
 
 				<?php
+				@cart(); @saveForLater();
 				if(isset($_GET['search'])){
 					$search_query = $_GET['search'];
 
@@ -45,9 +46,9 @@
 	         $row = mysqli_fetch_array($retval  );
 	         $rec_count = $row[0];
 
-	         if( isset($_GET{'page'} ) ) {
+	         if(isset($_GET{'page'} ) && ($_GET{'page'} > 0) ) {
 	            $page = $_GET{'page'};
-	            $offset = $rec_limit * ($page - 1) ;
+	            $offset = $rec_limit * ($page - 1);
 	         }else {
 	            $page = 0;
 	            $offset = 0;
@@ -105,7 +106,7 @@
 				}
 
 				$test = $get_b . " LIMIT $rec_limit OFFSET $offset";
-
+				//echo $test;
 				//Getting book info and printing
 				$run_b = mysqli_query($con, $test);
 				while($row_b=mysqli_fetch_array($run_b)){
@@ -132,7 +133,8 @@
 								<div style='margin: auto;'>
 								<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
 
-								<a href='index.php?b_isbn=$b_isbn'><button style='float:right'>Add to Cart</button></a>
+								<a href='result.php?add_cart=$b_isbn&page=$page&search=$search_query&sort=$sort&results=$rec_limit'><button style='float:right'>Add to Cart</button></a>
+								<a href='result.php?save_later=$b_isbn&page=$page&search=$search_query&sort=$sort&results=$rec_limit'><button style='float:right'>Save for later</button></a>
 
 								</div>
 							</div>

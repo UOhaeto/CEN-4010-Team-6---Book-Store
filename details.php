@@ -4,7 +4,7 @@
 <?php
 
 	include("html/header.php");
-	session_start();
+
 ?>
 
 <head>
@@ -138,7 +138,7 @@
 
 	if($_POST){
 		$comment = $_POST['commentArea'];
-		$name = $_SESSION['SESS_USERNAME'];
+		$name = $_SESSION['SESS_NICKNAME'];
 		if($name != 'guest' && isset($_POST['anonymous-no']) && $bookBought == True){
 			$handle = fopen($filename, "a");
 			fwrite($handle, "<b>" . $name. "</b>:</br>" . $comment . "</br>" );

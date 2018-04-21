@@ -107,6 +107,7 @@ if ($user) { // if user exists
 
 			if($run_c){
 				echo "<script>alert('user registered successfully!')</script>";
+				header("Location: loginForm.php", true, 301);
 			}
 			else{
 				echo "<script>alert('could not register user :\')</script>";

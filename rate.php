@@ -17,7 +17,7 @@ echo file_get_contents("html/header.php");
 					header('Location: index.php');
 				}
 				else{
-					$con->query("INSERT INTO book_ratings (book, rating, userID, username, anonymous) VALUES ({$book}, {$rating}, {$_SESSION['SESS_USERID']}, '{$_SESSION['SESS_USERNAME']}', '{$anonymous}')");
+					$con->query("INSERT INTO book_ratings (book, rating, userID, username, anonymous) VALUES ({$book}, {$rating}, {$_SESSION['SESS_NICKNAME']}, '{$_SESSION['SESS_USERNAME']}', '{$anonymous}')");
 					header('Location: index.php');
 				}
 			}

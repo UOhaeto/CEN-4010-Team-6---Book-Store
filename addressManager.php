@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <?php
-	session_start();
 
-	include("functions/functions.php");
-	echo file_get_contents("html/header.php");
+include("html/header.php");
+
 
 	$id=$_SESSION['SESS_USERID'];
     $shippingStreet1 = $shippingId1 = $shippingCity1 = $shippingState1 = $shippingZip1 = "-";

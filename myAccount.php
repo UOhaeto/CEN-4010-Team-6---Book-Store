@@ -1,10 +1,8 @@
 	<!DOCTYPE html>
 <html>
 <?php
-	session_start();
 
-	include('functions/functions.php');
-	echo file_get_contents("html/header.php");
+	include("html/header.php");
 
 	$id=$_SESSION['SESS_USERID'];
 	$query = mysqli_query($con, "SELECT * FROM users INNER JOIN shippingaddresses WHERE userID=$id");
@@ -62,7 +60,7 @@
 		</div>
 	</div>
 
-	<br>><center><h2>My Purchased Books</h2>
+	<br><center><h2>My Purchased Books</h2>
 	<div id='myBooks'>
 	<?php
 	$checkBought = "SELECT * FROM myLibrary INNER JOIN books ON myLibrary.bookID = books.isbn where userID='$id'";

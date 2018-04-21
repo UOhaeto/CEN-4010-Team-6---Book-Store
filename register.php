@@ -26,7 +26,7 @@
       <input type="text" name="last_name" required placeholder="Last Name" value="<?php if(isset($_POST['last_name'])){echo $_POST['last_name']; } ?>"/>
 
       <label for="email"><b><font face="helvetica">Email Address</font></b></label>
-      <input type="text" name="email" required placeholder="someemail@emails.com" value="<?php if(isset($_POST['email'])){echo $_POST['email']; } $email = $_POST['email']; ?>"/>
+      <input type="text" name="email" required placeholder="someemail@emails.com" value="<?php if(isset($_POST['email'])){echo $_POST['email'];  $u_email = $_POST['email']; }?>"/>
 
       <label for="con_email"><b><font face="helvetica">Re-enter Email Address</font></b></label>
       <input class="user" type="text" name="con_email" required placeholder="someemail@emails.com" value="<?php if(isset($_POST['con_email'])){ $con_email = $_POST['con_email'];
