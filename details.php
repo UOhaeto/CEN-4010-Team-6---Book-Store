@@ -110,90 +110,96 @@
 		</div>
 	</div>
 
+	<div class = "bottom-of-details">
+		<div id = "ratings">
+			<?php
+
+						if($bookBought == True){
+						?>
+							<h3> Rate this book: </h3>
+							<form action="rate.php" method="get" enctype="multipart/form-data">
+								<input type="hidden" name="book" value="<?php echo $b_isbn; ?>">
+								<select name="rating">
+									<option value="1" >1 Star</option>
+									<option value="2" >2 Stars</option>
+									<option value="3" >3 Stars</option>
+									<option value="4" >4 Stars</option>
+									<option value="5" >5 Stars</option>
+								</select>
+								<input type="radio" name="anonymous" value="yes"> Anonymous
+								<input type="radio" name="anonymous" value="no"> Use Username
+								<p><input type="submit" value="Submit"></p>
+							</form>
 						<?php
+						}
+						?>
 
-					if($bookBought == True){
-					?>
-						Rate this book:
-						<form action="rate.php" method="get" enctype="multipart/form-data">
-							<input type="hidden" name="book" value="<?php echo $b_isbn; ?>">
-							<select name="rating">
-								<option value="1" >1 Star</option>
-								<option value="2" >2 Stars</option>
-								<option value="3" >3 Stars</option>
-								<option value="4" >4 Stars</option>
-								<option value="5" >5 Stars</option>
-							</select>
-							<input type="radio" name="anonymous" value="yes"> Anonymous
-							<input type="radio" name="anonymous" value="no"> Use Username
-							<p><input type="submit" value="Submit"></p>
-						</form>
-					<?php
-					}
-					?>
 
-	<?php
+			<h2> Reviews </h2>
+			<?php
 
-	$loggedIn = True;
-	$promptToLogIn = "";
+			$get_ratings = "SELECT * FROM book_ratings WHERE book = $isbn";
 
-	$filename = "comments/" . $isbn . 'comments.html';
+			$run_get_ratings = mysqli_query($con, $get_ratings);
 
-	if($_POST){
-		$comment = $_POST['commentArea'];
-		$name = $_SESSION['SESS_NICKNAME'];
-		$annonymous_answer = $_POST['anonymous'];
-		if($name != 'guest' && $annonymous_answer =="no" && $bookBought == True){
-			$handle = fopen($filename, "a");
-			fwrite($handle, "<b>" . $name. "</b>:</br>" . $comment . "</br>" );
-			fclose($handle);
-		}
-		elseif($name != 'guest' && $annonymous_answer =="yes" && $bookBought == True){
-			$handle = fopen($filename, "a");
-			fwrite($handle, "<b>" . "anonymous". "</b>:</br>" . $comment . "</br>" );
-			fclose($handle);
-		}
-		else{
-			$loggedIn = False;
-			$promptToLogIn = "You have either not purchased the book, did not select a posting option, or are not logged in.";
-		}
-	}
-	?>
-		<h2> Submit a comment </h2>
-		<?php
-		if($loggedIn == False){
-			echo "$promptToLogIn";?>
-			<a href='login.php'>Login.</a><?php
-		}
-		?><p></p>
-		<form action = "" method = "POST">
-		<textarea rows = "10" cols = "30" name = "commentArea"></textarea></br>
-		<input type="radio" name="anonymous" value="yes"> Anonymous
-		<input type="radio" name="anonymous" value="no"> Use Username
-		<input type = "submit" value = "Post">
-		</form>
-		<h2> Comments </h2>
-		<?php include	$filename;
-	?>
+			while($row_b=mysqli_fetch_array($run_get_ratings)){
+				$b_rating = $row_b['rating'];
+				$b_username = $row_b['username'];
+				$b_anonymous = $row_b['anonymous'];
+				if($b_anonymous != 'yes'){
+					echo "<p>Rating: <img src='images/$b_rating.png'> by $b_username</p>";
+				}
+				else{
+					echo "<p>Rating: <img src='images/$b_rating.png'> by anonymous</p>";
+				}
+			}
+			
 
-	<h2> Reviews </h2>
+			$loggedIn = True;
+			$promptToLogIn = "";
 
-	<?php
-	$get_ratings = "SELECT * FROM book_ratings WHERE book = $isbn";
+			$filename = "comments/" . $isbn . 'comments.html';
 
-	$run_get_ratings = mysqli_query($con, $get_ratings);
+			if($_POST){
+				$comment = $_POST['commentArea'];
+				$name = $_SESSION['SESS_NICKNAME'];
+				$annonymous_answer = $_POST['anonymous'];
+				if($name != 'guest' && $annonymous_answer =="no" && $bookBought == True){
+					$handle = fopen($filename, "a");
+					fwrite($handle, "<b>" . $name. "</b>:</br>" . $comment . "</br>" );
+					fclose($handle);
+				}
+				elseif($name != 'guest' && $annonymous_answer =="yes" && $bookBought == True){
+					$handle = fopen($filename, "a");
+					fwrite($handle, "<b>" . "anonymous". "</b>:</br>" . $comment . "</br>" );
+					fclose($handle);
+				}
+				else{
+					$loggedIn = False;
+					$promptToLogIn = "You have either not purchased the book, did not select a posting option, or are not logged in.";
+				}
+			}
+			?>
+		</div>
+		<div id = "comments">
 
-	while($row_b=mysqli_fetch_array($run_get_ratings)){
-		$b_rating = $row_b['rating'];
-		$b_username = $row_b['username'];
-		$b_anonymous = $row_b['anonymous'];
-		if($b_anonymous != 'yes'){
-			echo "<p>Rating: <img src='images/$b_rating.png'> by $b_username</p>";
-		}
-		else{
-			echo "<p>Rating: <img src='images/$b_rating.png'> by anonymous</p>";
-		}
-	}
-	?>
+				<h2> Submit a comment </h2>
+				<?php
+				if($loggedIn == False){
+					echo "$promptToLogIn";?>
+					<a href='login.php'>Login.</a><?php
+				}
+				?><p></p>
+				<form action = "" method = "POST">
+				<textarea rows = "10" cols = "30" name = "commentArea"></textarea></br>
+				<input type="radio" name="anonymous" value="yes"> Anonymous
+				<input type="radio" name="anonymous" value="no"> Use Username
+				<input type = "submit" value = "Post">
+				</form>
+				<h2> Comments </h2>
+				<?php include	$filename;
+			?>
+		</div>
+	</div>
 </body>
 </html
