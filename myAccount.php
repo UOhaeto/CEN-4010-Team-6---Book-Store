@@ -1,11 +1,9 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
 <?php
-	session_start();
-	
-	include("functions/functions.php");
-	echo file_get_contents("html/header.php");
-	
+
+	include("html/header.php");
+
 	$id=$_SESSION['SESS_USERID'];
 	$query = mysqli_query($con, "SELECT * FROM users INNER JOIN shippingaddresses WHERE userID=$id");
 	while($result = mysqli_fetch_array($query))
@@ -38,9 +36,9 @@
 			<h4 style="margin-top: 0px; padding-left: 10px;"><b><?php echo $nickname ?></b></h4>
 		</div>
 		<div class="myAccountSideBox">
-        <a href="creditCardManager.php">Credit Cards</a>
-        <a href="addressManager.php">Shipping Addresses</a>
-				<a href="edit_profile_information.php">Edit Profile</a>
+        <a href="creditCardManager.php"  style="float: right;">Credit Cards</a>
+        <a href="addressManager.php"  style="float: right;">Shipping Addresses</a>
+				<a href="edit_profile_information.php"  style="float: right;">Edit Profile</a>
   	</div>
 
 	</div>
@@ -62,5 +60,27 @@
 		</div>
 	</div>
 
+	<br><center><h2><font face="helvetica">My Purchased Books</font></h2>
+	<div id='myBooks'>
+	<?php
+	$checkBought = "SELECT * FROM myLibrary INNER JOIN books ON myLibrary.bookID = books.isbn where userID='$id'";
+	$run_checkBought = mysqli_query($con, $checkBought);
+	$numberOfRows = mysqli_num_rows($run_checkBought);
+	if($numberOfRows == 0){
+		echo "No books purchased yet.";
+	}
+	else{
+		while($row_books=mysqli_fetch_array($run_checkBought)){
+			$b_title = $row_books['book_title'];
+			$b_isbn = $row_books['isbn'];
+			$b_author = $row_books['author'];
+			$b_image = $row_books['book_image'];
+
+			echo "<div id='book' style='display:inline-block'><h4><font face=\"helvetica\">$b_title</font></h4>
+			<p> <a href='author.php?b_author=$b_author'><font face=\"helvetica\">by $b_author </font></a> </p>
+			<a href='details.php?b_isbn=$b_isbn'><img src='admin/book_images/$b_image' width='150px' height='200px' style='padding-right: 20px'/></a></div>";
+		}
+	}
+	?></center>
 </body>
 </html>

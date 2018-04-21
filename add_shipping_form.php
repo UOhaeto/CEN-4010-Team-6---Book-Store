@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
-
+<?php
+	session_start();
+	$addressID = $_POST['shpID'];
+?>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
@@ -79,7 +82,7 @@
 
 			<label for="zip"><b><font face="helvetica">Zip</font></b></label>
 			<input type="text" name="zip" required placeholder="Zip" value="<?php if(isset($_POST['zip'])){echo $_POST['zip']; } ?>" />
-
+			<input type="hidden" name="shpID" value="<?php echo $_POST['shpID'] = $addressID?>" />
       <input type="submit" name="sub_editshp" value="Edit Address" />
     </form>
   </div>

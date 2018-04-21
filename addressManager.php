@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <?php
-	session_start();
-	
-	include("functions/functions.php");
-	echo file_get_contents("html/header.php");
-	
+
+include("html/header.php");
+
+
 	$id=$_SESSION['SESS_USERID'];
     $shippingStreet1 = $shippingId1 = $shippingCity1 = $shippingState1 = $shippingZip1 = "-";
     $shippingStreet2 = $shippingId2 = $shippingCity2 = $shippingState2 = $shippingZip2 = "-";
     $shippingStreet3 = $shippingId3 = $shippingCity3 = $shippingState3 = $shippingZip3 = "-";
-    $shippingStreet4 = $shippingId4 = $shippingCity4 = $shippingState4 = $shippingZip4 = "-"; 
-      
-      
+    $shippingStreet4 = $shippingId4 = $shippingCity4 = $shippingState4 = $shippingZip4 = "-";
 
-    $query = mysqli_query($con, "SELECT * FROM shippingaddresses, shippingaddressmapper WHERE users_userID=$id  AND address_order=1");
+
+
+    $query = mysqli_query($con, "SELECT a.shippingStreet, a.shippingCity, a.shippingState, a.shippingZip, a.shippingaddressID 
+                                  FROM shippingaddresses a INNER JOIN shippingaddressmapper m1 ON a.shippingaddressID = m1.shippingaddresses_shippingaddressID 
+                                  WHERE address_order=1 AND m1.users_userID=$id");
     while($result = mysqli_fetch_array($query))
     {
       $shippingStreet1 = $result['shippingStreet'];
@@ -24,7 +25,9 @@
       $shippingId1 = $result['shippingaddressID'];
     }
 
-    $query = mysqli_query($con, "SELECT * FROM shippingaddresses, shippingaddressmapper WHERE users_userID=$id  AND address_order=2");
+    $query = mysqli_query($con, "SELECT a.shippingStreet, a.shippingCity, a.shippingState, a.shippingZip, a.shippingaddressID 
+                                  FROM shippingaddresses a INNER JOIN shippingaddressmapper m1 ON a.shippingaddressID = m1.shippingaddresses_shippingaddressID 
+                                  WHERE address_order=2 AND m1.users_userID=$id");
     while($result = mysqli_fetch_array($query))
     {
       $shippingStreet2 = $result['shippingStreet'];
@@ -34,7 +37,9 @@
       $shippingId2 = $result['shippingaddressID'];
     }
 
-    $query = mysqli_query($con, "SELECT * FROM shippingaddresses, shippingaddressmapper WHERE users_userID=$id  AND address_order=3");
+    $query = mysqli_query($con, "SELECT a.shippingStreet, a.shippingCity, a.shippingState, a.shippingZip, a.shippingaddressID 
+                                  FROM shippingaddresses a INNER JOIN shippingaddressmapper m1 ON a.shippingaddressID = m1.shippingaddresses_shippingaddressID 
+                                  WHERE address_order=3 AND m1.users_userID=$id");
     while($result = mysqli_fetch_array($query))
     {
       $shippingStreet3 = $result['shippingStreet'];
@@ -44,7 +49,9 @@
       $shippingId3 = $result['shippingaddressID'];
     }
 
-    $query = mysqli_query($con, "SELECT * FROM shippingaddresses, shippingaddressmapper WHERE users_userID=$id  AND address_order=4");
+    $query = mysqli_query($con, "SELECT a.shippingStreet, a.shippingCity, a.shippingState, a.shippingZip, a.shippingaddressID 
+                                  FROM shippingaddresses a INNER JOIN shippingaddressmapper m1 ON a.shippingaddressID = m1.shippingaddresses_shippingaddressID 
+                                  WHERE address_order=4 AND m1.users_userID=$id");
     while($result = mysqli_fetch_array($query))
     {
       $shippingStreet4 = $result['shippingStreet'];
@@ -69,9 +76,9 @@
 				<p align="left" class="shipping_address"><?php echo $shippingStreet1?></p>
         <p align="left" class="shipping_address"><?php echo $shippingCity1?></p>
         <p align="left" class="shipping_address"><?php echo $shippingState1, ', ', $shippingZip1 ?></p>
-        <form action="add_shipping_form.php">
+        <form method="post" action="add_shipping_form.php">
+          <input type="hidden" name="shpID" id="shpID" value="<?php echo $_POST["shpID"] = $shippingId1;?>" />
           <input type="submit" value="Edit Address" ></input>
-          <input type="hidden" name="shpID" id="shpID" value="<?php echo $_SESSION["shpID"] = $shippingZip1;?>" />
         </form>
 			</div>
 
@@ -80,9 +87,9 @@
 				<p align="left" class="shipping_address"><?php echo $shippingStreet2?></p>
         <p align="left" class="shipping_address"><?php echo $shippingCity2?></p>
         <p align="left" class="shipping_address"><?php echo $shippingState2, ', ', $shippingZip2 ?></p>
-        <form action="add_shipping_form.php">
+        <form method="post" action="add_shipping_form.php">
+          <input type="hidden" name="shpID" id="shpID" value="<?php echo $_POST["shpID"] = $shippingId2;?>" />
           <input type="submit" value="Edit Address" ></input>
-           <input type="hidden" name="shpID" id="shpID" value="<?php echo $_SESSION["shpID"] = $shippingZip2;?>" />
         </form>
 			</div>
 
@@ -91,9 +98,9 @@
 				<p align="left" class="shipping_address"><?php echo $shippingStreet3?></p>
         <p align="left" class="shipping_address"><?php echo $shippingCity3?></p>
         <p align="left" class="shipping_address"><?php echo $shippingState3, ', ', $shippingZip3 ?></p>
-        <form action="add_shipping_form.php">
+        <form method="post" action="add_shipping_form.php">
+          <input type="hidden" name="shpID" id="shpID" value="<?php echo $_POST["shpID"] = $shippingId3;?>" />
           <input type="submit" value="Edit Address" ></input>
-           <input type="hidden" name="shpID" id="shpID" value="<?php echo $_SESSION["shpID"] = $shippingZip3;?>" />
         </form>
 			</div>
 
@@ -102,9 +109,9 @@
 				<p align="left" class="shipping_address"><?php echo $shippingStreet4?></p>
         <p align="left" class="shipping_address"><?php echo $shippingCity4?></p>
         <p align="left" class="shipping_address"><?php echo $shippingState4, ', ', $shippingZip4 ?></p>
-        <form action="add_shipping_form.php">
+        <form method="post" action="add_shipping_form.php">
+          <input type="hidden" name="shpID" id="shpID" value="<?php echo $_POST["shpID"] = $shippingId4;?>" />
           <input type="submit" value="Edit Address" ></input>
-           <input type="hidden" name="shpID" id="shpID" value="<?php echo $_SESSION["shpID"] = $shippingZip4;?>" />
         </form>
 			</div>
 		</div>

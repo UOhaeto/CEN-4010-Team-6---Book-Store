@@ -2,8 +2,8 @@
 <html>
 
 <?php
-	include("functions/functions.php");
-  echo file_get_contents("html/header.php");
+
+include("html/header.php");
 ?>
 
 <head>
@@ -14,6 +14,7 @@
 	<div class="content" >
 
 		<div id="book_container">
+			<?php cart(); saveForLater(); ?>
 			<?php getGenres(); ?>
 			<?php getBookGenre(); ?>
 		</div>
