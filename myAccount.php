@@ -72,12 +72,13 @@
 	else{
 		while($row_books=mysqli_fetch_array($run_checkBought)){
 			$b_title = $row_books['book_title'];
+			$b_isbn = $row_books['isbn'];
 			$b_author = $row_books['author'];
 			$b_image = $row_books['book_image'];
 
 			echo "<div id='book' style='display:inline-block'><h4>$b_title</h4>
 			<p> <a href='author.php?b_author=$b_author'>by $b_author </a> </p>
-			<img src='admin/book_images/$b_image' width='150px' height='200px' style='padding-right: 20px'/></div>";
+			<a href='details.php?b_isbn=$b_isbn'><img src='admin/book_images/$b_image' width='150px' height='200px' style='padding-right: 20px'/></a></div>";
 		}
 	}
 	?></center>
