@@ -1,9 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\comments",
+    "\\functions",
     "\\html",
-    "\\styles"
+    "\\styles",
+    "\\team resources"
   ],
-  "SelectedNode": "\\html\\header.php",
   "PreviewInSolutionExplorer": false
 }

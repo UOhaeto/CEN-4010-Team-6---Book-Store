@@ -33,9 +33,9 @@
 		}
 	?>
 
-	<div class="content" >
+	<div class="content-details" >
 
-		<div id="book_container">
+		<div id="book_container-details">
 
 			<?php
 
@@ -67,10 +67,50 @@
 					$b_isbn = $row_b['isbn'];
 
 					echo "
-						<div id='single_book' width: 70%; height: auto;>";
+						<div id='single_book-details' width: 70%; height: auto;>";
 					?>
 
-					<?php
+  					<?php
+
+						$sql_genre = "SELECT * FROM book_genres WHERE genre_id=$b_genre";
+						$run_g = mysqli_query($con, $sql_genre);
+						$genre_name;
+
+						while($row_g = mysqli_fetch_array($run_g)){
+							$genre_name = $row_g['genre_type'];
+						}
+					echo"
+						<img src='admin/book_images/$b_image' class='thumbnail' width='300px' height='400px' />
+
+						<div id='book_info'>
+						
+						<p><img src='images/$b_rating.png' style = 'border: 0px; float: right'></p>
+						<h3>$b_title</h3>
+						<p> <a href='author.php?b_author=$b_author'>by $b_author </a> </p>
+						<p> Genre: <a href='genres.php?genre=$b_genre'>$genre_name</a> </p>
+						<p> $ $b_price.00</p>
+
+						<p> Book Description: $b_description
+
+						<div style='margin: auto; '>
+						<a href='index.php' style='float:right;'> Go Back</a>
+
+						<a href='index.php?b_isbn=$b_isbn'><button style='float:left; color: white; background-color: #15325C; padding: 15px 32px'>Add to Cart</button></a>
+							
+									
+								</div>
+							</div>
+						</div>
+
+									";
+								}
+							}
+
+						?>
+		</div>
+	</div>
+
+						<?php
 
 					if($bookBought == True){
 					?>
@@ -91,43 +131,6 @@
 					<?php
 					}
 					?>
-
-  					<?php
-
-						$sql_genre = "SELECT * FROM book_genres WHERE genre_id=$b_genre";
-						$run_g = mysqli_query($con, $sql_genre);
-						$genre_name;
-
-						while($row_g = mysqli_fetch_array($run_g)){
-							$genre_name = $row_g['genre_type'];
-						}
-					echo"
-
-						<h3>$b_title</h3>
-						<p> <a href='author.php?b_author=$b_author'>by $b_author </a> </p>
-						<img src='admin/book_images/$b_image' class='thumbnail' width='300px' height='400px' />
-
-						<p> $ $b_price </p>
-
-						<p> Genre: <a href='genres.php?genre=$b_genre'>$genre_name</a> </p>
-						<p> Rating: <img src='images/$b_rating.png' style = 'border: 0px'></p>
-						<p> Book Description: $b_description
-
-						<div style='margin: auto; '>
-						<a href='index.php' style='float:left;'> Go Back</a>
-
-						<a href='index.php?b_isbn=$b_isbn'><button style='float:right'>Add to Cart</button></a>
-
-							</div>
-						</div>
-
-									";
-								}
-							}
-
-						?>
-		</div>
-	</div>
 
 	<?php
 

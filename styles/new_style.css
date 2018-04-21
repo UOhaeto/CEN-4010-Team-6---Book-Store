@@ -170,6 +170,37 @@ form.example::after {
 			margin: auto;
 		}
 
+.content-details{
+	margin: auto;
+	background: white;
+	width: 70%;
+	height: auto;
+}
+
+	#books_container-details{
+		width: 800px;
+		text-align: center;
+		margin-left: 30px;
+		margin-bottom: 10px;
+	}
+
+		#single_book-details{
+			width: 100%;
+			text-align: left;
+			float:right;
+			color: black;
+			margin: 20px;
+			padding: 30px;
+			border: 2px solid black;
+		}
+
+		#single_book-details img{
+			border: 2px solid black;
+			float: left;
+			display: block;
+			margin: 0 20px 0 0;
+		}
+
 .login_div {
   width: 300px;
   margin: auto;
