@@ -9,11 +9,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
 </head>
-<body>
+<body style="font-family: Helvetica">
 
-	<div class="content" >
+	<div class="content" style="width: 60%; border-left: solid; border-right: solid; border-color: gray;">
 
-	<form action = "" method = "post" enctype="multipart/form-data">
+	<form action = "" method = "post" enctype="multipart/form-data" >
 
 			<table align = "center" width = "800" bgcolor = "white">
 
@@ -44,11 +44,11 @@
 					?>
 
 					<tr align = "center">
-							<td><input type = "checkbox" name = "remove[]" value = "<?php echo $pro_id;?>"/></td>
-							<td><?php echo $book_tit; ?><br>
-							<img src='admin/book_images/<?php echo $book_img;?>' width ='100' height='120'/>
+							<td style="padding-bottom: 10px; border-bottom: solid; border-color: darkgray; border-width: 1px;"><input type = "checkbox" name = "remove[]" value = "<?php echo $pro_id;?>"/></td>
+							<td style="padding-bottom: 10px; border-bottom: solid; border-color: darkgray; border-width: 1px;"><?php echo $book_tit; ?><br>
+							<img src='admin/book_images/<?php echo $book_img;?>' width ='100' height='120' />
 							</td>
-							<td width = "2">
+							<td width = "2" style="padding-bottom: 10px; border-bottom: solid; border-color: darkgray; border-width: 1px;">
                 <label><?php echo $pro_qty ?></label>
                 <!--<select name = "quantity">
   								<option value="1">1</option>
@@ -70,7 +70,7 @@
 								$update_q = "update cart set quantity='$q' where book_id = '$pro_id'";
 								$run_q = mysqli_query($con, $update_q);
 							} ?>
-							<td><?php echo "$" . $single_price; ?></td>
+							<td style="padding-bottom: 10px; border-bottom: solid; border-color: darkgray; border-width: 1px;"><?php echo "$" . $single_price; ?></td>
 					</tr>
 
 

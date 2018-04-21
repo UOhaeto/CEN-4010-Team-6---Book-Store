@@ -376,7 +376,6 @@ select{
     border: 3px;
     border-color: black;
     border-radius: 2px;
-
   }
 
   .shippingAddressManager {
@@ -393,24 +392,30 @@ select{
 
   .myAccountPage {
     overflow: hidden;
-	  align: center;
     background-color:white;
     padding: 0;
     list-style: none;
     width: 70%;
     margin: auto;
     border-left: solid;
+    border-right: solid;
     border-color: grey;
   }
 
   .myAccountSideBox {
     margin-top: 20px;
     overflow: hidden;
-    align: center;
     background:lightgray;
     border: dimgray;
-    width: 15%;
+    width: 160px;
     float: right;
+    text-align: center;
+    border-radius: 3px;
+    margin-right: 10px;
+  }
+
+  .myAccountSideBox a {
+    font-weight: bold;
   }
 
   .myAccountSideBox a {
@@ -424,8 +429,7 @@ select{
   }
 
   .myAccountSideBox a:hover {
-    background-color: #15325C;
-    background: #EDEDE8
+    background: #406784;
   }
 
   .thumbnail:hover {
@@ -523,4 +527,13 @@ border: dimgray;
 .adv_filter_select {
   width: 400px;
   
+}
+
+#myBooks {
+  background-color: white;
+  width: 70%;
+  border-radius: 3px;
+  border-left: solid;
+  border-right: solid;
+  border-color: gray; 
 }

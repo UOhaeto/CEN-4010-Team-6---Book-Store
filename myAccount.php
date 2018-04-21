@@ -36,9 +36,9 @@
 			<h4 style="margin-top: 0px; padding-left: 10px;"><b><?php echo $nickname ?></b></h4>
 		</div>
 		<div class="myAccountSideBox">
-        <a href="creditCardManager.php">Credit Cards</a>
-        <a href="addressManager.php">Shipping Addresses</a>
-				<a href="edit_profile_information.php">Edit Profile</a>
+        <a href="creditCardManager.php"  style="float: right;">Credit Cards</a>
+        <a href="addressManager.php"  style="float: right;">Shipping Addresses</a>
+				<a href="edit_profile_information.php"  style="float: right;">Edit Profile</a>
   	</div>
 
 	</div>
@@ -60,7 +60,7 @@
 		</div>
 	</div>
 
-	<br><center><h2>My Purchased Books</h2>
+	<br><center><h2><font face="helvetica">My Purchased Books</font></h2>
 	<div id='myBooks'>
 	<?php
 	$checkBought = "SELECT * FROM myLibrary INNER JOIN books ON myLibrary.bookID = books.isbn where userID='$id'";
@@ -76,8 +76,8 @@
 			$b_author = $row_books['author'];
 			$b_image = $row_books['book_image'];
 
-			echo "<div id='book' style='display:inline-block'><h4>$b_title</h4>
-			<p> <a href='author.php?b_author=$b_author'>by $b_author </a> </p>
+			echo "<div id='book' style='display:inline-block'><h4><font face=\"helvetica\">$b_title</font></h4>
+			<p> <a href='author.php?b_author=$b_author'><font face=\"helvetica\">by $b_author </font></a> </p>
 			<a href='details.php?b_isbn=$b_isbn'><img src='admin/book_images/$b_image' width='150px' height='200px' style='padding-right: 20px'/></a></div>";
 		}
 	}

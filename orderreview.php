@@ -9,7 +9,7 @@ include("html/header.php");
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
 </head>
-<body>
+<body style="font-family: Helvetica;">
 
   <div class= "content" >
 
@@ -18,7 +18,7 @@ include("html/header.php");
     </head>
 
     <?php echo '<h1>' . '<h1>'; ?>
-    <div style="text-align: center">
+    <div style="text-align: center;  background: #E0E0E0;">
       <?php echo '<img src="images/cart.png" width="250" height="250" colspan="4"   />'; ?>
       <p1> <br>Transaction successful!</br></p1>
 
@@ -26,3 +26,5 @@ include("html/header.php");
       <p3> Feel free to rate your purchased books </p3>
       <?php //echo '<a href="index.php">Here</a>'; ?>
     </div>
+  
+</body>

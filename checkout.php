@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
 </head>
-<body>
+<body style="font-family: Helvetica">
 
 
 	<div class= "shopping_cart" >
@@ -36,7 +36,7 @@
 
 	<form action = "" method = "post" enctype="multipart/form-data">
 
-			<table align = "center" width = "700" bgcolor = "gray">
+			<table align = "center" width = "700" bgcolor = "white" style="border-left: solid; border-right: solid; border-color: gray; border-radius: 3px;">
 
 					<tr align = "center">
 								<th>Books</th>
