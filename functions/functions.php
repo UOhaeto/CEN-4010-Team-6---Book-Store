@@ -79,7 +79,6 @@ function getNumOfItems(){
 							$sql_update = "update cart set quantity = '$b_quantity' where book_id = '$book_id' and user_id = '$user_ID'";
 							$run_update = mysqli_query($con, $sql_update);
 						}
-						echo "Add plus 1";
 
 
 					}

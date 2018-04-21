@@ -95,7 +95,7 @@
 						<div style='margin: auto; '>
 						<a href='index.php' style='float:right;'> Go Back</a>
 
-						<a href='index.php?b_isbn=$b_isbn'><button style='float:left; color: white; background-color: #15325C; padding: 15px 32px'>Add to Cart</button></a>
+						<a href='index.php?add_cart=$b_isbn'><button style='float:left; color: white; background-color: #15325C; padding: 15px 32px'>Add to Cart</button></a>
 							
 									
 								</div>

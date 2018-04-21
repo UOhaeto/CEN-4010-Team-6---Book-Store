@@ -187,24 +187,24 @@
 
 
 							 <?php
-							 $cardexists = False;
-							 $addressexists = False;
+							 $cardexists = True;
+							 $addressexists = True;
 							 $user_ready = False;
 							 $myID = $_SESSION['SESS_USERID'];
-							 $check_address = "select * from shippingaddressmapper where users_userID = '$myID'";
+							 $check_address = "select * from shippingaddressmapper INNER JOIN shippingaddresses ON shippingaddressmapper.shippingaddresses_shippingaddressID = shippingaddresses.shippingaddressID where users_userID = '$myID' AND shippingstreet = '-'";
 							 $run_address = mysqli_query($con, $check_address);
 
 							 $shipping_rows = mysqli_num_rows($run_address);
-							 if($shipping_rows > 0){
-								 $addressexists = True;
+							 if($shipping_rows == 4){
+								 $addressexists = False;
 							 }
 
-							 $check_card = "select * from credit_cards_mapper where userID = '$myID'";
+							 $check_card = "select * from credit_cards_mapper INNER JOIN credit_cards ON credit_cards_mapper.cc_id = credit_cards.cc_id where userID = '$myID' AND cc_number = '-'";
 							 $run_card = mysqli_query($con, $check_card);
 
 							 $card_rows = mysqli_num_rows($run_card);
-							 if($card_rows > 0){
-								 $cardexists = True;
+							 if($card_rows == 4){
+								 $cardexists = False;
 							 }
 
 
