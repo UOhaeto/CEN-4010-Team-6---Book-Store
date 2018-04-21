@@ -164,7 +164,7 @@ CREATE TABLE `book_ratings_view` (
 
 CREATE TABLE `cart` (
   `book_id` int(100) NOT NULL,
-  `ip_add` varchar(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
   `the_price` int(100) NOT NULL,
   `quantity` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -173,11 +173,7 @@ CREATE TABLE `cart` (
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`book_id`, `ip_add`, `the_price`, `quantity`) VALUES
-(8, '::1', 0, 0),
-(20, '::1', 0, 0),
-(24, '::1', 0, 0),
-(31, '::1', 0, 0);
+
 
 -- --------------------------------------------------------
 
@@ -261,7 +257,7 @@ INSERT INTO `mylibrary` (`userID`, `bookID`) VALUES
 
 CREATE TABLE `save_cart` (
   `book_id` int(100) NOT NULL,
-  `ip_add` varchar(255) NOT NULL
+  `user_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -383,7 +379,7 @@ ALTER TABLE `book_ratings`
 -- Indexes for table `cart`
 --
 ALTER TABLE `cart`
-  ADD PRIMARY KEY (`book_id`);
+  ADD PRIMARY KEY (`book_id`,`user_id`);
 
 --
 -- Indexes for table `mylibrary`
@@ -395,7 +391,7 @@ ALTER TABLE `mylibrary`
 -- Indexes for table `save_cart`
 --
 ALTER TABLE `save_cart`
-  ADD PRIMARY KEY (`book_id`);
+  ADD PRIMARY KEY (`book_id`,`user_id`);
 
 --
 -- Indexes for table `shippingaddresses`

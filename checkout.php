@@ -2,9 +2,7 @@
 <html>
 
 <?php
-	session_start();
-	include('functions/functions.php');
-  echo file_get_contents("html/header.php");
+	include("html/header.php");
 ?>
 
 <head>
@@ -43,16 +41,16 @@
 					<tr align = "center">
 								<th>Books</th>
 								<th>Quantity</th>
-								<th>Total Price</th>
+								<th>Book Price</th>
 					</tr>
 
 					<?php
 					global $con;
 					$total = 0;
 
-					$ip = getIp();
+					$user_ID = $_SESSION['SESS_USERID'];
 
-					$sel_price = "select * from cart where ip_add= '$ip'";
+					$sel_price = "select * from cart where user_id= '$user_ID'";
 
 					$run_price = mysqli_query($con, $sel_price);
 
@@ -68,7 +66,7 @@
 
 							while ($b_price = mysqli_fetch_array($run_book_price)){
 
-									$book_price = array($b_price['price']);
+									$book_price = array($b_price['price'] * $bk_quantity);
 
 									$book_tit = $b_price['book_title'];
 
@@ -112,7 +110,7 @@
 										if(isset($_POST['remove'])){
 										foreach ($_POST['remove'] as $remove_id) {
 
-											$delete_book = "delete from cart where book_id= '$remove_id' AND ip_add = '$ip'";
+											$delete_book = "delete from cart where book_id= '$remove_id' AND user_id = '$user_ID'";
 
 											$run_delete = mysqli_query($con, $delete_book);
 
@@ -138,14 +136,14 @@
 
 				<?php } } ?><!--end of the while loops-->
 
-<<<<<<< HEAD
-				<?php
 
+				<?php
+				/*
 				$cart_isbn = "";
 
 				$order_ISBNS = array();
 
-				$cart_query = "select * from cart";
+				$cart_query = "select * from cart where user_id";
 
  				echo $cart_isbn;
 
@@ -169,11 +167,10 @@
 
 				}	//Closes first while
 			}	//Closes if statement
-
+			*/
 				?>
-=======
 
->>>>>>> 5c6396f1efd272293cbec61a43e2c697a31ef6a8
+
 
 
 				<tr align = "right">
@@ -230,7 +227,9 @@
 
 								$cart_isbn = "";
 
-								$cart_query = "select * from cart";
+								$user_ID = $_SESSION['SESS_USERID'];
+
+								$cart_query = "select * from cart where user_id = '$user_ID'";
 
 								$order_isbn = array();
 
@@ -241,6 +240,7 @@
 
 								while($row_b=mysqli_fetch_array($run_isbn)){
 										$temp_isbn = $row_b['book_id'];
+										$cart_qty = $row_b['quantity'];
 										$same_isbn = "select * from books where isbn = '$temp_isbn'";
 										$run_temp = mysqli_query($con, $same_isbn);
 										//array_push($order_isbn, $run_temp);
@@ -250,10 +250,10 @@
 
 										while($rowb_temp=mysqli_fetch_array($run_temp)){
 												$sold_amnt = $rowb_temp['sold'];
-												$sold_amnt = $sold_amnt + 1;
+												$sold_amnt = $sold_amnt + $cart_qty;
 												$sql_update = "update books set sold = '$sold_amnt' where isbn = '$temp_isbn'";
 												$update_run = mysqli_query($con, $sql_update);
-												$delete_sql = "delete from cart where book_id = '$temp_isbn'";
+												$delete_sql = "delete from cart where book_id = '$temp_isbn' and user_id = '$user_ID'";
 												$run_dlt = mysqli_query($con, $delete_sql);
 										}	//Closes second while
 

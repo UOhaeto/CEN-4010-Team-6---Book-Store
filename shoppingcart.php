@@ -2,7 +2,6 @@
 <html>
 
 <?php
-	//include("functions/functions.php");
   include("html/header.php");
 ?>
 
@@ -28,8 +27,8 @@
 					<?php
 					global $con;
 					$total = 0;
-					$ip = getIp();
-					$sel_price = "select * from cart where ip_add= '$ip'";
+					$user_ID = $_SESSION['SESS_USERID'];
+					$sel_price = "select * from cart where user_id = '$user_ID'";
 					$run_price = mysqli_query($con, $sel_price);
 					while ($p_price=mysqli_fetch_array($run_price)){
 							$pro_id = $p_price['book_id'];
@@ -50,7 +49,8 @@
 							<img src='admin/book_images/<?php echo $book_img;?>' width ='100' height='120'/>
 							</td>
 							<td width = "2">
-								<select name = "quantity">
+                <label><?php echo $pro_qty ?></label>
+                <!--<select name = "quantity">
   								<option value="1">1</option>
   								<option value="2">2</option>
   								<option value="3">3</option>
@@ -61,7 +61,7 @@
 									<option value="8">8</option>
 									<option value="9">9</option>
 									<option value="10">10</option>
-								</select>
+								</select>-->
 							</td>
 							<?php
 							$q = 1;
@@ -92,8 +92,8 @@
 				<!--if there are things in save for later table, no need to have this <tr>-->
 				<?php
 					global $con;
-					$ip = getIp();
-					$check = "select book_id from save_cart where ip_add = '$ip'";
+					$user_ID = $_SESSION['SESS_USERID'];
+					$check = "select book_id from save_cart where user_id = '$user_ID'";
 					$run_check = mysqli_query($con, $check);
 					$row = mysqli_fetch_array($run_check);
 					if(!$row){
@@ -110,11 +110,11 @@
 					global $con;
 					/*
 					$total = 0;
-					$ip = getIp();
+					$user_ID = $_SESSION['SESS_USERID'];
 					if(isset($_POST['quantity'])){
 						$arr = array("");
 						array_push($arr, $_POST['quantity']);
-						$getALL = "select * from cart where ip_add= '$ip'";
+						$getALL = "select * from cart where user_id = '$user_ID'";
 						$running = mysqli_query($con, $getALL);
 						while ($p = mysqli_fetch_array($running)){
 							$id = $p['book_id'];
@@ -133,7 +133,7 @@
 								//checking if remove checkbox was set
 								if(isset($_POST['remove'])){
 								foreach ($_POST['remove'] as $remove_id) {
-									$delete_book = "delete from cart where book_id= '$remove_id' AND ip_add = '$ip'";
+									$delete_book = "delete from cart where book_id= '$remove_id' AND user_id = '$user_ID'";
 									$run_delete = mysqli_query($con, $delete_book);
 									if($run_delete){
 										echo "<script>window.open('shoppingcart.php','_self')</script>";
@@ -151,8 +151,8 @@
 
 		<?php //show nothing if there is nothing in save cart.
 			global $con;
-			$ip = getIp();
-			$check = "select book_id from save_cart where ip_add = '$ip'";
+			$user_ID = $_SESSION['SESS_USERID'];
+			$check = "select book_id from save_cart where user_id = '$user_ID'";
 			$run_check = mysqli_query($con, $check);
 			$row = mysqli_fetch_array($run_check);
 			if($row){
@@ -171,8 +171,8 @@
 
 				<?php
 				global $con;
-				$ip = getIp();
-				$getAll = "select * from save_cart where ip_add= '$ip'";
+				$user_ID = $_SESSION['SESS_USERID'];
+				$getAll = "select * from save_cart where user_id = '$user_ID'";
 				$run_q = mysqli_query($con, $getAll);
 				while ($p = mysqli_fetch_array($run_q)){
 						$pro_id = $p['book_id'];
@@ -195,8 +195,8 @@
 								//moving saved items to shopping cart
 								if(isset($_POST['sav'])){
 									foreach ($_POST['sav'] as $save_id) {
-										$addToCart = "insert into cart (book_id, ip_add, quantity) values ('$save_id','$ip', '1')";
-										$delete_book = "delete from save_cart where book_id= '$save_id' AND ip_add = '$ip'";
+										$addToCart = "insert into cart (book_id, user_id, quantity) values ('$save_id','$user_ID', '1')";
+										$delete_book = "delete from save_cart where book_id= '$save_id' AND user_id = '$user_ID'";
 										$run_delete = mysqli_query($con, $addToCart);
 										$run_delete2 = mysqli_query($con, $delete_book);
 										if($run_delete2){
@@ -207,7 +207,7 @@
 									//checking if remove checkbox was set
 									if(isset($_POST['rem'])){
 									foreach ($_POST['rem'] as $remove_id) {
-										$delete_book = "delete from save_cart where book_id= '$remove_id' AND ip_add = '$ip'";
+										$delete_book = "delete from save_cart where book_id= '$remove_id' AND user_id = '$user_ID'";
 										$run_delete = mysqli_query($con, $delete_book);
 										if($run_delete){
 											echo "<script>window.open('shoppingcart.php','_self')</script>";
