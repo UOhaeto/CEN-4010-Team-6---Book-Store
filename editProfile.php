@@ -14,6 +14,7 @@
     $fname = filter($_POST['fname']);
 	$lname = filter($_POST['lname']);
 	$nickname = filter($_POST['nickname']);
+	$password = filter($_POST['password']);
 	$homestreet = filter($_POST['homestreet']);
 	$homecity = filter($_POST['homecity']);
 	$homestate = filter($_POST['homestate']);
@@ -38,6 +39,10 @@
 		if(!empty ($email))
 		{
 			$query = mysqli_query($con, "UPDATE users SET email = '$email' WHERE userID='$id'");
+		}
+		if(!empty ($password))
+		{
+			$query = mysqli_query($con, "UPDATE users SET password = '$password' WHERE userID='$id'");
 		}
 		if(!empty ($homestreet))
 		{

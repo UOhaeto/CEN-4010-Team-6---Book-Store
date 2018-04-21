@@ -29,8 +29,10 @@
         <input type="text" name="homestate"><br />
 				<label for="homezip"><b><font face="helvetica">Home Zip</font></b></label>
         <input type="text" name="homezip"><br />
-				<label for="email"><b><font face="helvetica">Email</font></b></label>
-        <input type="text" name="email"><br />
+				<label for="email"><b><font face="helvetica">Email<br></font></b></label>
+        <input type="email" name="email" style="width: 292px"><br />
+				<label for="entireNumber"><b><font face="helvetica">Password</font></b></label>
+		<input type="password" name="password"><br />
 				<label for="entireNumber"><b><font face="helvetica">Phone Number</font></b></label>
         <input type="text" name="entireNumber"><br />
 

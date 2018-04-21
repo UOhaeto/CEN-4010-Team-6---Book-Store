@@ -204,6 +204,25 @@ form.example::after {
 			margin: 0 20px 0 0;
 		}
 
+.bottom-of-details{
+	margin: auto;
+	float: left;
+	width: 70%;
+	height: auto;
+}
+
+	#comments{
+		margin: 0 0 100px 200px;
+		display: block;
+		float: left;
+	}
+
+	#ratings{
+		display: block;
+		float: right;
+	}
+
+
 .login_div {
   width: 300px;
   margin: auto;

@@ -10,7 +10,8 @@
 
 function getNumOfItems(){
 			global $con;
-			$check_book = "select * from cart" ;
+			$user_ID = $_SESSION['SESS_USERID'];
+			$check_book = "select * from cart where user_id = $user_ID";
 			$run_check = mysqli_query($con, $check_book);
 
 			$count = mysqli_num_rows($run_check);
@@ -24,10 +25,11 @@ function getNumOfItems(){
 
 		if(isset($_GET['save_later'])){
 
-				$ip = getIp();
+				$user_ID = $_SESSION['SESS_USERID'];
+
 				$book_id = $_GET['save_later'];
 
-				$check_book = "select * from save_cart where ip_add='$ip' AND book_id='$book_id' ";
+				$check_book = "select * from save_cart where user_id='$user_ID' AND book_id='$book_id' ";
 
 				$run_check = mysqli_query($con, $check_book);
 
@@ -39,11 +41,11 @@ function getNumOfItems(){
 				}
 				else {
 
-					$insert_book = "insert into cart (book_id, ip_add, quantity) values ('$book_id','$ip', 1)";
+					$insert_book = "insert into save_cart (book_id, user_id) values ('$book_id','$user_ID')";
 
 					$run_pro = mysqli_query($con, $insert_book);
 
-					header("Refresh:0");
+
 
 				}
 
@@ -59,16 +61,24 @@ function getNumOfItems(){
 
 			if(isset($_GET['add_cart'])){
 
-					$ip = getIp();
+					$user_ID = $_SESSION['SESS_USERID'];
 					$book_id = $_GET['add_cart'];
 
-					$check_book = "select * from cart where ip_add='$ip' AND book_id='$book_id' ";
+					$check_book = "select * from cart where user_id='$user_ID' AND book_id='$book_id' ";
 
 					$run_check = mysqli_query($con, $check_book);
 
 					if(mysqli_num_rows($run_check)>0){
 
-						echo "";
+						$sql_add1 = "select * from cart where user_id='$user_ID' AND book_id='$book_id'";
+						$run_add1 = mysqli_query($con, $sql_add1);
+
+						while($row1 = mysqli_fetch_array($run_add1)){
+							$b_quantity = $row1['quantity'];
+							$b_quantity = $b_quantity + 1;
+							$sql_update = "update cart set quantity = '$b_quantity' where book_id = '$book_id' and user_id = '$user_ID'";
+							$run_update = mysqli_query($con, $sql_update);
+						}
 
 
 					}
@@ -79,11 +89,11 @@ function getNumOfItems(){
 						while($p = mysqli_fetch_array($running)){
 							$singlePrice = $p['price'];
 
-							$insert_book = "insert into cart (book_id, ip_add, the_price, quantity) values ('$id','$ip', '$singlePrice', '1')";
+							$insert_book = "insert into cart (book_id, user_id, the_price, quantity) values ('$id','$user_ID', '$singlePrice', '1')";
 							$run_pro = mysqli_query($con, $insert_book);
 						}
 
-						header("Refresh:0");
+
 
 					}
 
@@ -98,9 +108,9 @@ function total_books() {
 
 		global $con;
 
-		$ip = getIp();
+		$user_ID = $_SESSION['SESS_USERID'];
 
-		$get_items = "select * from cart where ip_add = '$ip'";
+		$get_items = "select * from cart where user_id = '$user_ID'";
 
 		$run_items = mysqli_query($con, $get_items);
 
@@ -111,9 +121,8 @@ function total_books() {
 
 			global $con;
 
-			$ip = getIp();
 
-			$get_items = "select * from cart where ip_add = '$ip'";
+			$get_items = "select * from cart where user_id = '$user_ID'";
 
 			$run_items = mysqli_query($con, $get_items);
 
@@ -133,9 +142,9 @@ function total_price(){
 
 	global $con;
 
-	$ip = getIp();
+	$user_ID = $_SESSION['SESS_USERID'];
 
-	$sel_price = "select * from cart where ip_add= '$ip'";
+	$sel_price = "select * from cart where user_id= '$user_ID'";
 
 	$run_price = mysqli_query($con, $sel_price);
 
@@ -164,17 +173,17 @@ function total_price(){
 
 
 //getting customer IP
-	function getIp() {
-	$ip = $_SERVER['REMOTE_ADDR'];
+	//function getIp() {
+	//$ip = $_SERVER['REMOTE_ADDR'];
 
-	if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-			$ip = $_SERVER['HTTP_CLIENT_IP'];
-	} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-			$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-	}
+	//if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+			//$ip = $_SERVER['HTTP_CLIENT_IP'];
+	//} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+		//	$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	//}
 
-	return $ip;
-}
+	//return $ip;
+//}
 
 	//function to get genres
 	function getGenres(){
@@ -290,7 +299,6 @@ function total_price(){
 							<a href='index.php?add_cart=$b_isbn&page=$page'><button class=\"book_browsing_button\" style='float:right'; margin-right: 10px; >Add to Cart</button></a>
 							<a href='index.php?save_later=$b_isbn'><button class=\"book_browsing_button\" style='float:right'>Save for later</button></a>
 							<p>
-
 						</div>
 					</div>
 

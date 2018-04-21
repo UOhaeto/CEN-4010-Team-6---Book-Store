@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-session_start();
-include('functions/functions.php');
-echo file_get_contents("html/header.php");
+include("html/header.php");
 
 	if(isset($_GET['book'], $_GET['rating'], $_GET['anonymous']) && ($_SESSION['SESS_USERID'] > 0) ){
 		$book = (int)$_GET['book'];
@@ -17,7 +15,7 @@ echo file_get_contents("html/header.php");
 					header('Location: index.php');
 				}
 				else{
-					$con->query("INSERT INTO book_ratings (book, rating, userID, username, anonymous) VALUES ({$book}, {$rating}, {$_SESSION['SESS_NICKNAME']}, '{$_SESSION['SESS_USERNAME']}', '{$anonymous}')");
+					$con->query("INSERT INTO book_ratings (book, rating, userID, username, anonymous) VALUES ({$book}, {$rating}, '{$_SESSION['SESS_USERNAME']}', '{$_SESSION['SESS_NICKNAME']}', '{$anonymous}')");
 					header('Location: index.php');
 				}
 			}
