@@ -1,6 +1,6 @@
 body {
 	margin:0;
-	background: white;
+	background: #E0E0E0;
 }
 
 .topnav {
@@ -10,12 +10,14 @@ body {
 .mini_topnav {
   overflow: hidden;
   align: center;
-  background-color: lightgray;
+  background-color: #2C3942;
+  position: relative;
+  margin: auto;
 }
 .mini_topnav a {
   float: right;
-  color: black;
-  background-color: lightgray;
+  color: white;
+  font-weight: bold;
   text-align: center;
   padding: 5px 5px;
   text-decoration: none;
@@ -26,30 +28,37 @@ body {
 .topnav_menu {
   overflow: hidden;
   align: center;
-  background:lightgray;
-  border: dimgray;
-
+  background:#39464F;
+  border-top-color: #BFA126;
+  border-top-width: 5px;
+  position: relative;
+  margin: auto;
 }
 
 .topnav_mid {
 	overflow: hidden;
 	align: center;
-  background-color:#DDDDDD;
+  background-image: url("../images/top_mid.jpg");
   padding: 0;
   list-style: none;
+  position: relative;
+  margin: auto;
+
 }
 
 .topnav_mid .search-container {
   float: right;
+  width: 75%;
 }
 
 .topnav_mid input[type=text] {
+  float: right;
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
   border: solid;
   height: 16px;
-  width: 90%;
+  width: 60%;
   border-color:white;
   border-radius: 3px;
 }
@@ -67,7 +76,8 @@ body {
 
 .topnav_menu a {
   float: left;
-  color: gray;
+  color: white;
+  font-weight: bold;
   text-align: center;
   padding: 10px 12px;
   text-decoration: none;
@@ -81,7 +91,7 @@ body {
 }
 
 .search {
-    width: 500px;
+    width: 400px;
     padding: 6px;
     border: none;
     margin-top: 8px;
@@ -91,11 +101,12 @@ body {
 }
 
 .search_form {
-  background-color: #DDDDDD;
+  /*background-color: #406784;*/
   color: white;
-  width: 700px;
+  width: 40%;
   padding-top: 29px;
-  padding-right: 350px
+  padding-right: 350px;
+  padding-left: 60%;
 }
 
 form.example input[type=text] {

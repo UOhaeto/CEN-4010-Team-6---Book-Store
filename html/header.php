@@ -33,8 +33,10 @@
         <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a>
         <div class="search-container">
           <form action="result.php" class="search_form">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
+						<button type="submit"><i class="fa fa-search"></i></button>
+						<div style="overflow: hidden;" >
+            	<input type="text" placeholder="Search.." name="search">
+						</div>
           </form>
         </div>
       </div>
