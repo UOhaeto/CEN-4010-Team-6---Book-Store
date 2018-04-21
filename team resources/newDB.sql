@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `random`
+-- Database: `geek_text`
 --
 
 -- --------------------------------------------------------
@@ -198,7 +198,15 @@ CREATE TABLE `credit_cards` (
 --
 
 INSERT INTO `credit_cards` (`cc_ID`, `cc_number`, `cc_name`, `exp_date`, `sec_code`) VALUES
-(0, '1234432112344321', 'Paul Kersey', '02/23', 123);
+(0, '-', '-', '00/00', 000),
+(1, '-', '-', '00/00', 000),
+(2, '-', '-', '00/00', 000),
+(3, '-', '-', '00/00', 000),
+(4, '-', '-', '00/00', 000),
+(5, '-', '-', '00/00', 000),
+(6, '-', '-', '00/00', 000),
+(7, '-', '-', '00/00', 000);
+
 
 -- --------------------------------------------------------
 
@@ -217,7 +225,14 @@ CREATE TABLE `credit_cards_mapper` (
 --
 
 INSERT INTO `credit_cards_mapper` (`userID`, `cc_ID`, `cc_order`) VALUES
-(1, 0, 1);
+(1, 0, 1),
+(1, 1, 2),
+(1, 2, 3),
+(1, 3, 4),
+(2, 4, 1),
+(2, 5, 2),
+(2, 6, 3),
+(2, 7, 4);
 
 -- --------------------------------------------------------
 
@@ -268,8 +283,14 @@ CREATE TABLE `shippingaddresses` (
 --
 
 INSERT INTO `shippingaddresses` (`shippingaddressID`, `shippingStreet`, `shippingCity`, `shippingState`, `shippingZip`) VALUES
-(0, '123 Abc St.', 'Magic City', 'Florida', '33133'),
-(1, '456 Abc St.', 'Magic City', 'Florida', '33133');
+(0, '-', '-', '-', '-'),
+(1, '-', '-', '-', '-'),
+(2, '-', '-', '-', '-'),
+(3, '-', '-', '-', '-'),
+(4, '-', '-', '-', '-'),
+(5, '-', '-', '-', '-'),
+(6, '-', '-', '-', '-'),
+(7, '-', '-', '-', '-');
 
 -- --------------------------------------------------------
 
@@ -288,8 +309,14 @@ CREATE TABLE `shippingaddressmapper` (
 --
 
 INSERT INTO `shippingaddressmapper` (`users_userID`, `shippingaddresses_shippingaddressID`, `address_order`) VALUES
-(0, 0, 1),
-(1, 1, 1);
+(1, 0, 1),
+(1, 1, 2),
+(1, 2, 3),
+(1, 3, 4),
+(2, 4, 1),
+(2, 5, 2),
+(2, 6, 3),
+(2, 7, 4);
 
 -- --------------------------------------------------------
 
