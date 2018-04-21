@@ -191,7 +191,7 @@
 				}
 				?><p></p>
 				<form action = "" method = "POST">
-				<textarea rows = "10" cols = "30" name = "commentArea"></textarea></br>
+				<textarea rows = "10" cols = "100" name = "commentArea"></textarea></br>
 				<input type="radio" name="anonymous" value="yes"> Anonymous
 				<input type="radio" name="anonymous" value="no"> Use Username
 				<input type = "submit" value = "Post">
