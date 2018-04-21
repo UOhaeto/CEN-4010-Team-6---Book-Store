@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="styles/new_style.css" media="all" </link>
 </head>
 <body>
-	  <center><b><font color="black" face="Helvetica"> Welcome back
+	  <center><b><font color="black" face="Helvetica" size="5"> Welcome back,
 		<?php
 			$id=$_SESSION['SESS_USERID'];
 			$query = mysqli_query($con, "SELECT * FROM users INNER JOIN shippingaddresses WHERE userID=$id");
@@ -20,7 +20,7 @@
 			$nickname = $result['nickname'];
 			}
 			echo $nickname;
-		?>! </b></center>
+		?>! </b></center></font>
 	<div class="content" >
 
 	<?php cart();  saveForLater();?>

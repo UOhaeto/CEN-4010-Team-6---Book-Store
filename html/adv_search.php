@@ -40,35 +40,36 @@ session_start();
 					</form>
 				</div>
 
+						<form action="result.php">
 						<div style="float: right; margin-right: 14px;">
 							<div style="display: inline-block;">
-							<label for="sort_label" style="display: block; width: 100px; color:white; text-align:right;"><b><font face="helvetica">Sort by</font></b></label>
-							<select name="sort" style="width: 150px;">
-								<option value="">--</option>
-								<option value="author">Author</option>
-								<!--
-								<option value="rating">Book Rating</option>
-								-->
-								<option value="title">Book Title</option>
-								<option value="low-price">Price: Low to High</option>
-								<option value="high-price">Price: High to Low </option>
-								<option value="old-release">Release Year: Oldest to Newest</option>
-								<option value="new-release">Release Year: Oldest to Newest</option>
-							</select>
+								<label for="sort_label" style="display: block; width: 100px; color:white; text-align:right;"><b><font face="helvetica">Sort by</font></b></label>
+								<select name="sort" style="width: 150px;">
+									<option value="">--</option>
+									<option value="author">Author</option>
+									<!--
+									<option value="rating">Book Rating</option>
+									-->
+									<option value="title">Book Title</option>
+									<option value="low-price">Price: Low to High</option>
+									<option value="high-price">Price: High to Low </option>
+									<option value="old-release">Release Year: Oldest to Newest</option>
+									<option value="new-release">Release Year: Oldest to Newest</option>
+								</select>
 							</div>
 
 							<div style="display: inline-block;">
-							<label for="results_label" style="display: block; width: 100px; color:white; text-align:right;"><b><font face="helvetica">Results</font></b></label>
-							<select name="results" style="width: 150px;">
-								<option value="5">5</option>
-								<option value="10">10</option>
-								<option value="20">20</option>
-
-
-							</select>
+								<label for="results_label" style="display: block; width: 100px; color:white; text-align:right;"><b><font face="helvetica">Results</font></b></label>
+								<select name="results" style="width: 150px;">
+									<option value="5">5</option>
+									<option value="10">10</option>
+									<option value="20">20</option>
+								</select>
+							</div>
+							<button type="submit" class="filter_browsing_button"><b>Filter</b></button>
 						</div>
-						</div>
-      </div>
+						</form>
+      		</div>
       <div class="topnav_menu">
         <a href="index.php">Home</a>
 

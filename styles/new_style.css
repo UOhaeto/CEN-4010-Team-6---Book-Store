@@ -367,6 +367,18 @@ select{
     cursor: pointer;
   }
 
+  .filter_browsing_button {
+    background: orange;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border: none;
+  }
+
+  .filter_browsing_button:hover {
+    background: darkorange;
+    cursor: pointer;
+  }
+
   .address_cell {
     display: inline-block;
     margin: 8px;
