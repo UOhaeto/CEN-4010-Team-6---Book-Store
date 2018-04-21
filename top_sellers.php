@@ -89,7 +89,7 @@ include("html/header.php");
 								<a href='details.php?b_isbn=$b_isbn' style=\"margin-right: 20px;\"><img src='admin/book_images/$b_image' width='150px' height='200px' style=\"margin-right: 20px;\"/></a>
 							</div>
 							<div class=\"book_browsing_details\">
-								<h3 style=\"text-align: left;\"><font face=\"helvetica\">$b_title</font></h3>
+								<a href='details.php?b_isbn=$b_isbn'> <h3 style=\"text-align: left;\"><font face=\"helvetica\">$b_title</font></h3></a>
 								<p><a href='author.php?b_author=$b_author' style=\"margin-left: 0px;\">by $b_author </a> </p>
 								
 								<p><b>$$b_price.00</b></p>

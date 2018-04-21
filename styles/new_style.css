@@ -60,7 +60,6 @@ body {
   height: 16px;
   width: 60%;
   border-color:white;
-  border-radius: 3px;
 }
 
 .topnav_mid .search-container button {
@@ -68,6 +67,7 @@ body {
   padding: 6px 10px;
   margin-top: 8px;
   margin-right: 16px;
+  padding-bottom: 8px;
   background: orange;
   font-size: 17px;
   border: none;
@@ -107,6 +107,16 @@ body {
   padding-top: 29px;
   padding-right: 350px;
   padding-left: 60%;
+}
+
+.search_form_select {
+  /*background-color: #406784;*/
+  color: white;
+  width: 150px;
+  padding-top: 29px;
+  padding-right: 1%;
+  padding-left: 60%;
+  float: right;
 }
 
 form.example input[type=text] {
@@ -320,12 +330,23 @@ select{
 	}
 
   .book_browsing_details a {
-		margin-bottom: 1px;
-		margin-top: 1px;
+    text-decoration: none;
+    color: #406784;
     margin-left: 5px;
 		font-family: Helvetica, Arial, sans-serif;
     text-align: left;
 	}
+
+  .book_browsing_details a:link {
+    color: #2C3942;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .book_browsing_details a:hover {
+    cursor: pointer;
+    color: orange;
+  }
 
   .book_browsing_details p {
 		margin-bottom: 1px;
@@ -497,4 +518,9 @@ border: dimgray;
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.adv_filter_select {
+  width: 400px;
+  
 }

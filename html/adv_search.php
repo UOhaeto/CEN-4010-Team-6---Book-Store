@@ -33,13 +33,17 @@ session_start();
       <div class=topnav_mid>
         <a href="index.php"><img src="images/Book Monster.png" alt="home_logo" width="250" height="80"></a>
         <div class="search-container">
-          <form action="result.php" class="search_form">
-
+          
+					<form action="result.php" class="search_form">
+						<button type="submit"><i class="fa fa-search"></i></button>
             <input type="text" name="search" placeholder="Search.." value=""/>
-            <button type="submit"><i class="fa fa-search"></i></button>
-							<div>
-							<label for="sort_label" style="display: block; width: 100px;"><b><font face="helvetica">Sort by</font></b></label>
-							<select name="sort">
+					</form>
+				</div>
+
+						<div style="float: right; margin-right: 14px;">
+							<div style="display: inline-block;">
+							<label for="sort_label" style="display: block; width: 100px; color:white; text-align:right;"><b><font face="helvetica">Sort by</font></b></label>
+							<select name="sort" style="width: 150px;">
 								<option value="">--</option>
 								<option value="author">Author</option>
 								<!--
@@ -51,10 +55,11 @@ session_start();
 								<option value="old-release">Release Year: Oldest to Newest</option>
 								<option value="new-release">Release Year: Oldest to Newest</option>
 							</select>
+							</div>
 
-
-							<label for="results_label" style="display: block; width: 100px;"><b><font face="helvetica">Results</font></b></label>
-							<select name="results">
+							<div style="display: inline-block;">
+							<label for="results_label" style="display: block; width: 100px; color:white; text-align:right;"><b><font face="helvetica">Results</font></b></label>
+							<select name="results" style="width: 150px;">
 								<option value="5">5</option>
 								<option value="10">10</option>
 								<option value="20">20</option>
@@ -62,8 +67,7 @@ session_start();
 
 							</select>
 						</div>
-          </form>
-        </div>
+						</div>
       </div>
       <div class="topnav_menu">
         <a href="index.php">Home</a>

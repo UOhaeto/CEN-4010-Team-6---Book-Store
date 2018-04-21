@@ -289,7 +289,7 @@ function total_price(){
 							<a href='details.php?b_isbn=$b_isbn' style=\"margin-right: 20px;\"><img src='admin/book_images/$b_image' width='150px' height='200px' style=\"margin-right: 20px;\"/></a>
 						</div>
 						<div class=\"book_browsing_details\">
-							<h3 style=\"text-align: left;\"><font face=\"helvetica\">$b_title</font></h3>
+							<a href='details.php?b_isbn=$b_isbn'> <h3 style=\"text-align: left;\"><font face=\"helvetica\">$b_title</font></h3></a>
 							<p><a href='author.php?b_author=$b_author' style=\"margin-left: 0px;\">by $b_author </a> </p>
 							
 							<p><b>$$b_price.00</b></p>
@@ -299,6 +299,7 @@ function total_price(){
 							<a href='index.php?add_cart=$b_isbn&page=$page'><button class=\"book_browsing_button\" style='float:right'; margin-right: 10px; >Add to Cart</button></a>
 							<a href='index.php?save_later=$b_isbn'><button class=\"book_browsing_button\" style='float:right'>Save for later</button></a>
 							<p>
+
 						</div>
 					</div>
 
@@ -404,7 +405,7 @@ function total_price(){
 							<a href='details.php?b_isbn=$b_isbn' style=\"margin-right: 20px;\"><img src='admin/book_images/$b_image' width='150px' height='200px' style=\"margin-right: 20px;\"/></a>
 						</div>
 						<div class=\"book_browsing_details\">
-							<h3 style=\"text-align: left;\"><font face=\"helvetica\">$b_title</font></h3>
+							<a href='details.php?b_isbn=$b_isbn'> <h3 style=\"text-align: left;\"><font face=\"helvetica\">$b_title</font></h3></a>
 							<p><a href='author.php?b_author=$b_author' style=\"margin-left: 0px;\">by $b_author </a> </p>
 							
 							<p><b>$$b_price.00</b></p>
@@ -502,7 +503,7 @@ function total_price(){
 								<a href='details.php?b_isbn=$b_isbn' style=\"margin-right: 20px;\"><img src='admin/book_images/$b_image' width='150px' height='200px' style=\"margin-right: 20px;\"/></a>
 							</div>
 							<div class=\"book_browsing_details\">
-								<h3 style=\"text-align: left;\"><font face=\"helvetica\">$b_title</font></h3>
+								<a href='details.php?b_isbn=$b_isbn'> <h3 style=\"text-align: left;\"><font face=\"helvetica\">$b_title</font></h3></a>
 								<p><a href='author.php?b_author=$b_author' style=\"margin-left: 0px;\">by $b_author </a> </p>
 								
 								<p><b>$$b_price.00</b></p>

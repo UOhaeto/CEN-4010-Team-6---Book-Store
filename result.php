@@ -107,6 +107,19 @@
 				//echo $test;
 				//Getting book info and printing
 				$run_b = mysqli_query($con, $test);
+
+				//Printing Pagination Links
+					$pagLink = "<div class='pagination'>";
+					for ($i=$total_pages; $i>=1; $i--) {
+						if($page == $i){
+							$pagLink .= "<a class='active' href='result.php?page=".$i."&sort=".$sort."&search=".$search_query."&results=".$rec_limit."'>".$i."</a>";
+						}else{
+							$pagLink .= "<a  href='result.php?page=".$i."&sort=".$sort."&search=".$search_query."&results=".$rec_limit."'>".$i."</a>";
+						}
+
+					};
+					echo $pagLink . "</div>";
+
 				while($row_b=mysqli_fetch_array($run_b)){
 						//initializing variable with book name.
 						$b_title = $row_b['book_title'];
@@ -118,40 +131,29 @@
 						//primary key
 						//used to display individual details page.
 						$b_isbn = $row_b['isbn'];
+
 						echo "
-							<div id='single_book'>
-
-								<h3>$b_title</h3>
-								<a href='details.php?b_isbn=$b_isbn'><img src='admin/book_images/$b_image' width='150px' height='200px'  /></a>
-								<p> $ $b_price </p>
-								<p>Author: $b_author</p>
-								<p>Year: $b_release</p>
-
-
-								<div style='margin: auto;'>
-								<a href='details.php?b_isbn=$b_isbn' style='float:left;'>More Info</a>
-
-								<a href='result.php?add_cart=$b_isbn&page=$page&search=$search_query&sort=$sort&results=$rec_limit'><button style='float:right'>Add to Cart</button></a>
-								<a href='result.php?save_later=$b_isbn&page=$page&search=$search_query&sort=$sort&results=$rec_limit'><button style='float:right'>Save for later</button></a>
-
-								</div>
+						<div id='single_book'>
+							<div style=\"display=inline-block; float: left;\"> 
+								<a href='details.php?b_isbn=$b_isbn' style=\"margin-right: 20px;\"><img src='admin/book_images/$b_image' width='150px' height='200px' style=\"margin-right: 20px;\"/></a>
 							</div>
-						";
+							<div class=\"book_browsing_details\">
+								<a href='details.php?b_isbn=$b_isbn'> <h3 style=\"text-align: left;\"><font face=\"helvetica\">$b_title</font></h3></a>
+								<p><a href='author.php?b_author=$b_author' style=\"margin-left: 0px;\">by $b_author </a> </p>
+								
+								<p><b>$$b_price.00</b></p>
+								<p>$b_release</p>
+								<p><a href='details.php?b_isbn=$b_isbn' style='float:left; margin-left: 0px;'>More Info</a></p>
+								<p style=\"margin-top: 100px\">
+								<a href='index.php?add_cart=$b_isbn&page=$page'><button class=\"book_browsing_button\" style='float:right'; margin-right: 10px; >Add to Cart</button></a>
+								<a href='index.php?save_later=$b_isbn'><button class=\"book_browsing_button\" style='float:right'>Save for later</button></a>
+								<p>
+
+							</div>
+						</div>
+
+					";
 					}
-
-					//Printing Pagination Links
-					$pagLink = "<div class='pagination'>";
-					for ($i=1; $i<=$total_pages; $i++) {
-											if($page == $i){
-												$pagLink .= "<a class='active' href='result.php?page=".$i."&sort=".$sort."&search=".$search_query."&results=".$rec_limit."'>".$i."</a>";
-											}else{
-												$pagLink .= "<a  href='result.php?page=".$i."&sort=".$sort."&search=".$search_query."&results=".$rec_limit."'>".$i."</a>";
-											}
-
-					};
-					echo $pagLink . "</div>";
-
-
 				}
 
 				 ?>
