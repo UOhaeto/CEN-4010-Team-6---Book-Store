@@ -160,9 +160,16 @@
 
 			$filename = "comments/" . $isbn . 'comments.html';
 
+			$id=$_SESSION['SESS_USERID'];
+			$query = mysqli_query($con, "SELECT * FROM users INNER JOIN shippingaddresses WHERE userID=$id");
+			while($result = mysqli_fetch_array($query))
+			{
+			$nickname = $result['nickname'];
+			}
+
 			if($_POST){
 				$comment = $_POST['commentArea'];
-				$name = $_SESSION['SESS_NICKNAME'];
+				$name = $nickname;
 				$annonymous_answer = $_POST['anonymous'];
 				if($name != 'guest' && $annonymous_answer =="no" && $bookBought == True){
 					$handle = fopen($filename, "a");

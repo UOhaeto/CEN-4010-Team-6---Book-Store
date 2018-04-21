@@ -13,7 +13,13 @@
 <body>
 	  		<br><center><b><font color="black"> Welcome back
 		<?php
-			echo($_SESSION['SESS_NICKNAME']);
+			$id=$_SESSION['SESS_USERID'];
+			$query = mysqli_query($con, "SELECT * FROM users INNER JOIN shippingaddresses WHERE userID=$id");
+			while($result = mysqli_fetch_array($query))
+			{
+			$nickname = $result['nickname'];
+			}
+			echo $nickname;
 		?>! </b></center>
 	<div class="content" >
 
