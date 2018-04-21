@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <?php
-	//session_start();
-	include('add_cc.php');
-	//$ccID = $_POST['ccID'];
+	session_start();
+	$ccID = $_POST['ccID'];
 ?>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,9 +14,7 @@
 
 <body>
   <div id="add_shp" class="login_div">
-    <form class="user" action="creditCardManager.php" method="post" enctype="multipart/form-data">
-
-			<?php include('errors.php'); ?>
+    <form class="user" action="add_cc.php" method="post" enctype="multipart/form-data">
 
       <label for="cc_name"><b><font face="helvetica">Name on Credit Card</font></b></label>
 			<input type="text" name="cc_name" required placeholder="Name" value="<?php if(isset($_POST['cc_name'])){echo $_POST['cc_name']; } ?>"/>
